@@ -200,10 +200,10 @@
     {
       "slug": "protecting-attention-in-a-busy-team",
       "category": "culture",
-      "title": "Bảo vệ attention trong một team bận rộn",
-      "summary": "Một ghi chú bình tĩnh về việc xem attention như shared team resource, không phải ngân sách cá nhân vô hạn mà ai cũng tự hồi phục được.",
+      "title": "Giữ sự tập trung cho một team lúc nào cũng bận",
+      "summary": "Mất tập trung là chuyện của cả team, nên mẹo cá nhân chỉ giúp được tới đó. Nghiên cứu nói gì về chuyện bị cắt ngang và vài quy ước trả lại thời gian để nghĩ.",
       "date": "2026-11-10",
-      "readingMinutes": 6,
+      "readingMinutes": 5,
       "tags": [
         "Engineering Culture",
         "Attention",
@@ -285,10 +285,10 @@
     {
       "slug": "noticing-friction-before-it-becomes-blame",
       "category": "culture",
-      "title": "Nhận ra friction trước khi nó thành blame",
-      "summary": "Một ghi chú bình tĩnh về việc xem friction lặp lại trong team như tín hiệu hữu ích trước khi nó đông cứng thành blame cá nhân.",
+      "title": "Nhận ra chỗ vướng trước khi nó thành chuyện đổ lỗi",
+      "summary": "Những chỗ vướng nhỏ lặp đi lặp lại sẽ thành chuyện về con người nếu không ai gọi tên. Cách nhận ra sớm, đọc nó như tín hiệu về quy trình và sửa từ một việc nhỏ.",
       "date": "2026-11-07",
-      "readingMinutes": 6,
+      "readingMinutes": 3,
       "tags": [
         "Engineering Culture",
         "Teamwork",
@@ -370,10 +370,10 @@
     {
       "slug": "making-space-for-the-quiet-reviewer",
       "category": "culture",
-      "title": "Tạo không gian cho người reviewer ít nói",
-      "summary": "Một ghi chú bình tĩnh về cách giúp teammate trầm hơn đóng góp review feedback sâu mà không ép mọi tín hiệu hữu ích đi qua kênh ồn nhất.",
+      "title": "Chừa chỗ cho người review ít lên tiếng",
+      "summary": "Review trực tiếp hay ưu ái người nói trước. Gửi bối cảnh sớm, dành vài phút đọc, hỏi cụ thể, đặt hạn chót rõ ràng để người review kỹ cũng đổi được quyết định.",
       "date": "2026-11-04",
-      "readingMinutes": 6,
+      "readingMinutes": 4,
       "tags": [
         "Engineering Culture",
         "Code Review",
@@ -455,10 +455,10 @@
     {
       "slug": "what-calm-ownership-looks-like-in-practice",
       "category": "culture",
-      "title": "Calm ownership trong thực tế trông như thế nào",
-      "summary": "Một ghi chú thực tế về ownership như follow-through rõ ràng, handoff explicit và accountability đều đặn mà không cần kịch tính.",
+      "title": "Ownership tốt trông thế nào mỗi ngày",
+      "summary": "Own một việc là gọi tên được quyết định tiếp theo, bàn giao sao cho người khác nhặt lên được và nói thật cái mình chưa biết. Online suốt ngày là chuyện khác.",
       "date": "2026-11-01",
-      "readingMinutes": 6,
+      "readingMinutes": 5,
       "tags": [
         "Engineering Culture",
         "Ownership",
@@ -540,10 +540,10 @@
     {
       "slug": "the-quiet-skill-of-asking-for-help-early",
       "category": "culture",
-      "title": "Biết hỏi giúp khi chuyện còn nhỏ",
-      "summary": "Hỏi giúp từ sớm không làm ta yếu đi; đó là cách giữ một chỗ chưa chắc chắn khỏi âm thầm kéo cả công việc lệch hướng.",
+      "title": "Hỏi sớm khi vấn đề còn nhỏ",
+      "summary": "Hỏi giúp sớm thì hơi ngại, nhưng người ta sẵn lòng giúp hơn mình tưởng. Khi nào nên hỏi, hỏi sao cho gọn trong hai dòng, và trả lời sao để team dám hỏi sớm.",
       "date": "2026-10-27",
-      "readingMinutes": 6,
+      "readingMinutes": 5,
       "tags": [
         "Engineering Culture",
         "Teamwork",
@@ -625,10 +625,10 @@
     {
       "slug": "why-good-teams-make-risk-visible-early",
       "category": "culture",
-      "title": "Đội tốt không để rủi ro nằm im trong bóng tối",
-      "summary": "Đưa rủi ro ra ánh sáng từ sớm không phải để làm mọi người lo, mà để cả đội còn thời gian xoay xở.",
+      "title": "Team tốt nói ra rủi ro từ sớm, lúc sửa còn rẻ",
+      "summary": "Rủi ro càng giấu lâu càng đắt. Cách team tốt gọi tên rủi ro từ sớm, viết sao cho test được, chạy premortem và phản ứng sao để mọi người còn dám lên tiếng.",
       "date": "2026-10-22",
-      "readingMinutes": 6,
+      "readingMinutes": 5,
       "tags": [
         "Engineering Culture",
         "Risk",
@@ -710,10 +710,10 @@
     {
       "slug": "the-culture-hidden-in-small-reviews",
       "category": "culture",
-      "title": "Một lượt review nhỏ nói gì về văn hóa",
-      "summary": "Văn hóa kỹ thuật không chỉ nằm trong những tuyên bố lớn. Nó hiện ra qua cách một đội ngũ góp ý, giải thích và đối xử với nhau trong từng lần góp ý mã nguồn rất bình thường.",
+      "title": "Một lượt review nhỏ dạy team những gì",
+      "summary": "PR mười dòng hiếm khi làm sản phẩm khác đi, nhưng lượt review trên nó dạy cả team cách nói về chất lượng. Nghiên cứu của Google nói gì và team bạn nên đổi gì.",
       "date": "2026-10-19",
-      "readingMinutes": 6,
+      "readingMinutes": 5,
       "tags": [
         "Engineering Culture",
         "Code Review",
@@ -796,9 +796,9 @@
       "slug": "how-trust-grows-in-ordinary-follow-through",
       "category": "culture",
       "title": "Niềm tin lớn lên từ những việc nhỏ được làm tới nơi",
-      "summary": "Trong một nhóm kỹ thuật, niềm tin hiếm khi đến từ lời nói lớn. Nó tích lại qua những cam kết nhỏ được giữ, chậm trễ được báo sớm, quyết định được cập nhật và sai sót được sửa đàng hoàng — để người khác có thể yên tâm xây phần việc của họ lên trên.",
+      "summary": "Niềm tin trong team ít khi đến từ pha cứu nguy lớn. Nó lớn lên từ lời hứa nhỏ được giữ, tin báo sớm khi trễ hạn và sửa sai thẳng thắn, kèm mẫu tin nhắn.",
       "date": "2026-10-15",
-      "readingMinutes": 5,
+      "readingMinutes": 4,
       "tags": [
         "Engineering Culture",
         "Trust",
@@ -880,10 +880,10 @@
     {
       "slug": "the-quiet-discipline-of-saying-not-yet",
       "category": "culture",
-      "title": "Kỷ luật của một câu “chưa” đúng lúc",
-      "summary": "Một câu “chưa” có căn cứ không chống lại release; nó bảo vệ chất lượng, niềm tin và những người sẽ vận hành phần mềm sau khi phòng họp tan.",
+      "title": "Nói \"chưa\" trước giờ release mà không thành người cản đường",
+      "summary": "Một câu \"chưa\" tốt phải nói rõ còn thiếu gì, ai lo, khi nào quyết lại. Cách dừng release có căn cứ, và những lựa chọn nằm giữa ship ngay với chờ thêm.",
       "date": "2026-10-12",
-      "readingMinutes": 6,
+      "readingMinutes": 5,
       "tags": [
         "Engineering Culture",
         "Quality",
@@ -965,10 +965,10 @@
     {
       "slug": "the-reviewer-as-a-future-reader",
       "category": "culture",
-      "title": "Reviewer là người đọc đến sớm",
-      "summary": "Xem reviewer như người đầu tiên đọc thay cho tương lai giúp pull request rõ hơn, câu hỏi bớt gây nhiễu và quyết định dễ bảo trì hơn.",
+      "title": "Reviewer là người đọc tương lai, chỉ là đến sớm",
+      "summary": "Reviewer là người đầu tiên đọc thay đổi mà không có trí nhớ của bạn. Tận dụng lúc đó để đưa context đang ẩn vào tên biến, test và PR trước khi nó trôi mất.",
       "date": "2026-10-09",
-      "readingMinutes": 6,
+      "readingMinutes": 4,
       "tags": [
         "Engineering Culture",
         "Code Review",
@@ -1050,10 +1050,10 @@
     {
       "slug": "when-silence-in-a-team-becomes-a-signal",
       "category": "culture",
-      "title": "Khi sự im lặng trong đội là một tín hiệu",
-      "summary": "Im lặng có thể là đồng thuận, cũng có thể là bối rối, mệt mỏi, quyền quyết định mơ hồ hoặc nỗi ngại bất đồng. Đội ngũ khỏe không ép mọi người nói; họ không vội dùng khoảng yên làm bằng chứng đồng ý.",
+      "title": "Khi team im lặng, đó là một tín hiệu",
+      "summary": "Ba giây im lặng sau câu \"có ai lo gì không?\" chưa chắc là đồng ý. Im lặng trong team có thể mang nghĩa gì, vì sao lên tiếng thấy rủi ro và cách nghe ra sớm.",
       "date": "2026-10-06",
-      "readingMinutes": 6,
+      "readingMinutes": 5,
       "tags": [
         "Engineering Culture",
         "Team Communication",
@@ -1135,10 +1135,10 @@
     {
       "slug": "quiet-skill-of-asking-for-help",
       "category": "culture",
-      "title": "Biết nhờ giúp đỡ cũng là một kỹ năng",
-      "summary": "Nhờ giúp đỡ không đối lập với tinh thần chịu trách nhiệm. Khi câu hỏi có đủ bối cảnh và người nghe không vội phán xét, một buổi chiều mắc kẹt có thể trở thành hiểu biết chung của cả đội.",
+      "title": "Nhờ giúp sao cho người ta dễ gật đầu",
+      "summary": "Người ta sẵn lòng giúp nhiều hơn mình hay đoán. Cách gói một lời nhờ cho rõ, nên hỏi ai và khi được nhờ thì giúp sao cho khỏi giành luôn bàn phím của bạn mình.",
       "date": "2026-10-01",
-      "readingMinutes": 6,
+      "readingMinutes": 4,
       "tags": [
         "Engineering Culture",
         "Team Trust",
@@ -1220,10 +1220,10 @@
     {
       "slug": "calm-script-for-difficult-feedback",
       "category": "culture",
-      "title": "Một cách nói bình tĩnh khi phải góp ý chuyện khó",
-      "summary": "Một cách chuẩn bị và nói lời góp ý khó mà vẫn thẳng thắn, công bằng: bám vào điều đã xảy ra, nói rõ ảnh hưởng, nghe thêm hoàn cảnh và chốt một thay đổi có thể nhìn thấy.",
+      "title": "Góp ý chuyện khó sao cho thẳng mà vẫn giữ được người",
+      "summary": "Góp ý chuyện khó sẽ dễ hơn khi có kịch bản: ghi ra điều bạn thấy và ảnh hưởng của nó, hỏi phía bạn ấy, chốt một thay đổi rõ ràng, rồi nhớ theo dõi tiếp.",
       "date": "2026-09-25",
-      "readingMinutes": 6,
+      "readingMinutes": 5,
       "tags": [
         "Engineering Culture",
         "Feedback",
@@ -1305,10 +1305,10 @@
     {
       "slug": "fostering-innovation-in-teams",
       "category": "culture",
-      "title": "Nuôi dưỡng khả năng đổi mới trong đội ngũ",
-      "summary": "Đổi mới hiếm khi bắt đầu bằng một ý tưởng hoành tráng. Nó thường đến từ người đủ gần vấn đề để nhận ra một vướng mắc nhỏ, đủ an toàn để nói sớm, và có đủ thời gian cùng nền tảng kỹ thuật để thử một cách làm khác.",
+      "title": "Đổi mới trong team bắt đầu từ những chỗ vướng nhỏ",
+      "summary": "Đổi mới trong team hay bắt đầu từ chỗ vướng nhỏ ai đó dám nói ra. Cảm giác an toàn, chút thời gian, gần người dùng, thử nhỏ và ràng buộc rõ giúp ý tưởng đi xa.",
       "date": "2026-09-21",
-      "readingMinutes": 7,
+      "readingMinutes": 6,
       "tags": [
         "Engineering Culture",
         "Innovation",
@@ -1390,10 +1390,10 @@
     {
       "slug": "navigating-office-politics",
       "category": "culture",
-      "title": "Khéo ở công sở mà vẫn giữ được mình",
-      "summary": "Công sở có người, có quyền quyết định, có nỗi lo và lợi ích khác nhau. Bài viết này bàn cách nhìn ra điều đang chi phối một quyết định, trao đổi trước cho đàng hoàng, phản biện bằng dữ kiện, giữ ranh giới và biết lúc nào nên bước ra.",
+      "title": "Chính trị văn phòng: chơi đẹp và chơi công khai",
+      "summary": "Chính trị văn phòng nổi lên khi dữ kiện chưa đủ để chốt việc. Cách nhìn ra sức ép phía sau, trao đổi trước công khai, phản biện rồi cùng làm và biết lúc nên đi.",
       "date": "2026-09-18",
-      "readingMinutes": 8,
+      "readingMinutes": 5,
       "tags": [
         "Engineering Culture",
         "Office Politics",
@@ -1475,10 +1475,10 @@
     {
       "slug": "mentorship-vs-sponsorship",
       "category": "culture",
-      "title": "Mentor chỉ đường, sponsor lên tiếng đúng lúc",
-      "summary": "Mentorship giúp một người tiến bộ bằng lời khuyên và góp ý; sponsorship dùng uy tín để nối năng lực đã được chứng minh với cơ hội thật. Sự nghiệp khỏe cần cả hai.",
+      "title": "Mentor và sponsor: người chỉ đường, người lên tiếng thay bạn",
+      "summary": "Mentor cho bạn lời khuyên, sponsor nhắc tên bạn ở phòng họp bạn không có mặt. Nghiên cứu nói gì, sponsor từ việc nhỏ ra sao, làm sao để mình dễ được đề cử.",
       "date": "2026-09-12",
-      "readingMinutes": 7,
+      "readingMinutes": 6,
       "tags": [
         "Engineering Culture",
         "Mentorship",
@@ -1560,10 +1560,10 @@
     {
       "slug": "onboarding-that-actually-helps-new-teammates",
       "category": "culture",
-      "title": "Onboarding sao cho người mới đỡ tự bơi",
-      "summary": "Onboarding tốt không phải nhồi thật nhiều tài liệu trong tuần đầu, mà là giúp người mới có bản đồ, có chỗ hỏi, có một việc thật để bắt đầu và có đủ an toàn để học.",
+      "title": "Onboarding sao cho người mới đỡ phải tự bơi",
+      "summary": "Onboarding tốt cho người mới một tấm bản đồ, một buddy, vài task nhỏ mà thật và chỗ để hỏi thoải mái. Nên chuẩn bị gì, nghiên cứu nói gì, làm sao biết hiệu quả.",
       "date": "2026-08-04",
-      "readingMinutes": 7,
+      "readingMinutes": 6,
       "tags": [
         "Engineering Culture",
         "Onboarding",
@@ -1645,10 +1645,10 @@
     {
       "slug": "async-communication-for-remote-teams",
       "category": "culture",
-      "title": "Async communication cho remote team",
-      "summary": "Một góc nhìn bình tĩnh về async communication trong remote team: viết đủ context, ghi lại decision, đặt kỳ vọng phản hồi, handoff rõ ràng, xây trust và tránh biến mọi người thành luôn phải online.",
+      "title": "Giao tiếp async cho remote team",
+      "summary": "Remote team chạy được nhờ những tin nhắn nửa ngày sau người khác vẫn làm tiếp được. Cách viết trọn ý, ghi lại quyết định, chia mức phản hồi và bàn giao cho gọn.",
       "date": "2026-07-31",
-      "readingMinutes": 7,
+      "readingMinutes": 5,
       "tags": [
         "Văn hoá kỹ thuật",
         "Remote Work",
@@ -1797,8 +1797,8 @@
     {
       "slug": "handling-toxic-rockstars",
       "category": "culture",
-      "title": "Xử lý kiểu \"rockstar\" làm hại niềm tin trong team",
-      "summary": "Một góc nhìn bình tĩnh về những người tạo ra nhiều output nhưng làm mòn trust: vì sao team dễ thưởng cho hành vi đó, feedback loop bị gãy thế nào, và leader nên đặt boundary ra sao mà vẫn để lại đường sửa.",
+      "title": "Khi người giỏi nhất team lại khó làm việc cùng nhất",
+      "summary": "Giỏi, nhanh mà khó làm việc cùng. Nghiên cứu nói gì về cái giá của một người gây hại, vì sao team cứ chịu trả và cách đặt ranh giới mà vẫn chừa đường sửa.",
       "date": "2026-07-22",
       "readingMinutes": 7,
       "tags": [
@@ -1814,10 +1814,10 @@
     {
       "slug": "hiring-for-potential-vs-experience",
       "category": "culture",
-      "title": "Tuyển dụng vì tiềm năng hay vì kinh nghiệm",
-      "summary": "Một bài reflection bình tĩnh về cách cân bằng kinh nghiệm và tiềm năng trong tuyển dụng engineering. Trọng tâm là bằng chứng, tốc độ học, nhu cầu thật của team và điều kiện giúp một người lớn lên sau khi gia nhập.",
+      "title": "Tuyển vì tiềm năng hay kinh nghiệm? Nhìn bằng chứng trước đã",
+      "summary": "Số năm kinh nghiệm dự đoán hiệu quả công việc rất kém. Cân tiềm năng với kinh nghiệm bằng điều tận mắt thấy, việc team cần năm tới và thời gian kèm người mới.",
       "date": "2026-07-22",
-      "readingMinutes": 7,
+      "readingMinutes": 5,
       "tags": [
         "Văn hoá kỹ thuật",
         "Tuyển dụng",
@@ -2354,10 +2354,10 @@
     {
       "slug": "se-to-technical-manager",
       "category": "culture",
-      "title": "Từ Software Engineer đến Technical Manager: đổi vai là đổi cách tạo giá trị",
-      "summary": "Lên vai trò Technical Manager không chỉ là làm nhiều hơn một chút so với Senior Engineer. Bạn phải rời khỏi thói quen tự tay giải mọi bài toán để tạo điều kiện cho cả team giải tốt hơn. Bài này chia sẻ những thay đổi dễ bất ngờ: code vừa là tài sản vừa là chi phí, giá trị chuyển từ phép cộng sang phép nhân, và delegate là một kỹ năng cần luyện thật.",
+      "title": "Từ Software Engineer lên Technical Manager: ba thói quen phải viết lại",
+      "summary": "Lên quản lý là phải viết lại mấy thói quen từng giúp bạn được lên chức: cách nhìn code, cách đo một ngày làm việc và cách giao việc, kèm ví dụ dùng được ngay.",
       "date": "2026-06-16",
-      "readingMinutes": 12,
+      "readingMinutes": 7,
       "tags": [
         "Văn hoá Kỹ thuật",
         "Quản lý kỹ thuật",
@@ -2701,10 +2701,10 @@
     {
       "slug": "how-to-be-a-kind-engineer",
       "category": "culture",
-      "title": "Kind Engineering: tử tế không làm team chậm hơn",
-      "summary": "Tử tế trong engineering không có nghĩa là né tránh vấn đề hay nói chuyện cho dễ nghe. Nó là cách nói thẳng mà vẫn tôn trọng, xử lý incident không đổ lỗi, review code để người khác học được, và tạo môi trường nơi mọi người dám nói thật sớm. Bài này giải thích vì sao sự tử tế đúng cách giúp team đi nhanh và bền hơn.",
+      "title": "Kỹ sư tử tế vẫn dám nói điều khó nghe",
+      "summary": "Tử tế khác với dễ chịu. Cách một kỹ sư tử tế góp ý thẳng, làm postmortem không đổ lỗi, từ chối sớm và để ý tới đồng đội, kèm nghiên cứu giải thích vì sao.",
       "date": "2026-05-31",
-      "readingMinutes": 13,
+      "readingMinutes": 11,
       "tags": [
         "Văn hoá kỹ thuật",
         "Kind Engineering",
@@ -2720,10 +2720,10 @@
     {
       "slug": "how-to-write-a-great-pull-request",
       "category": "culture",
-      "title": "Viết Pull Request dễ review: giúp reviewer hiểu nhanh và góp ý đúng chỗ",
-      "summary": "Một pull request tốt giúp reviewer tiết kiệm năng lượng: phạm vi gọn, title rõ, mô tả có bối cảnh, screenshot hoặc test note đủ dùng, commit sạch và self-review trước khi gửi. Bài này chỉ cách biến PR từ một đống thay đổi khó đọc thành một câu chuyện dễ theo dõi để review nhanh hơn và ít hiểu lầm hơn.",
+      "title": "Viết PR sao cho reviewer dễ gật đầu",
+      "summary": "Mỗi PR một việc, title nói rõ đổi gì, description có lý do và cách test, tự review trước khi nhờ ai. Phần việc của người viết PR để review nhanh mà vẫn kỹ.",
       "date": "2026-05-31",
-      "readingMinutes": 13,
+      "readingMinutes": 11,
       "tags": [
         "Văn hoá kỹ thuật",
         "Pull Requests",
@@ -2739,10 +2739,10 @@
     {
       "slug": "pull-request-that-reviewers-can-trust",
       "category": "culture",
-      "title": "Pull Request khiến reviewer có thể tin tưởng",
-      "summary": "Một pull request đáng tin không chỉ gọn gàng. Nó gọi đúng hành vi đang thay đổi, cho thấy pattern tốt hơn, và đưa đủ bằng chứng để reviewer approve bằng sự tự tin thật thay vì đoán.",
+      "title": "PR mà reviewer dám bấm approve",
+      "summary": "Diff gọn chưa đủ để reviewer yên tâm. Nói rõ hành vi nào đổi, vì sao cách mới an toàn hơn, bằng chứng ở đâu và cái gì giữ nguyên, để approve không còn là đoán.",
       "date": "2026-07-18",
-      "readingMinutes": 8,
+      "readingMinutes": 6,
       "tags": [
         "Văn hoá kỹ thuật",
         "Pull Requests",
@@ -2756,10 +2756,10 @@
     {
       "slug": "giving-and-receiving-feedback",
       "category": "culture",
-      "title": "Feedback trong team kỹ thuật: thẳng, rõ và vẫn giữ được sự tôn trọng",
-      "summary": "Feedback tốt không phải là nói nhẹ cho qua, cũng không phải nói thẳng đến mức làm người khác phòng thủ. Bài này gợi ý cách đưa feedback cụ thể, có ngữ cảnh, hướng vào hành vi và bước tiếp theo; đồng thời chỉ cách nhận feedback mà không biến nó thành phán xét cá nhân. Một kỹ năng nhỏ nhưng ảnh hưởng lớn tới tốc độ trưởng thành của team.",
+      "title": "Góp ý cho đồng nghiệp và nghe góp ý mà không xù lông",
+      "summary": "Góp ý sao cho người ta sửa được, nghe góp ý sao cho khỏi xù lông: khung SBI, vì sao feedback có khi làm người ta tệ đi, khen cho đúng và góp ý cho sếp.",
       "date": "2026-05-29",
-      "readingMinutes": 13,
+      "readingMinutes": 11,
       "tags": [
         "Văn hoá kỹ thuật",
         "Phản hồi",
@@ -2775,10 +2775,10 @@
     {
       "slug": "mentoring-engineers",
       "category": "culture",
-      "title": "Mentoring engineer: giúp junior lớn lên thành người đáng tin",
-      "summary": "Một junior không trở thành senior chỉ nhờ nhận task khó hơn. Họ cần context, feedback, cơ hội thử sức và một người biết khi nào nên hướng dẫn, khi nào nên lùi lại. Bài này chia sẻ cách mentoring qua pairing, code review, stretch task, câu hỏi tốt và những thói quen giúp engineer trẻ dần tự tin nhận việc lớn hơn.",
+      "title": "Mentor junior sao cho bạn ấy tự đứng được, mà mình không làm hộ",
+      "summary": "Mentor là kỹ năng luyện được: chọn việc vượt sức một bậc, nói to cách mình nghĩ khi làm, rồi rút dần sự hỗ trợ tới khi bạn junior tự gánh được việc lớn hơn.",
       "date": "2026-05-29",
-      "readingMinutes": 14,
+      "readingMinutes": 12,
       "tags": [
         "Văn hoá kỹ thuật",
         "Cố vấn",
@@ -2897,8 +2897,8 @@
     },
     {
       "slug": "over-managed-and-under-led",
-      "title": "Bận rộn mà vẫn lạc hướng: khi một team được quản lý kỹ nhưng thiếu người dẫn dắt",
-      "summary": "Một team được quản lý rất kỹ vẫn có thể từ từ đi lạc. Mượn cách phân biệt của John Kotter — quản lý để trị cái phức tạp, lãnh đạo để theo kịp cái đổi thay — đây là cách nhận ra lúc một team bận rộn mà thiếu người dẫn dắt, cùng vài cách nhỏ, làm được đều, để đưa cái hướng quay lại.",
+      "title": "Board kín việc mà team vẫn lạc hướng",
+      "summary": "Team chạy đủ sprint mà vẫn lạc hướng. Mượn cách John Kotter tách quản lý với lãnh đạo để nhận ra chỗ hụt, cùng vài thói quen nhỏ giúp team rõ đích đến trở lại.",
       "tags": [
         "Leadership",
         "Management",
@@ -2910,8 +2910,8 @@
     },
     {
       "slug": "vision-without-craft",
-      "title": "Lơ lửng bên trên công việc: khi tầm nhìn rời khỏi cái nghề",
-      "summary": "Warren Bennis nói nhà lãnh đạo làm việc đúng còn người quản lý làm đúng việc. Robert Sutton thêm phần cốt lõi: muốn làm việc đúng, bạn phải hiểu cần những gì để làm mọi thứ cho đúng. Về cái bẫy của tầm nhìn rời khỏi cái nghề — và sự lên xuống nhịp nhàng giữa bức tranh lớn và chi tiết.",
+      "title": "Muốn chọn đúng hướng, leader phải hiểu việc bên dưới",
+      "summary": "Bennis nói lãnh đạo là chọn đúng việc. Robert Sutton thêm vế sau: không hiểu cần gì để làm cho đúng thì cũng chẳng chọn đúng được. Vậy ở gần công việc kiểu gì?",
       "tags": [
         "Leadership",
         "Management",
@@ -2923,8 +2923,8 @@
     },
     {
       "slug": "signals-or-messages",
-      "title": "Ra hiệu hay nói thẳng: cái giá thầm lặng của những câu mập mờ",
-      "summary": "Abraham Zaleznik để ý rằng những người ngại gắn kết trực tiếp thường ra hiệu thay vì nói thẳng. Về việc vì sao giao tiếp mập mờ thì dịu dàng khi gửi đi mà đáp xuống thành lo âu, cách nó lặng lẽ nuôi lớn chính trị nội bộ, và vì sao một thông điệp rõ ràng là một lòng tốt — nhất là khi nó khó nói.",
+      "title": "Ra hiệu hay nói thẳng: vì sao câu \"nói chuyện chút nhé\" làm hỏng cả cuối tuần",
+      "summary": "Câu mơ hồ gửi đi thấy an toàn, tới nơi lại thành nỗi lo. Zaleznik nói gì về ra hiệu và nói thẳng, sự không chắc chắn gây căng thẳng ra sao và cách viết cho rõ.",
       "tags": [
         "Leadership",
         "Management",
@@ -2936,8 +2936,8 @@
     },
     {
       "slug": "sitting-with-the-problem",
-      "title": "Đừng vội chữa cái mình chưa hiểu: kỷ luật ngồi lại với một bài toán khó",
-      "summary": "Có người lập lại trật tự ngay khi lộn xộn vừa ló ra; có người giữ được bài toán ở trạng thái mở đủ lâu để hiểu nó. Về khả năng chịu được sự mập mờ như một kỷ luật tập được, cái giá của việc giải trước khi hiểu, cái bẫy Einstellung, và vì sao sự trưởng thành nằm ở chỗ bạn ở lại với một bài toán khó được bao lâu.",
+      "title": "Ngồi lại với một vấn đề mình chưa hiểu",
+      "summary": "Dashboard đỏ là ai cũng muốn làm gì đó ngay. Cách cầm máu cho nhanh mà vẫn để ngỏ câu hỏi vì sao hỏng, và vì sao ý tưởng đầu tiên lại hay bám dai đến vậy.",
       "tags": [
         "Leadership",
         "Management",
@@ -2949,8 +2949,8 @@
     },
     {
       "slug": "pull-dont-push",
-      "title": "Cầm cương hay ôm vào lòng: người ta đi theo ý nghĩa, không theo mệnh lệnh",
-      "summary": "Bennis và Goldsmith mô tả hai cách làm người ta chuyển động: đẩy (hạn chót, KPI, quyền lực vị trí) và kéo (ý nghĩa và lòng tin). Về hình ảnh ngôn ngữ ký hiệu khó quên giữa dây cương và vòng tay ôm ấp, vì sao kéo chậm hơn nhưng sâu hơn, sự thành thật mà nó đòi hỏi, và khi nào nên dùng cái nào. Bài khép lại của loạt.",
+      "title": "Đẩy hay kéo: giao việc thì giao kèm cả lý do",
+      "summary": "Deadline giúp việc xong, còn một lý do thật mới khiến người ta để tâm. Nghiên cứu về động lực nói gì về đẩy và kéo, cùng cách giao việc kèm theo chữ \"vì sao\".",
       "tags": [
         "Leadership",
         "Management",
@@ -2963,10 +2963,10 @@
     {
       "slug": "why-culture-fit-is-often-a-trap",
       "category": "culture",
-      "title": "Vì sao \"Culture Fit\" thường là một cái bẫy",
-      "summary": "Culture fit nghe có vẻ trách nhiệm, nhưng có thể thưởng cho sự giống nhau và che đi những lo ngại mơ hồ. Bài viết tách tín hiệu giá trị thật khỏi cảm giác quen thuộc, và nghiêng về culture contribution.",
+      "title": "Khi \"không hợp văn hoá\" thật ra là \"không giống tụi mình\"",
+      "summary": "Culture fit nghe rất có trách nhiệm, nhưng một nghiên cứu cho thấy nó dễ thành \"giống mình\". Đổi cảm giác mơ hồ ra hành vi kiểm được, rồi xem nên tuyển vì gì.",
       "date": "2026-07-07",
-      "readingMinutes": 8,
+      "readingMinutes": 5,
       "tags": [
         "Văn hoá kỹ thuật",
         "Tuyển dụng",
@@ -3041,10 +3041,10 @@
     {
       "slug": "anatomy-of-a-healthy-one-on-one",
       "category": "culture",
-      "title": "Một buổi 1-on-1 lành mạnh gồm những gì?",
-      "summary": "Một buổi 1-on-1 lành mạnh là khoảng đều đặn cho context, niềm tin, feedback và hướng phát triển nghề nghiệp, không phải status meeting nói bằng giọng mềm hơn.",
+      "title": "Buổi 1:1 đáng giữ trên lịch trông ra sao",
+      "summary": "1:1 tốt là buổi của bạn engineer: danh sách của họ đi trước, gặp đều đặn, nói chuyện thật thay vì báo tiến độ và cuối buổi ghi lại bước tiếp theo cho cả hai.",
       "date": "2026-07-15",
-      "readingMinutes": 6,
+      "readingMinutes": 7,
       "tags": [
         "Văn hoá kỹ thuật",
         "One-on-One",
@@ -3131,10 +3131,10 @@
     {
       "slug": "celebrating-failure",
       "category": "culture",
-      "title": "Celebrating Failure: mừng điều gì khi mọi thứ đã hỏng?",
-      "summary": "Một góc nhìn thực tế về ý nghĩa đúng của celebrating failure: không phải vỗ tay cho thiệt hại, mà là làm cho sự thật, sửa chữa, học hỏi và thay đổi hệ thống trở nên an toàn hơn.",
+      "title": "Hỏng việc rồi thì nên ăn mừng điều gì?",
+      "summary": "Chẳng ai nên vỗ tay cho một vụ sập hệ thống. Google, Eli Lilly và nghiên cứu của Amy Edmondson gợi ý nên thưởng điều gì sau sự cố và làm sao để bài học ở lại.",
       "date": "2026-09-09",
-      "readingMinutes": 6,
+      "readingMinutes": 5,
       "tags": [
         "Văn hoá kỹ thuật",
         "Failure",
@@ -3221,10 +3221,10 @@
     {
       "slug": "building-diverse-engineering-teams",
       "category": "culture",
-      "title": "Xây dựng engineering team đa dạng một cách thực chất",
-      "summary": "Một bài reflection thực tế về việc xây engineering team đa dạng: vượt qua khẩu hiệu để đi vào hiring, onboarding, meeting design, decision-making, feedback và những thói quen giúp nhiều kiểu người đóng góp đầy đủ.",
+      "title": "Xây team đa dạng: ký offer xong mới là bắt đầu",
+      "summary": "Team đa dạng bắt được nhiều lỗi hơn, với điều kiện góc nhìn khác biệt đi tới quyết định. Nghiên cứu nói gì, cùng thói quen tuyển người, họp và review nên có.",
       "date": "2026-09-05",
-      "readingMinutes": 7,
+      "readingMinutes": 6,
       "tags": [
         "Engineering Culture",
         "Diversity",
@@ -3311,10 +3311,10 @@
     {
       "slug": "managing-up-communicating-with-non-technical-leadership",
       "category": "culture",
-      "title": "Managing up: giao tiếp với lãnh đạo không chuyên kỹ thuật",
-      "summary": "Một hướng dẫn bình tĩnh về managing up với non-technical leadership: chuyển technical work thành risk, option, impact, timing và decision mà không giấu complexity cũng không nói từ trên xuống.",
+      "title": "Managing up: nói chuyện với lãnh đạo không rành kỹ thuật",
+      "summary": "Sếp hỏi \"gần xong chưa em?\" thì trả lời sao cho họ quyết được: kết luận trước, ảnh hưởng trước cơ chế, vài phương án rõ ràng và một con số cho độ chắc chắn.",
       "date": "2026-08-30",
-      "readingMinutes": 7,
+      "readingMinutes": 5,
       "tags": [
         "Engineering Culture",
         "Managing Up",
@@ -3401,10 +3401,10 @@
     {
       "slug": "performance-reviews-that-matter",
       "category": "culture",
-      "title": "Performance review thật sự có ý nghĩa",
-      "summary": "Một bài reflection bình tĩnh về performance review giúp con người trưởng thành: dùng evidence, expectation, calibration, feedback và follow-through mà không biến review thành một bất ngờ hoặc nghi thức hình thức.",
+      "title": "Performance review sao cho người được review dùng được",
+      "summary": "Đa số buổi review tới muộn và nói chung chung. Cách viết review từ bằng chứng, không để có bất ngờ, tự soi thiên kiến khi calibration và lập kế hoạch làm được.",
       "date": "2026-08-26",
-      "readingMinutes": 7,
+      "readingMinutes": 5,
       "tags": [
         "Engineering Culture",
         "Performance Review",
@@ -3491,10 +3491,10 @@
     {
       "slug": "handling-burnout-before-it-happens",
       "category": "culture",
-      "title": "Xử lý burnout trước khi nó xảy ra",
-      "summary": "Một bài viết bình tĩnh về cách phòng burnout trong engineering team: tín hiệu sớm, workload visibility, thời gian hồi phục, kỳ vọng bền vững, trách nhiệm quản lý và những thói quen nhỏ giúp con người không kiệt sức trong im lặng.",
+      "title": "Nhận ra burnout từ sớm, trước khi cả team đuối",
+      "summary": "Burnout thường bắt đầu từ những tuần trông bình thường. Cách nhận ra tín hiệu sớm, đưa khối lượng việc ra bàn và lên lịch hồi phục như một phần của delivery.",
       "date": "2026-08-21",
-      "readingMinutes": 7,
+      "readingMinutes": 6,
       "tags": [
         "Engineering Culture",
         "Burnout",
@@ -3581,10 +3581,10 @@
     {
       "slug": "creating-a-blameless-culture",
       "category": "culture",
-      "title": "Xây dựng văn hóa blameless",
-      "summary": "Một bài nhìn bình tĩnh về blameless engineering culture: cách team học từ incident mà không đổ lỗi, tách accountability khỏi punishment, cải thiện system, và làm con người an toàn hơn khi nói sự thật sớm.",
+      "title": "Văn hoá blameless bắt đầu từ phút đầu buổi postmortem",
+      "summary": "Blameless không có nghĩa là không ai chịu trách nhiệm. Review sự cố bằng câu \"như thế nào\" thay vì \"ai\", viết action item sửa hệ thống, giữ team dám nói thật.",
       "date": "2026-08-18",
-      "readingMinutes": 7,
+      "readingMinutes": 6,
       "tags": [
         "Engineering Culture",
         "Blameless Culture",
@@ -3671,10 +3671,10 @@
     {
       "slug": "giving-constructive-feedback",
       "category": "culture",
-      "title": "Góp ý xây dựng một cách tử tế và rõ ràng",
-      "summary": "Một bài reflection bình tĩnh về constructive feedback: cách observation cụ thể, timing, sự quan tâm, accountability và follow-up giúp con người tiến bộ mà không biến feedback thành đổ lỗi.",
+      "title": "Góp ý xây dựng sao cho người nhận dùng được",
+      "summary": "Góp ý xây dựng là góp ý người ta cầm lên làm được: kể điều bạn thấy thay vì dán nhãn, nói ảnh hưởng, đưa một đề nghị rõ, nói vì sao bạn góp ý và nhớ theo sát.",
       "date": "2026-08-11",
-      "readingMinutes": 7,
+      "readingMinutes": 5,
       "tags": [
         "Engineering Culture",
         "Feedback",
