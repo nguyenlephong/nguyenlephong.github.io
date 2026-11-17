@@ -1,18 +1,20 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { LuArrowUpRight, LuDownload, LuFileText, LuGithub } from 'react-icons/lu'
+import { LuArrowUpRight, LuBookOpen, LuDownload, LuFileText, LuGithub } from 'react-icons/lu'
 import { APP_ROUTE } from '@/app/app.const'
 import type {
+  AppLinks,
   AppShowcaseItem,
   AppsCopyLocale,
   AppsPageCopy,
 } from '@/app/[locale]/(site)/apps/apps.data'
 import { Link } from '@/i18n/navigation'
 import { track } from '@/lib/analytics'
+import { icdnAssetUrl } from '@/lib/assets/icdn'
 import GlanceVisual from './GlanceVisual'
 
-type LinkKind = 'repo' | 'download' | 'docs'
+type LinkKind = keyof AppLinks
 
 interface AppsConsoleProps {
   apps: AppShowcaseItem[]
@@ -20,7 +22,14 @@ interface AppsConsoleProps {
   copyLocale: AppsCopyLocale
 }
 
-const LINK_ICONS = { repo: LuGithub, download: LuDownload, docs: LuFileText } as const
+const LINK_KINDS = ['site', 'article', 'repo', 'download', 'docs'] as const
+const LINK_ICONS = {
+  site: LuArrowUpRight,
+  article: LuBookOpen,
+  repo: LuGithub,
+  download: LuDownload,
+  docs: LuFileText,
+} as const
 
 // Plain list of shipped apps: one article per app, no filters, no timers.
 export default function AppsConsole({ apps, copy, copyLocale }: AppsConsoleProps) {
@@ -106,7 +115,8 @@ function AppArticle({
     return () => observer.disconnect()
   }, [app.id, app.name, app.status, position])
 
-  const links = (['repo', 'download', 'docs'] as const).filter((kind) => app.links[kind])
+  const appLinks: AppLinks = { ...app.links, ...text.links }
+  const links = LINK_KINDS.filter((kind) => appLinks[kind])
   const trackLink = (kind: LinkKind): void => {
     track('apps_link_click', {
       app_id: app.id,
@@ -120,22 +130,39 @@ function AppArticle({
   return (
     <article ref={ref} className="apps-item" aria-labelledby={`app-${app.id}-name`}>
       <div className="apps-item-aside">
-        <div className="apps-item-visual">{app.visual === 'glance' && <GlanceVisual />}</div>
-        <p id={`app-${app.id}-hotkeys`} className="apps-hotkeys-title">
-          {copy.hotkeys}
-        </p>
-        <dl className="apps-hotkeys" aria-labelledby={`app-${app.id}-hotkeys`}>
-          {app.hotkeys.map((hotkey) => (
-            <div key={hotkey.keys.join('')} className="apps-hotkey-row">
-              <dt>
-                {hotkey.keys.map((key) => (
-                  <kbd key={key}>{key}</kbd>
-                ))}
-              </dt>
-              <dd>{hotkey.action[copyLocale]}</dd>
-            </div>
-          ))}
-        </dl>
+        <div className="apps-item-visual">
+          {app.visual === 'glance' && <GlanceVisual />}
+          {app.screenshot && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={icdnAssetUrl(app.screenshot.path)}
+              width={app.screenshot.width}
+              height={app.screenshot.height}
+              alt={text.screenshotAlt ?? ''}
+              loading="lazy"
+              decoding="async"
+            />
+          )}
+        </div>
+        {app.hotkeys.length > 0 && (
+          <>
+            <p id={`app-${app.id}-hotkeys`} className="apps-hotkeys-title">
+              {copy.hotkeys}
+            </p>
+            <dl className="apps-hotkeys" aria-labelledby={`app-${app.id}-hotkeys`}>
+              {app.hotkeys.map((hotkey) => (
+                <div key={hotkey.keys.join('')} className="apps-hotkey-row">
+                  <dt>
+                    {hotkey.keys.map((key) => (
+                      <kbd key={key}>{key}</kbd>
+                    ))}
+                  </dt>
+                  <dd>{hotkey.action[copyLocale]}</dd>
+                </div>
+              ))}
+            </dl>
+          </>
+        )}
       </div>
 
       <div className="apps-item-body">
@@ -158,12 +185,15 @@ function AppArticle({
         <div className="apps-item-actions">
           {links.map((kind, i) => {
             const Icon = LINK_ICONS[kind]
+            const href = appLinks[kind] ?? '#'
+            const external = !href.startsWith('/')
             return (
               <Link
                 key={kind}
-                href={app.links[kind] ?? '#'}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={href}
+                target={external ? '_blank' : undefined}
+                rel={external ? 'noopener noreferrer' : undefined}
+                prefetch={external ? undefined : false}
                 className={`btn ${i === 0 ? 'btn-primary' : 'btn-secondary'}`}
                 onClick={() => trackLink(kind)}
               >

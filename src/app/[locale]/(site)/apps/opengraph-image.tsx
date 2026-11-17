@@ -26,7 +26,7 @@ export default async function OgImage() {
       <OgShell
         theme="ocean"
         eyebrow="Apps"
-        title="Small tools I built for my own work."
+        title="Useful apps I built."
         subtitle={apps[0]?.copy.en.tagline ?? 'Source on GitHub.'}
         chips={[...names, 'macOS 13+', 'Swift', 'MIT']}
         footer="nguyenlephong.github.io/apps · Source on GitHub"
