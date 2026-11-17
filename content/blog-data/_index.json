@@ -3300,10 +3300,10 @@
     {
       "slug": "how-to-review-code-kindly",
       "category": "culture",
-      "title": "The Art of Code Review: How to Critique Code Without Crushing People",
-      "summary": "Code review is where team culture is made or broken. A practical guide to reviewing code so it ships better AND the author comes back stronger — concrete phrasing, a reviewer's checklist, and the habits that quietly turn reviews toxic.",
+      "title": "How to Review Code Kindly (and Still Catch the Bugs)",
+      "summary": "Kind review is specific review. What to check in a PR, how to word comments people can act on, how to label nits and blockers, and what the data says about PR size.",
       "date": "2026-06-01",
-      "readingMinutes": 14,
+      "readingMinutes": 11,
       "tags": [
         "Engineering Culture",
         "Code Review",
