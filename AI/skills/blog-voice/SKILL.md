@@ -36,7 +36,7 @@ This skill overrides the tone rules in `AI/skills/calm-content-writer/SKILL.md` 
 
 ## Hard bans (both locales)
 
-Run `node scripts/report-content-tone.mjs --slug <slug>` before calling a post done. It flags these:
+Run `node scripts/report-content-tone.mjs --slug <slug> --strict` before calling a post done. It catches the mechanical ones (em dash, contrast framing, staged openers, mood words, AI vocabulary) and reports "biến X thành Y" and semicolons without failing. Check the rest by reading:
 
 - Em dash (—). Use a comma, colon, period or parentheses. En dash only in number ranges.
 - Contrast framing as a habit: "not X but Y", "it's not X, it's Y", "X, not Y" endings; VI "không phải X mà là Y", "không chỉ ... mà còn". Keep one per post at most, and only when the reader really holds belief X.
@@ -67,6 +67,19 @@ EN, a claim:
 
 - Before: "Code review is the highest-leverage ritual in any engineering team. Done well, it ships better software, grows engineers faster, and quietly cements a culture of trust."
 - After: "Most teams say they review code to catch bugs. When Microsoft researchers sat in on real reviews, bugs turned out to be a small slice of the comments. Most of the value was people learning the codebase and each other."
+
+## Lessons from the pilot review
+
+Phong's review of the pilot flagged these VI patterns as "still sounds translated". Avoid them everywhere:
+
+- Abstract nouns as subjects: "Sự chú ý của reviewer là khâu đắt nhất" → "Thời gian của reviewer là thứ đắt nhất".
+- Calqued idioms: "ở cả hai phía của", "bức tường chữ", "bài vượt chướng ngại vật", "gỡ chặn", "một lát cắt", "gãy khi team lên 30 người". Use what a Vietnamese dev says: "vừa nhận vừa viết", "viết dài cả trang", "bài chạy vượt rào", "khỏi phải ngồi chờ", "một phần nhỏ", "không chạy nổi".
+- Hedged English logic: "theo cách thiện chí nhất mà vẫn hợp lý" → "cứ đọc với thiện chí".
+- "có nói đúng thứ nó là?" style questions → "nhìn tên có đoán ra nó làm gì không?".
+- Roadmap sentences with "đi qua chuyện..." → "Mình sẽ nói lần lượt: ...".
+- Crude slang ("lòi ra") is out even when casual words are allowed.
+- Facts: never rank a study's findings beyond what the source says ("the bigger payoff" when the paper says "additional benefits"). Attribute numbers to exactly the groups the source names.
+- Headings: avoid formula headings like "... more than you think" / "... hơn bạn nghĩ".
 
 ## Done checklist
 

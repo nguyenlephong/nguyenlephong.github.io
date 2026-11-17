@@ -26,15 +26,16 @@ test("tone report catches the VI patterns it promises", () => {
     contrast: 1,
     "staged-opener": 1,
     "mood-word": 1,
-    "ai-vocabulary": 1,
-    semicolon: 1
+    semicolon: 1,
+    "turn-into": 1
   });
-  assert.deepEqual(violations(counts, "vi"), ["staged-opener", "mood-word", "ai-vocabulary"]);
+  assert.deepEqual(violations(counts, "vi"), ["staged-opener", "mood-word"]);
+  assert.deepEqual(analyzeText("Không phải lúc nào cũng cần review lâu, mà PR nhỏ thì càng nhanh.", "vi"), {});
 });
 
 test("clean prose, code and entities are not flagged", () => {
   assert.deepEqual(analyzeText("Ask a question first. Then suggest a fix.", "en"), {});
-  assert.deepEqual(analyzeText("Mình hỏi trước, rồi mới gợi ý cách sửa. Đổi biến số này thành const.", "vi"), {});
+  assert.deepEqual(analyzeText("Mình hỏi trước, rồi mới gợi ý cách sửa. Đổi biến số này thành const.", "vi"), { "turn-into": 1 });
   const text = extractText("<p>Run <code>a — b; quiet</code> &amp; done</p><pre>x; y</pre>");
   assert.deepEqual(analyzeText(text, "en"), {});
   assert.deepEqual(analyzeText(text, "vi"), {});

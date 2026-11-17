@@ -30,10 +30,12 @@ export const RULES = {
   ],
   vi: [
     ...SHARED_RULES,
-    { id: 'contrast', re: /không phải[^.!?]{0,80}?\smà(?!\p{L})|không chỉ[^.!?]{0,80}?\smà còn(?!\p{L})/giu, allow: 1 },
+    { id: 'contrast', re: /không phải(?! lúc nào)[^.!?]{0,80}?\smà(?!\p{L})|không chỉ[^.!?]{0,80}?\smà còn(?!\p{L})/giu, allow: 1 },
     { id: 'staged-opener', re: /hãy tưởng tượng|trong bối cảnh|có một điều/giu, allow: 0 },
     { id: 'mood-word', re: /lặng lẽ|âm thầm|bình tĩnh|nhẹ nhõm|chiêm nghiệm|hiện diện/giu, allow: 0 },
-    { id: 'ai-vocabulary', re: /đóng vai trò (?:then chốt|quan trọng)|(?<!\p{L})biến (?!số)[^.!?]{1,40}? thành(?!\p{L})/giu, allow: 0 },
+    { id: 'ai-vocabulary', re: /đóng vai trò (?:then chốt|quan trọng)/giu, allow: 0 },
+    // "biến X thành Y" is a translation tic, but "biến" also means a code variable: report, never fail.
+    { id: 'turn-into', re: /(?<!\p{L})biến [^.!?]{1,40}? thành(?!\p{L})/giu, allow: Infinity },
     { id: 'semicolon', re: /;/g, allow: Infinity },
   ],
 }

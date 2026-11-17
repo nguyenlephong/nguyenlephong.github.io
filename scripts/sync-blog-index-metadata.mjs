@@ -70,7 +70,9 @@ function main(check) {
       const entries = Object.entries(overrideBySlug[u.slug]).flatMap(([k, v]) =>
         k === 'date' ? [[k, v], ['readingMinutes', u.readingMinutes]] : [[k, v]],
       )
-      writeFileSync(file, JSON.stringify(Object.fromEntries(entries), null, 2) + '\n')
+      const next = Object.fromEntries(entries)
+      next.readingMinutes ??= u.readingMinutes // no "date" key: append at the end
+      writeFileSync(file, JSON.stringify(next, null, 2) + '\n')
     }
   }
   console.log(check ? `${pending} change(s) pending` : `${pending} change(s) written`)
