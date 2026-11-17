@@ -3,14 +3,15 @@ import { getPostHogBeforeSendSource } from "@/lib/posthog-privacy";
 
 type PostHogBootstrapProps = {
   locale: string;
-  surface?: "cv" | "not_found";
+  surface?: "cv" | "not_found" | "admin";
 };
 
 export default function PostHogBootstrap({
   locale,
   surface = "cv"
 }: PostHogBootstrapProps) {
-  const captureAutomaticPageLifecycle = surface !== "not_found";
+  // 404 and /admin send only their explicit events, never an automatic pageview.
+  const captureAutomaticPageLifecycle = surface === "cv";
   const beforeSend = getPostHogBeforeSendSource(surface === "not_found");
 
   return (

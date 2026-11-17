@@ -190,7 +190,7 @@ test("not-found analytics shares the existing privacy-safe bootstrap", async () 
   assert.match(bootstrap, /persistence:\s*'memory'/);
   assert.match(
     bootstrap,
-    /captureAutomaticPageLifecycle = surface !== "not_found"/
+    /captureAutomaticPageLifecycle = surface === "cv"/
   );
   assert.match(
     bootstrap,
