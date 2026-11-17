@@ -220,8 +220,8 @@
     {
       "slug": "protecting-attention-in-a-busy-team",
       "category": "culture",
-      "title": "Protecting Attention in a Busy Team",
-      "summary": "A calm note on treating attention as a shared team resource, not an infinite personal budget that people can recover alone.",
+      "title": "Protecting Focus in a Busy Team",
+      "summary": "Focus breaks down at the team level, so solo hacks only go so far. What research on interruptions shows, and the norms that give engineers real thinking time back.",
       "date": "2026-11-10",
       "readingMinutes": 5,
       "tags": [
@@ -325,10 +325,10 @@
     {
       "slug": "noticing-friction-before-it-becomes-blame",
       "category": "culture",
-      "title": "Noticing Friction Before It Becomes Blame",
-      "summary": "A calm note on treating repeated team friction as useful signal before it hardens into personal blame.",
+      "title": "Notice Friction Before It Turns Into Blame",
+      "summary": "Small repeated snags turn into stories about people if nobody names them. How to spot friction early, read it as a signal about the system and fix something small.",
       "date": "2026-11-07",
-      "readingMinutes": 5,
+      "readingMinutes": 3,
       "tags": [
         "Engineering Culture",
         "Teamwork",
@@ -430,10 +430,10 @@
     {
       "slug": "making-space-for-the-quiet-reviewer",
       "category": "culture",
-      "title": "Making Space for the Quiet Reviewer",
-      "summary": "A calm note on helping quieter teammates contribute thoughtful review feedback without forcing every useful signal into the loudest channel.",
+      "title": "Making Room for the Reviewer Who Doesn't Speak First",
+      "summary": "Live reviews reward whoever talks first. Written context, a few minutes of reading, specific prompts and clear deadlines let careful reviewers shape the decision too.",
       "date": "2026-11-04",
-      "readingMinutes": 5,
+      "readingMinutes": 4,
       "tags": [
         "Engineering Culture",
         "Code Review",
@@ -535,8 +535,8 @@
     {
       "slug": "what-calm-ownership-looks-like-in-practice",
       "category": "culture",
-      "title": "What Calm Ownership Looks Like in Practice",
-      "summary": "A grounded note on ownership as clear follow-through, explicit handoffs, and steady accountability without drama.",
+      "title": "What Good Ownership Looks Like Day to Day",
+      "summary": "Owning work means a clear next decision, handoffs someone else can pick up, and honest updates on what you don’t know yet. Being online all day is a different job.",
       "date": "2026-11-01",
       "readingMinutes": 5,
       "tags": [
@@ -640,8 +640,8 @@
     {
       "slug": "the-quiet-skill-of-asking-for-help-early",
       "category": "culture",
-      "title": "The Quiet Skill of Asking for Help Early",
-      "summary": "A calm note on why asking for help early is not weakness, but one of the small habits that keeps work honest and teams healthy.",
+      "title": "Ask for Help While the Problem Is Still Small",
+      "summary": "Asking early feels exposed, yet people say yes more often than we expect. When to ask, how to ask in two lines, and how to answer so your team keeps asking early.",
       "date": "2026-10-27",
       "readingMinutes": 5,
       "tags": [
@@ -745,8 +745,8 @@
     {
       "slug": "why-good-teams-make-risk-visible-early",
       "category": "culture",
-      "title": "Why Good Teams Make Risk Visible Early",
-      "summary": "A calm note on why healthy teams surface risk early: not to create fear, but to give the work more room to adjust.",
+      "title": "Why Good Teams Surface Risk Early (Without the Panic)",
+      "summary": "Hidden risk only gets more expensive. How good teams name risks early, write them so they can be tested, run a premortem and react so people keep speaking up.",
       "date": "2026-10-22",
       "readingMinutes": 5,
       "tags": [
@@ -850,8 +850,8 @@
     {
       "slug": "the-culture-hidden-in-small-reviews",
       "category": "culture",
-      "title": "The Culture Hidden in Small Reviews",
-      "summary": "A calm note on how engineering culture shows up in small reviews: the phrasing, patience, and care teams bring to ordinary feedback.",
+      "title": "What Small Code Reviews Teach Your Team",
+      "summary": "A ten-line PR rarely matters to the product, but its review teaches the team how to talk about quality. What Google's research found, and what to change in yours.",
       "date": "2026-10-19",
       "readingMinutes": 5,
       "tags": [
@@ -956,9 +956,9 @@
       "slug": "how-trust-grows-in-ordinary-follow-through",
       "category": "culture",
       "title": "How Trust Grows in Ordinary Follow-Through",
-      "summary": "A calm note on how engineering trust grows through ordinary follow-through: small promises kept, visible updates, and repairs when reality changes.",
+      "summary": "Team trust rarely comes from big rescues. It grows from small promises kept, early heads-ups when dates slip and honest repair, with messages you can copy.",
       "date": "2026-10-15",
-      "readingMinutes": 5,
+      "readingMinutes": 4,
       "tags": [
         "Engineering Culture",
         "Trust",
@@ -1060,8 +1060,8 @@
     {
       "slug": "the-quiet-discipline-of-saying-not-yet",
       "category": "culture",
-      "title": "The Quiet Discipline of Saying Not Yet",
-      "summary": "A calm note on why healthy engineering teams sometimes say not yet: to protect quality, trust, and the people who will operate the release later.",
+      "title": "How to Say \"Not Yet\" to a Release Without Becoming the Blocker",
+      "summary": "A good \"not yet\" names what's missing, who owns it and when you'll decide again. How to pause a release with evidence, and the options between shipping and waiting.",
       "date": "2026-10-12",
       "readingMinutes": 5,
       "tags": [
@@ -1165,10 +1165,10 @@
     {
       "slug": "the-reviewer-as-a-future-reader",
       "category": "culture",
-      "title": "The Reviewer as a Future Reader",
-      "summary": "A reflective note on code review culture: how treating the reviewer as a future reader can make pull requests clearer, kinder, and more useful for the people who will maintain the change later.",
+      "title": "Your Reviewer Is the Code's First Future Reader",
+      "summary": "Your reviewer is the first person to read the change without your memory of it. Use that moment to move hidden context into names, tests and the PR before it fades.",
       "date": "2026-10-09",
-      "readingMinutes": 5,
+      "readingMinutes": 4,
       "tags": [
         "Engineering Culture",
         "Code Review",
@@ -1271,7 +1271,7 @@
       "slug": "when-silence-in-a-team-becomes-a-signal",
       "category": "culture",
       "title": "When Silence in a Team Becomes a Signal",
-      "summary": "A calm look at team silence: how quiet rooms, missing replies, and low participation can reveal unclear ownership, unsafe disagreement, fatigue, or hidden context.",
+      "summary": "Three seconds of silence after \"any concerns?\" isn’t always a yes. What team silence can mean, why speaking up feels risky, and simple ways to hear it early.",
       "date": "2026-10-06",
       "readingMinutes": 5,
       "tags": [
@@ -1375,10 +1375,10 @@
     {
       "slug": "quiet-skill-of-asking-for-help",
       "category": "culture",
-      "title": "The Quiet Skill of Asking for Help",
-      "summary": "A calm look at asking for help in engineering teams: how to make context visible, protect dignity, and turn stuck moments into shared learning instead of silent pressure.",
+      "title": "How to Ask for Help So It's Easy to Say Yes",
+      "summary": "People agree to help more often than we expect. How to package a clear ask, who to ask, and how to help a teammate without taking over their keyboard.",
       "date": "2026-10-01",
-      "readingMinutes": 5,
+      "readingMinutes": 4,
       "tags": [
         "Engineering Culture",
         "Team Trust",
@@ -1480,8 +1480,8 @@
     {
       "slug": "calm-script-for-difficult-feedback",
       "category": "culture",
-      "title": "A Calm Script for Difficult Feedback",
-      "summary": "A practical guide to difficult feedback in engineering teams: how to prepare the facts, keep dignity in the room, name behavior clearly, and turn a tense conversation into a fair next step.",
+      "title": "A Simple Script for Hard Feedback Conversations",
+      "summary": "Hard feedback goes better with a script: write down what you saw and its impact, ask for their side, agree on one visible change, then follow up when it works.",
       "date": "2026-09-25",
       "readingMinutes": 5,
       "tags": [
@@ -1585,8 +1585,8 @@
     {
       "slug": "fostering-innovation-in-teams",
       "category": "culture",
-      "title": "Fostering Innovation in Teams",
-      "summary": "A grounded reflection on fostering innovation in engineering teams: how psychological safety, slack, user context, small experiments, technical quality, and honest prioritization help ideas become useful change.",
+      "title": "Innovation in Teams Starts With Noticing Friction",
+      "summary": "Most team innovation starts with someone noticing friction. How safety, slack time, user context, small experiments and clear constraints help good ideas ship.",
       "date": "2026-09-21",
       "readingMinutes": 6,
       "tags": [
@@ -1690,10 +1690,10 @@
     {
       "slug": "navigating-office-politics",
       "category": "culture",
-      "title": "Office Politics Without Losing Your Principles",
-      "summary": "A practical guide to reading incentives, sharing context, pre-aligning openly, disagreeing with evidence, protecting boundaries, and knowing when a workplace is no longer worth the cost.",
+      "title": "Office Politics, Played in Daylight",
+      "summary": "Politics is what happens when facts alone can't settle a decision. How to read incentives, pre-align in the open, disagree and commit, and know when to walk away.",
       "date": "2026-09-18",
-      "readingMinutes": 7,
+      "readingMinutes": 5,
       "tags": [
         "Engineering Culture",
         "Office Politics",
@@ -1795,8 +1795,8 @@
     {
       "slug": "mentorship-vs-sponsorship",
       "category": "culture",
-      "title": "The Difference Between Mentorship and Sponsorship",
-      "summary": "A calm explanation of mentorship and sponsorship in engineering careers: how advice, feedback, advocacy, visibility, trust, and opportunity work together without turning growth into politics.",
+      "title": "Mentorship vs Sponsorship: Who Talks With You, Who Speaks Up for You",
+      "summary": "A mentor gives you advice. A sponsor puts your name forward in rooms you're not in. What the research says, small ways to sponsor, and how to make your work easy to back.",
       "date": "2026-09-12",
       "readingMinutes": 6,
       "tags": [
@@ -1901,7 +1901,7 @@
       "slug": "onboarding-that-actually-helps-new-teammates",
       "category": "culture",
       "title": "Onboarding That Actually Helps New Teammates",
-      "summary": "A calm look at engineering onboarding that helps people become useful without feeling lost: context, small early wins, clear ownership, buddy support, documentation, feedback loops, and patient team habits.",
+      "summary": "Good onboarding gives new teammates a map, a buddy, small real tasks and a safe place to ask. What to prepare, what research says, and how to tell if it's working.",
       "date": "2026-08-04",
       "readingMinutes": 6,
       "tags": [
@@ -2006,9 +2006,9 @@
       "slug": "async-communication-for-remote-teams",
       "category": "culture",
       "title": "Async Communication for Remote Teams",
-      "summary": "A calm guide to async communication for remote teams: writing enough context, recording decisions, setting response expectations, improving handoffs, building trust, and protecting people from always-on pressure.",
+      "summary": "A remote team runs on messages someone can act on half a day later. How to write the whole thought, record decisions, set reply tiers and leave a handoff that works.",
       "date": "2026-07-31",
-      "readingMinutes": 6,
+      "readingMinutes": 5,
       "tags": [
         "Engineering Culture",
         "Remote Work",
@@ -2193,10 +2193,10 @@
     {
       "slug": "handling-toxic-rockstars",
       "category": "culture",
-      "title": "Handling Toxic Rockstars",
-      "summary": "A calm look at high-output behavior that damages trust: why teams reward it, how feedback loops break, and how leaders can set boundaries while still offering a real repair path.",
+      "title": "When Your Best Engineer Is Hard to Work With",
+      "summary": "Fast, skilled and hard to work with. What research says about the cost of one harmful teammate, why teams keep paying it, and how to set boundaries with room to repair.",
       "date": "2026-07-22",
-      "readingMinutes": 6,
+      "readingMinutes": 7,
       "tags": [
         "Engineering Culture",
         "Leadership",
@@ -2214,10 +2214,10 @@
     {
       "slug": "hiring-for-potential-vs-experience",
       "category": "culture",
-      "title": "Hiring for Potential vs. Experience",
-      "summary": "A calm reflection on balancing experience and potential in engineering hiring. The article focuses on evidence, learning pace, team needs, and the quiet conditions that help a person grow after they join.",
+      "title": "Hiring for Potential or Experience? Look at the Evidence First",
+      "summary": "Years of experience predict job performance only weakly. How to weigh potential against experience using real evidence, the team's next year and the coaching you have.",
       "date": "2026-07-22",
-      "readingMinutes": 6,
+      "readingMinutes": 5,
       "tags": [
         "Engineering Culture",
         "Hiring",
@@ -2869,10 +2869,10 @@
     {
       "slug": "se-to-technical-manager",
       "category": "culture",
-      "title": "From Software Engineer to Technical Manager: The Counterintuitive Things You Learn",
-      "summary": "Moving from Software Engineer to Technical Manager isn’t a bigger version of the same job — it’s a quiet rewrite of the very habits that made you good at the last one. Step back from the IDE to see architecture, people, and process, and three surprising truths come into focus: code is an asset and a liability at once, your value shifts from addition to multiplication, and delegation is simple to say but genuinely hard to let go of. A practical, honest reflection for senior engineers eyeing the lead role — and for new managers still reaching for the keyboard.",
+      "title": "From Software Engineer to Technical Manager: Three Habits to Rewrite",
+      "summary": "Moving into management rewrites the habits that got you promoted: how you see code, how you count a good day and how you hand off work, with real examples.",
       "date": "2026-06-16",
-      "readingMinutes": 12,
+      "readingMinutes": 7,
       "tags": [
         "Engineering Culture",
         "Engineering Management",
@@ -3328,10 +3328,10 @@
     {
       "slug": "how-to-be-a-kind-engineer",
       "category": "culture",
-      "title": "Kind Engineering: Why Being Kind Makes You a Better Engineer",
-      "summary": "Kindness isn’t niceness, and it isn’t soft. It’s a force multiplier — clearer feedback, safer incidents, faster-growing teammates. What ‘kind engineering’ really means, and how to practise it in code reviews, incidents, and everyday work.",
+      "title": "Kind Engineers Still Say the Hard Thing",
+      "summary": "Kind and nice aren't the same. How kind engineers give honest feedback, run blameless incidents, say no early and back their teammates, plus the research behind it.",
       "date": "2026-05-31",
-      "readingMinutes": 13,
+      "readingMinutes": 11,
       "tags": [
         "Engineering Culture",
         "Kind Engineering",
@@ -3355,10 +3355,10 @@
     {
       "slug": "how-to-write-a-great-pull-request",
       "category": "culture",
-      "title": "How to Write a Pull Request People Actually Enjoy Reviewing",
-      "summary": "A great pull request is a gift to your reviewer: small, well-described, easy to say yes to. The anatomy of a reviewable PR — size, title, description, commit hygiene, and self-review — with concrete before/after examples.",
+      "title": "How to Write a Pull Request That’s Easy to Say Yes To",
+      "summary": "One change per PR, a title that says what it does, a description with the why and a test plan, and a self-review before you ping anyone. The author’s side of review.",
       "date": "2026-05-31",
-      "readingMinutes": 13,
+      "readingMinutes": 11,
       "tags": [
         "Engineering Culture",
         "Pull Requests",
@@ -3382,10 +3382,10 @@
     {
       "slug": "pull-request-that-reviewers-can-trust",
       "category": "culture",
-      "title": "The Pull Request That Reviewers Can Trust",
-      "summary": "A trusted pull request does more than look tidy. It names the behavior being changed, shows the safer pattern, and gives reviewers enough evidence to approve with real confidence instead of guesswork.",
+      "title": "Pull Requests Reviewers Can Approve Without Guessing",
+      "summary": "A tidy diff isn't enough. Name the behavior you changed, say why the new way is safer, show evidence and note what stayed the same, so approval isn't a guess.",
       "date": "2026-07-18",
-      "readingMinutes": 7,
+      "readingMinutes": 6,
       "tags": [
         "Engineering Culture",
         "Pull Requests",
@@ -3403,10 +3403,10 @@
     {
       "slug": "giving-and-receiving-feedback",
       "category": "culture",
-      "title": "Feedback That Lands: Giving and Receiving Critique as an Engineer",
-      "summary": "Most engineers were never taught how to give feedback — or how to take it. A field guide to specific, kind, actionable feedback, and to staying open when you're on the receiving end, with ready-to-use scripts.",
+      "title": "How to Give Feedback, and How to Take It",
+      "summary": "Feedback runs both ways. The SBI model, when feedback makes work worse, how to make praise useful, and how to hear hard notes without getting defensive.",
       "date": "2026-05-29",
-      "readingMinutes": 13,
+      "readingMinutes": 11,
       "tags": [
         "Engineering Culture",
         "Feedback",
@@ -3430,10 +3430,10 @@
     {
       "slug": "mentoring-engineers",
       "category": "culture",
-      "title": "Mentoring Engineers: How to Grow Juniors into Seniors",
-      "summary": "Great teams are grown, not just hired. From leading engineering teams: how to mentor so people level up fast — pairing, code review as teaching, the right-sized stretch, and the mindset shifts that turn a junior into someone you'd trust with anything.",
+      "title": "How to Mentor Engineers Without Doing Their Work for Them",
+      "summary": "Mentoring is a skill you can practice: pick work one step past someone's reach, say your reasoning out loud, then pull your support back one rung at a time.",
       "date": "2026-05-29",
-      "readingMinutes": 14,
+      "readingMinutes": 12,
       "tags": [
         "Engineering Culture",
         "Mentorship",
@@ -3592,10 +3592,10 @@
     {
       "slug": "over-managed-and-under-led",
       "category": "culture",
-      "title": "Over-Managed and Under-Led: Why a Busy Team Can Still Lose Its Way",
-      "summary": "A team can be carefully managed and still drift. Using John Kotter's distinction between coping with complexity and coping with change, here is how to spot when a team is over-managed and under-led — and small, repeatable ways to bring the direction back.",
+      "title": "When a Busy Team Is Over-Managed and Under-Led",
+      "summary": "A team can hit every sprint and still drift. John Kotter's split between management and leadership, how to spot the gap, and small habits that bring direction back.",
       "date": "2026-07-03",
-      "readingMinutes": 7,
+      "readingMinutes": 6,
       "tags": [
         "Leadership",
         "Management",
@@ -3615,8 +3615,8 @@
     {
       "slug": "vision-without-craft",
       "category": "culture",
-      "title": "Vision Without Craft: Why Leaders Can't Float Above the Work",
-      "summary": "Warren Bennis said leaders do the right thing while managers do things right. Robert Sutton added the part that matters: to do the right thing, you must understand what it takes to do things right. On the trap of vision detached from craft — and the bounce between big picture and detail.",
+      "title": "Why a Vision Needs a Feel for the Work",
+      "summary": "Bennis said leaders do the right thing. Robert Sutton added a corollary: you can't pick the right thing without knowing what it takes to build it. How to stay close.",
       "date": "2026-07-04",
       "readingMinutes": 6,
       "tags": [
@@ -3638,10 +3638,10 @@
     {
       "slug": "signals-or-messages",
       "category": "culture",
-      "title": "Signals or Messages: The Quiet Cost of Vague Communication",
-      "summary": "Abraham Zaleznik noticed that people uncomfortable with direct engagement communicate in signals rather than messages. On why vague communication feels safe to send and lands as anxiety, how it quietly breeds office politics, and why a clear message is a kindness — especially when it is hard.",
+      "title": "Signals or Messages: Why \"Can We Talk?\" Ruins a Weekend",
+      "summary": "Vague messages feel safe to send and land as worry. What Zaleznik meant by signals and messages, what uncertainty does to stress, and how to write the clear version.",
       "date": "2026-07-05",
-      "readingMinutes": 5,
+      "readingMinutes": 6,
       "tags": [
         "Leadership",
         "Management",
@@ -3661,8 +3661,8 @@
     {
       "slug": "sitting-with-the-problem",
       "category": "culture",
-      "title": "The Discipline of Sitting With a Problem You Can't Yet Solve",
-      "summary": "Some people restore order the instant disorder appears; others can hold a problem open long enough to understand it. On tolerance for ambiguity as a learnable discipline, the cost of solving before understanding, the Einstellung trap, and why the maturity is in how long you can stay with a hard problem.",
+      "title": "Sitting With a Problem You Can't Solve Yet",
+      "summary": "When the dashboard goes red, the urge is to do something now. How to stop the bleeding fast, keep the cause question open, and avoid the first idea that sticks.",
       "date": "2026-07-06",
       "readingMinutes": 5,
       "tags": [
@@ -3684,10 +3684,10 @@
     {
       "slug": "pull-dont-push",
       "category": "culture",
-      "title": "Pull, Don't Push: Why People Follow Meaning, Not Instructions",
-      "summary": "Bennis and Goldsmith described two ways to move people: push (deadlines, KPIs, position power) and pull (meaning and trust). On the unforgettable sign-language image of reins versus a cradle, why pull is slower but deeper, the honesty it requires, and when to reach for each. The closing piece of the series.",
+      "title": "Pull, Don't Push: Hand Over the Why With the Work",
+      "summary": "Deadlines get work done. A real reason gets people to care about it. What motivation research says about push and pull, and how to hand off work with its why.",
       "date": "2026-07-06",
-      "readingMinutes": 5,
+      "readingMinutes": 6,
       "tags": [
         "Leadership",
         "Management",
@@ -3707,10 +3707,10 @@
     {
       "slug": "why-culture-fit-is-often-a-trap",
       "category": "culture",
-      "title": "Why \"Culture Fit\" is Often a Trap",
-      "summary": "Culture fit sounds responsible, but it can reward sameness and hide vague concerns. This piece separates real values signals from comfort signals and argues for culture contribution.",
+      "title": "When \"Not a Culture Fit\" Really Means \"Not Like Us\"",
+      "summary": "Culture fit sounds careful, but in a well-known study it mostly meant \"similar to me.\" How to turn a vague hunch into named behaviors you can check, and what to hire for.",
       "date": "2026-07-07",
-      "readingMinutes": 7,
+      "readingMinutes": 5,
       "tags": [
         "Engineering Culture",
         "Hiring",
@@ -3805,10 +3805,10 @@
     {
       "slug": "anatomy-of-a-healthy-one-on-one",
       "category": "culture",
-      "title": "The Anatomy of a Healthy 1-on-1",
-      "summary": "A healthy 1-on-1 is a regular place for context, trust, feedback, and career direction, not a softer status meeting. The useful version catches small signals before they become expensive.",
+      "title": "How to Run a 1:1 Worth Showing Up For",
+      "summary": "A good 1:1 belongs to the engineer: their agenda first, a steady rhythm, real topics instead of status, and a written next step. What Grove, GitLab and the research say.",
       "date": "2026-07-15",
-      "readingMinutes": 6,
+      "readingMinutes": 7,
       "tags": [
         "Engineering Culture",
         "One-on-One",
@@ -3931,10 +3931,10 @@
     {
       "slug": "celebrating-failure",
       "category": "culture",
-      "title": "Celebrating Failure",
-      "summary": "A grounded look at what teams should really mean by celebrating failure: not applauding damage, but making honest learning, early signal reporting, repair, and changed systems safer to practice.",
+      "title": "What to Celebrate When Something Breaks",
+      "summary": "Nobody should cheer an outage. What Google, Eli Lilly and Amy Edmondson's research suggest teams reward after something breaks, and how to make the lessons stick.",
       "date": "2026-09-09",
-      "readingMinutes": 6,
+      "readingMinutes": 5,
       "tags": [
         "Engineering Culture",
         "Failure",
@@ -4041,8 +4041,8 @@
     {
       "slug": "building-diverse-engineering-teams",
       "category": "culture",
-      "title": "Building Diverse Engineering Teams",
-      "summary": "A grounded reflection on building diverse engineering teams: moving beyond slogans into hiring, onboarding, meeting design, decision-making, feedback, and the daily habits that let different people contribute fully.",
+      "title": "Diverse Engineering Teams Start After the Offer Letter",
+      "summary": "A diverse team catches more problems, but only when difference reaches the decision. What the research says, plus hiring, meeting and review habits that help.",
       "date": "2026-09-05",
       "readingMinutes": 6,
       "tags": [
@@ -4151,10 +4151,10 @@
     {
       "slug": "managing-up-communicating-with-non-technical-leadership",
       "category": "culture",
-      "title": "Managing Up: Communicating with Non-Technical Leadership",
-      "summary": "A calm guide to managing up with non-technical leadership: translating technical work into risk, options, impact, timing, and decisions without hiding complexity or talking down to people.",
+      "title": "Managing Up: Talking to Non-Technical Leaders",
+      "summary": "When a leader asks \"are we almost done?\", give an answer they can decide on: the conclusion first, impact before mechanism, real options and a number for confidence.",
       "date": "2026-08-30",
-      "readingMinutes": 6,
+      "readingMinutes": 5,
       "tags": [
         "Engineering Culture",
         "Managing Up",
@@ -4261,10 +4261,10 @@
     {
       "slug": "performance-reviews-that-matter",
       "category": "culture",
-      "title": "Performance Reviews That Matter",
-      "summary": "A calm reflection on performance reviews that actually help people grow: using evidence, expectations, calibration, feedback, and follow-through without turning the review into a surprise or a ritual.",
+      "title": "Performance Reviews People Can Actually Use",
+      "summary": "Most reviews arrive late and vague. How to build one from evidence, keep surprises out, check your own bias in calibration and write a growth plan people can act on.",
       "date": "2026-08-26",
-      "readingMinutes": 6,
+      "readingMinutes": 5,
       "tags": [
         "Engineering Culture",
         "Performance Reviews",
@@ -4371,8 +4371,8 @@
     {
       "slug": "handling-burnout-before-it-happens",
       "category": "culture",
-      "title": "Handling Burnout Before It Happens",
-      "summary": "A calm look at preventing burnout in engineering teams: early signals, workload visibility, recovery time, sustainable expectations, management responsibility, and the small habits that keep people from disappearing quietly.",
+      "title": "How to Catch Burnout Before It Catches Your Team",
+      "summary": "Burnout starts as patterns in ordinary weeks: one person on every incident, late-night replies. How to spot it, make load visible and plan recovery as real work.",
       "date": "2026-08-21",
       "readingMinutes": 6,
       "tags": [
@@ -4481,8 +4481,8 @@
     {
       "slug": "creating-a-blameless-culture",
       "category": "culture",
-      "title": "Creating a Blameless Culture",
-      "summary": "A calm look at blameless engineering culture: how teams can study incidents without blame, separate accountability from punishment, improve systems, and make it safer for people to tell the truth early.",
+      "title": "A Blameless Culture Starts in the First Minute of the Postmortem",
+      "summary": "Blameless doesn't mean nobody's accountable. How to run incident reviews that ask how instead of who, write action items that fix systems and keep people honest.",
       "date": "2026-08-18",
       "readingMinutes": 6,
       "tags": [
@@ -4591,10 +4591,10 @@
     {
       "slug": "giving-constructive-feedback",
       "category": "culture",
-      "title": "Giving Constructive Feedback",
-      "summary": "A calm reflection on constructive feedback: how specific observations, timing, care, accountability, and follow-up help people improve without turning feedback into blame or performance theater.",
+      "title": "Giving Constructive Feedback People Can Use",
+      "summary": "Constructive feedback is feedback someone can act on. Say what you saw instead of a label, name the impact, make one clear ask, say why you care and follow up later.",
       "date": "2026-08-11",
-      "readingMinutes": 6,
+      "readingMinutes": 5,
       "tags": [
         "Engineering Culture",
         "Feedback",

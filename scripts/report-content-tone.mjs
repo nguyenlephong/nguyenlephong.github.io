@@ -69,7 +69,8 @@ export function violations(counts, locale) {
 function readPosts(locale, slug) {
   const dir = path.join(root, LOCALE_DIRS[locale])
   const files = slug ? [`${slug}.json`] : readdirSync(dir).filter((f) => f.endsWith('.json'))
-  return files.map((f) => JSON.parse(readFileSync(path.join(dir, f), 'utf8')))
+  // Some locale overrides omit slug; the file name is the slug.
+  return files.map((f) => ({ slug: f.slice(0, -5), ...JSON.parse(readFileSync(path.join(dir, f), 'utf8')) }))
 }
 
 export function buildReport({ slug, locales = Object.keys(LOCALE_DIRS) } = {}) {
