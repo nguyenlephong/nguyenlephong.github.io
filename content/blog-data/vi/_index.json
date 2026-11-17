@@ -2681,10 +2681,10 @@
     {
       "slug": "how-to-review-code-kindly",
       "category": "culture",
-      "title": "Code review tử tế: góp ý để code tốt hơn và người viết vẫn muốn tiến lên",
-      "summary": "Code review không chỉ là tìm lỗi. Đó là nơi team học cách nói chuyện về chất lượng, trade-off và tiêu chuẩn chung. Bài này đưa ra cách review rõ ràng mà không làm người viết chùn bước: góp ý cụ thể, phân biệt blocker với suggestion, hỏi trước khi kết luận, và giữ cho review trở thành nơi code lẫn con người cùng tốt lên.",
+      "title": "Review code tử tế mà vẫn bắt được bug",
+      "summary": "Review tử tế là review cụ thể: nên soi gì trong PR, viết comment sao cho người nhận sửa được ngay, gắn nhãn nit hay blocker và vì sao PR nhỏ dễ merge.",
       "date": "2026-06-01",
-      "readingMinutes": 14,
+      "readingMinutes": 11,
       "tags": [
         "Văn hoá kỹ thuật",
         "Code Review",
