@@ -34,15 +34,18 @@ test('/admin stays out of the sitemap and the site navigation', () => {
   assert.deepEqual(linked, [])
 })
 
-test('the gate tracks admin events without the vault id and keeps the session per tab', () => {
+test('the gate compares a SHA-256 hash, tracks no secrets and keeps the session per tab', () => {
   const analytics = read('src/lib/analytics.ts')
   assert.match(analytics, /'admin_opened'/)
   assert.match(analytics, /'admin_login_failed'/)
 
   const gate = read('src/components/admin/AdminGate.tsx')
   for (const call of gate.match(/track\([^)]*\)/g) ?? []) {
-    assert.doesNotMatch(call, /\bvaultId\b|\bderive|[{,]\s*password\b/, call)
+    assert.doesNotMatch(call, /GATE_DIGEST|sha256|[{,]\s*password\b/i, call)
   }
+  assert.match(gate, /const GATE_DIGEST = '[0-9a-f]{64}'/)
+  assert.match(gate, /crypto\.subtle\.digest\('SHA-256'/)
+  assert.match(gate, /curtain, not security/)
   assert.match(gate, /sessionStorage/)
   assert.doesNotMatch(gate, /localStorage\./)
   assert.match(gate, /import\('\.\/AdminDashboard'\)/)

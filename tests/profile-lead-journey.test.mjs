@@ -187,7 +187,8 @@ test("homepage AI particle field is GPU-rendered, scroll-synced, and motion-safe
   assert.match(backdrop, /float sparkleScale = mix\(1\.35, 2\.25, uDark\)/);
   assert.match(backdrop, /float quietStart = mix\(/);
   assert.match(backdrop, /uniform float uScroll/);
-  assert.match(backdrop, /rootSelector: "\.home-showcase"/);
+  // The homepage keeps .home-showcase as the default scroll root; /admin passes its own.
+  assert.match(backdrop, /rootSelector = "\.home-showcase"/);
   assert.match(
     renderer,
     /canvas\.closest<HTMLElement>\(options\.rootSelector\)/

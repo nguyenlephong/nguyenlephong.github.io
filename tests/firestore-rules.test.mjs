@@ -5,13 +5,14 @@ import {
   assertSucceeds,
   initializeTestEnvironment,
 } from '@firebase/rules-unit-testing'
-import { randomBytes } from 'node:crypto'
 import {
   collection,
   deleteDoc,
   doc,
   getDoc,
   getDocs,
+  limit,
+  query,
   setDoc,
   updateDoc,
 } from 'firebase/firestore'
@@ -67,6 +68,15 @@ if (!emulatorHost) {
   test('allows public reads and one-counter creates', async () => {
     await assertSucceeds(setDoc(publicDocument(), { views: 1 }, { merge: true }))
     await assertSucceeds(getDoc(publicDocument()))
+  })
+
+  test('allows listing postStats with a bounded limit, as /admin does', async () => {
+    await seed()
+    const stats = collection(environment.unauthenticatedContext().firestore(), 'postStats')
+    const listed = await assertSucceeds(getDocs(query(stats, limit(2000))))
+    if (listed.size !== 1) throw new Error(`expected 1 postStats doc, got ${listed.size}`)
+    await assertFails(getDocs(stats))
+    await assertFails(getDocs(query(stats, limit(2001))))
   })
 
   test('rejects malformed ids, fields, reactions, and create inflation', async () => {
@@ -157,57 +167,5 @@ if (!emulatorHost) {
     )
     await assertFails(getDoc(other))
     await assertFails(setDoc(other, { enabled: true }))
-  })
-
-  function vaultDocument(id) {
-    return doc(environment.unauthenticatedContext().firestore(), 'adminVault', id)
-  }
-
-  const seededVaultId = 'a'.repeat(64)
-
-  async function seedVault() {
-    await environment.withSecurityRulesDisabled((context) =>
-      setDoc(doc(context.firestore(), 'adminVault', seededVaultId), {
-        schemaVersion: 1,
-        generatedAt: '2026-11-18T00:00:00.000Z',
-      }),
-    )
-  }
-
-  test('admin vault: a known id can be fetched, a random valid id is simply not found', async () => {
-    await seedVault()
-    const known = await assertSucceeds(getDoc(vaultDocument(seededVaultId)))
-    if (!known.exists()) throw new Error('seeded vault should be readable by its id')
-
-    const unknown = await assertSucceeds(
-      getDoc(vaultDocument(randomBytes(32).toString('hex'))),
-    )
-    if (unknown.exists()) throw new Error('a random vault id must not resolve')
-  })
-
-  test('admin vault: listing and malformed ids are denied', async () => {
-    await seedVault()
-    await assertFails(
-      getDocs(collection(environment.unauthenticatedContext().firestore(), 'adminVault')),
-    )
-    for (const id of ['A'.repeat(64), 'a'.repeat(63), 'a'.repeat(65), `${'a'.repeat(63)}g`, 'admin']) {
-      await assertFails(getDoc(vaultDocument(id)))
-    }
-  })
-
-  test('admin vault: every client write is denied', async () => {
-    await seedVault()
-    const freshId = 'b'.repeat(64)
-    await assertFails(setDoc(vaultDocument(freshId), { schemaVersion: 1 }))
-    await assertFails(setDoc(vaultDocument(seededVaultId), { schemaVersion: 2 }))
-    await assertFails(updateDoc(vaultDocument(seededVaultId), { schemaVersion: 2 }))
-    await assertFails(deleteDoc(vaultDocument(seededVaultId)))
-    const authed = doc(
-      environment.authenticatedContext('someone').firestore(),
-      'adminVault',
-      seededVaultId,
-    )
-    await assertFails(setDoc(authed, { schemaVersion: 2 }))
-    await assertFails(deleteDoc(authed))
   })
 }

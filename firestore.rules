@@ -109,22 +109,16 @@ service cloud.firestore {
     }
 
     match /postStats/{postId} {
-      allow read: if validPostId(postId);
+      allow get: if validPostId(postId);
+      // /admin lists every counter in one query. A list request has no single
+      // postId to check, so it must carry a bounded limit instead.
+      allow list: if request.query.limit <= 2000;
       allow create: if validPostId(postId)
         && validCreate(request.resource.data);
       allow update: if validPostId(postId)
         && validDocumentShape(request.resource.data)
         && (isViewIncrement() || isShareIncrement() || isReactionChange());
       allow delete: if false;
-    }
-
-    // MEP-90: /admin insight snapshots. The document id is a PBKDF2-derived
-    // vault id, so only someone who knows the password can name it. Clients may
-    // only fetch a single well-formed id; the GitHub Action writes with the
-    // Admin SDK, which bypasses these rules.
-    match /adminVault/{vaultId} {
-      allow get: if vaultId.matches('^[0-9a-f]{64}$');
-      allow list, create, update, delete: if false;
     }
 
     match /{document=**} {

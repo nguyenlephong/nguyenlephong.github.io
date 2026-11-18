@@ -45,6 +45,7 @@ const expectedImporters = {
     "src/app/admin/page.tsx"
   ],
   "src/app/admin/admin.css": ["src/app/admin/page.tsx"],
+  "src/app/admin/admin-sections.css": ["src/app/admin/page.tsx"],
   "src/app/globals.css": ["src/app/[locale]/(site)/layout.tsx"],
   "src/app/[locale]/(site)/home.css": ["src/app/[locale]/(site)/page.tsx"],
   "src/components/cv/hero.css": ["src/app/[locale]/(site)/page.tsx"],
