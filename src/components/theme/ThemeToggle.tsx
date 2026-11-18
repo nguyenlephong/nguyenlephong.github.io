@@ -24,8 +24,20 @@ function applyTheme(setting: ThemeSetting): void {
 
 const ARROW_STEP: Record<string, number> = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }
 
+export interface ThemeToggleLabels {
+  label: string
+  light: string
+  system: string
+  dark: string
+}
+
+/** The site header's theme control. /admin (outside next-intl) passes its own labels. */
 export default function ThemeToggle() {
   const t = useTranslations('Nav.theme')
+  return <ThemeToggleControl labels={{ label: t('label'), light: t('light'), system: t('system'), dark: t('dark') }} />
+}
+
+export function ThemeToggleControl({ labels }: { labels: ThemeToggleLabels }) {
   const [mounted, setMounted] = useState(false)
   const [setting, setSetting] = useState<ThemeSetting>('system')
 
@@ -66,9 +78,9 @@ export default function ThemeToggle() {
   }
 
   const options: { value: ThemeSetting; label: string; icon: React.ReactNode }[] = [
-    { value: 'light', label: t('light'), icon: <LuSun size={16} /> },
-    { value: 'system', label: t('system'), icon: <LuMonitor size={16} /> },
-    { value: 'dark', label: t('dark'), icon: <LuMoon size={16} /> },
+    { value: 'light', label: labels.light, icon: <LuSun size={16} /> },
+    { value: 'system', label: labels.system, icon: <LuMonitor size={16} /> },
+    { value: 'dark', label: labels.dark, icon: <LuMoon size={16} /> },
   ]
 
   // Radio pattern: one tab stop (the checked option), arrows move and select.
@@ -85,7 +97,7 @@ export default function ThemeToggle() {
   }
 
   return (
-    <div className="theme-toggle" role="radiogroup" aria-label={t('label')} onKeyDown={onKeyDown}>
+    <div className="theme-toggle" role="radiogroup" aria-label={labels.label} onKeyDown={onKeyDown}>
       {options.map((opt) => (
         <button
           key={opt.value}

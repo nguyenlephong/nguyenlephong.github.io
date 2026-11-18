@@ -165,9 +165,9 @@ export type AnalyticsEvent =
   | 'studio_ai_skill_copy'
   // Outbound
   | 'outbound_click'
-  // Password-gated /admin (MEP-90). Never carries the password or the vault id;
+  // Password-gated /admin (MEP-90). Never carries the password or its hash;
   // the page sends no automatic pageview.
-  // admin_opened: method session | password. admin_login_failed: reason wrong_password | unavailable
+  // admin_opened: method session | password. admin_login_failed: reason wrong_password
   | 'admin_opened'
   | 'admin_login_failed'
 

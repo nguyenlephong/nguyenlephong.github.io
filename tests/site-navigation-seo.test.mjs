@@ -296,7 +296,9 @@ test("mobile menu is opaque, traps focus, closes on Escape and speaks the page l
   const toggle = read("src/components/theme/ThemeToggle.tsx");
   assert.match(toggle, /tabIndex=\{setting === opt\.value \? 0 : -1\}/);
   assert.match(toggle, /ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1/);
-  assert.match(toggle, /aria-label=\{t\('label'\)\}/);
+  // The radiogroup is named by the translated label; /admin passes its own labels to the same control.
+  assert.match(toggle, /aria-label=\{labels\.label\}/);
+  assert.match(toggle, /label: t\('label'\)/);
 });
 
 // MEP-28: both roles, résumé and email, labelled internal links outside the profiles list.

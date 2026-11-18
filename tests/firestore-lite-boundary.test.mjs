@@ -145,7 +145,7 @@ test("production engagement imports only the REST-only Firestore Lite client", (
     []
   );
   assert.deepEqual([...new Set(imports.map(({ file }) => file))].sort(), [
-    "src/lib/admin/vault-repository.ts",
+    "src/lib/admin/post-stats-repository.ts",
     "src/lib/engagement/firebase-repository.ts",
     "src/lib/firebase/client.ts"
   ]);

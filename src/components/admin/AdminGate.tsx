@@ -1,150 +1,209 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import { useCallback, useEffect, useState, type FormEvent } from 'react'
+import { useEffect, useMemo, useState, type FormEvent } from 'react'
+import { LuArrowRight, LuLogOut } from 'react-icons/lu'
 import { track } from '@/lib/analytics'
-import type { AdminSnapshot } from '@/lib/admin/snapshot-types'
-import { fetchAdminSnapshot, type AdminVaultLookup } from '@/lib/admin/vault-repository'
-import { deriveAdminVaultId, isAdminVaultId } from '@/lib/admin/vault-id.mjs'
+import AdminStage from './AdminStage'
+import AdminTopology, { type TopologyBranch } from './AdminTopology'
+import { ADMIN_DICTIONARIES, AdminTextContext, createAdminFormat, useAdminText, type AdminText } from './admin-i18n'
+import { readAdminLocale, storeAdminLocale, type AdminLocale } from './admin-locale'
+import { localizeCatalog, type AdminCatalogProps } from './catalog-props'
 
-// The dashboard (tables, sorting, formatting) only downloads after an unlock.
+function OpeningDashboard() {
+  const { t } = useAdminText()
+  return (
+    <p className="admin-gate__status" role="status">
+      {t.gate.opening}
+    </p>
+  )
+}
+
+// The dashboard only downloads after an unlock, so no public bundle grows.
 const AdminDashboard = dynamic(() => import('./AdminDashboard'), {
   ssr: false,
-  loading: () => <p className="admin-gate__status">Loading the dashboard…</p>,
+  loading: () => <OpeningDashboard />,
 })
 
-// sessionStorage, not localStorage: the vault id dies with the tab.
-const SESSION_KEY = 'admin_vault_id'
-
-type GateState =
-  | { phase: 'checking' }
-  | { phase: 'locked'; message: string | null }
-  | { phase: 'unlocking' }
-  | { phase: 'open'; snapshot: AdminSnapshot }
-
-const UNAVAILABLE_MESSAGES: Record<
-  Extract<AdminVaultLookup, { status: 'unavailable' }>['reason'],
-  string
-> = {
-  not_configured: 'Firestore is not configured in this build.',
-  request_failed: 'Could not reach Firestore. Check the connection and try again.',
-  unsupported: 'The snapshot has an unexpected format. Re-run the snapshot workflow.',
+/** Published posts per category, straight from the build-time catalog. */
+export function catalogBranches(catalog: AdminCatalogProps, today: string): TopologyBranch[] {
+  const titles = new Map(catalog.blog.categories.map((category) => [category.slug, category.title]))
+  const counts = new Map<string, number>()
+  for (const post of [...catalog.blog.posts, ...catalog.notes.posts]) {
+    if (post.date > today) continue
+    counts.set(post.category, (counts.get(post.category) ?? 0) + 1)
+  }
+  // Largest branch first, the same way the live topology sorts by reads.
+  return [...counts]
+    .sort(([, left], [, right]) => right - left)
+    .map(([category, posts]) => ({
+      category,
+      title: titles.get(category) ?? (category === 'notes' ? 'Notes' : category),
+      posts,
+    }))
 }
 
-function readSession(): string | null {
+// This is a curtain, not security: every number behind it is already public
+// through the postStats read rule. Only the SHA-256 of the password ships.
+const PASSWORD_SHA256 = '0074de1d7052e1b11898f3aa9d14a0b52d7db438f7960c0b96cf7a55cf217341'
+const SESSION_KEY = 'admin_unlocked'
+
+type GateState = 'checking' | 'locked' | 'checking-password' | 'open'
+
+async function sha256Hex(value: string): Promise<string> {
+  const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value))
+  return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('')
+}
+
+function readUnlocked(): boolean {
   try {
-    const value = sessionStorage.getItem(SESSION_KEY)
-    return isAdminVaultId(value) ? value : null
+    return sessionStorage.getItem(SESSION_KEY) === '1'
   } catch {
-    return null
+    return false
   }
 }
 
-function writeSession(vaultId: string | null): void {
+function writeUnlocked(unlocked: boolean): void {
   try {
-    if (vaultId) sessionStorage.setItem(SESSION_KEY, vaultId)
+    if (unlocked) sessionStorage.setItem(SESSION_KEY, '1')
     else sessionStorage.removeItem(SESSION_KEY)
   } catch {
-    // Private mode without storage: the session just does not persist.
+    // Storage blocked: the unlock just lasts until reload.
   }
 }
 
-export default function AdminGate() {
-  const [state, setState] = useState<GateState>({ phase: 'checking' })
+export default function AdminGate({ catalog }: { catalog: AdminCatalogProps }) {
+  const [state, setState] = useState<GateState>('checking')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState<'wrong' | 'noCrypto' | null>(null)
+  // The page is prerendered in English; the reader's language applies on mount
+  // (the inline bootstrap keeps VI readers from seeing the English first).
+  const [locale, setLocaleState] = useState<AdminLocale>('en')
 
-  const openVault = useCallback(
-    async (vaultId: string, method: 'session' | 'password') => {
-      const lookup = await fetchAdminSnapshot(vaultId)
-      if (lookup.status === 'found') {
-        writeSession(vaultId)
-        setState({ phase: 'open', snapshot: lookup.snapshot })
-        track('admin_opened', { method })
-        return
-      }
-      writeSession(null)
-      if (lookup.status === 'not_found') {
-        // A stored session that no longer resolves (password rotated) is not a failed login.
-        if (method === 'password') {
-          track('admin_login_failed', { reason: 'wrong_password' })
-        }
-        setState({
-          phase: 'locked',
-          message: method === 'password' ? 'Wrong password.' : null,
-        })
-        return
-      }
-      track('admin_login_failed', { reason: 'unavailable' })
-      setState({ phase: 'locked', message: UNAVAILABLE_MESSAGES[lookup.reason] })
-    },
-    [],
+  const text = useMemo<AdminText>(
+    () => ({
+      locale,
+      t: ADMIN_DICTIONARIES[locale],
+      fmt: createAdminFormat(locale),
+      setLocale: (next) => {
+        setLocaleState(next)
+        storeAdminLocale(next)
+      },
+    }),
+    [locale],
   )
 
-  // sessionStorage only exists after hydration (the page is prerendered), so the
-  // stored session is read once on mount, outside the synchronous effect body.
+  useEffect(() => {
+    document.documentElement.lang = locale
+    document.documentElement.setAttribute('data-admin-lang', locale)
+  }, [locale])
+
+  // sessionStorage and localStorage exist only after hydration (the page is prerendered).
   useEffect(() => {
     queueMicrotask(() => {
-      const stored = readSession()
-      if (stored) void openVault(stored, 'session')
-      else setState({ phase: 'locked', message: null })
+      setLocaleState(readAdminLocale())
+      if (readUnlocked()) {
+        setState('open')
+        track('admin_opened', { method: 'session' })
+      } else {
+        setState('locked')
+      }
     })
-  }, [openVault])
+  }, [])
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     if (!password) return
-    setState({ phase: 'unlocking' })
+    setState('checking-password')
+    let matches = false
     try {
-      const vaultId = await deriveAdminVaultId(password)
-      setPassword('')
-      await openVault(vaultId, 'password')
+      matches = (await sha256Hex(password)) === PASSWORD_SHA256
     } catch {
-      setState({ phase: 'locked', message: 'This browser cannot derive the key (WebCrypto is unavailable).' })
+      setError('noCrypto')
+      setState('locked')
+      return
+    }
+    setPassword('')
+    if (matches) {
+      writeUnlocked(true)
+      setError(null)
+      setState('open')
+      track('admin_opened', { method: 'password' })
+    } else {
+      setError('wrong')
+      setState('locked')
+      track('admin_login_failed', { reason: 'wrong_password' })
     }
   }
 
   const signOut = () => {
-    writeSession(null)
-    setState({ phase: 'locked', message: null })
+    writeUnlocked(false)
+    setState('locked')
   }
 
-  if (state.phase === 'open') {
-    return <AdminDashboard snapshot={state.snapshot} onSignOut={signOut} />
+  const localized = useMemo(() => localizeCatalog(catalog, locale), [catalog, locale])
+  const branches = useMemo(() => catalogBranches(localized, new Date().toISOString().slice(0, 10)), [localized])
+  const published = branches.reduce((sum, branch) => sum + branch.posts, 0)
+  const { t, fmt } = text
+
+  if (state === 'open') {
+    return (
+      <AdminTextContext.Provider value={text}>
+        <AdminStage
+          phase={state}
+          actions={
+            <button type="button" className="admin-btn admin-btn--quiet" onClick={signOut} aria-label={t.signOut}>
+              <LuLogOut aria-hidden="true" />
+              <span className="admin-signout__text">{t.signOut}</span>
+            </button>
+          }
+        >
+          <AdminDashboard catalog={localized} idleBranches={branches} />
+        </AdminStage>
+      </AdminTextContext.Provider>
+    )
   }
 
-  const busy = state.phase !== 'locked'
+  const busy = state !== 'locked'
   return (
-    <main className="admin-gate" aria-busy={busy}>
-      <h1 className="admin-gate__title">Site insights</h1>
-      <p className="admin-gate__lede">Owner access. Enter the admin password to open the latest snapshot.</p>
-      <form className="admin-gate__form" onSubmit={onSubmit}>
-        <label className="admin-gate__label" htmlFor="admin-password">
-          Password
-        </label>
-        <div className="admin-gate__row">
-          <input
-            id="admin-password"
-            className="admin-gate__input"
-            type="password"
-            name="password"
-            autoComplete="current-password"
-            autoCapitalize="none"
-            spellCheck={false}
-            required
-            value={password}
-            disabled={busy}
-            aria-invalid={state.phase === 'locked' && state.message ? true : undefined}
-            aria-describedby={state.phase === 'locked' && state.message ? 'admin-gate-message' : undefined}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-          <button className="admin-button admin-button--primary" type="submit" disabled={busy || !password}>
-            {state.phase === 'unlocking' ? 'Unlocking…' : 'Unlock'}
-          </button>
-        </div>
-        <p id="admin-gate-message" className="admin-gate__message" role="alert">
-          {state.phase === 'locked' ? state.message : null}
-        </p>
-      </form>
-    </main>
+    <AdminTextContext.Provider value={text}>
+      <AdminStage phase={state}>
+        <main className="admin-hero admin-hero--locked" aria-busy={busy}>
+          <div className="admin-hero__meta">
+            <h1 className="admin-display">{t.gate.title}</h1>
+            <p className="admin-claim">{t.gate.claim(fmt.number(published))}</p>
+            <form className="admin-gate" onSubmit={onSubmit}>
+              <label className="admin-gate__label" htmlFor="admin-password">
+                {t.gate.password}
+              </label>
+              <div className="admin-gate__field">
+                <input
+                  id="admin-password"
+                  className="admin-gate__input"
+                  type="password"
+                  name="password"
+                  autoComplete="current-password"
+                  autoCapitalize="none"
+                  spellCheck={false}
+                  required
+                  value={password}
+                  disabled={busy}
+                  aria-invalid={error ? true : undefined}
+                  aria-describedby={error ? 'admin-gate-message' : undefined}
+                  onChange={(event) => setPassword(event.target.value)}
+                />
+                <button className="admin-gate__submit" type="submit" disabled={busy || !password} aria-label={t.gate.submit}>
+                  {state === 'checking-password' ? <span className="admin-gate__spinner" aria-hidden="true" /> : <LuArrowRight aria-hidden="true" />}
+                </button>
+              </div>
+              <p id="admin-gate-message" className="admin-gate__message" role="alert">
+                {error ? t.gate[error] : null}
+              </p>
+            </form>
+          </div>
+          <AdminTopology branches={branches} />
+        </main>
+      </AdminStage>
+    </AdminTextContext.Provider>
   )
 }
