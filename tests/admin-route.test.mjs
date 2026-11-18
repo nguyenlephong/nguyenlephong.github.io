@@ -41,9 +41,9 @@ test('the gate compares a SHA-256 hash, tracks no secrets and keeps the session 
 
   const gate = read('src/components/admin/AdminGate.tsx')
   for (const call of gate.match(/track\([^)]*\)/g) ?? []) {
-    assert.doesNotMatch(call, /PASSWORD_SHA256|sha256|[{,]\s*password\b/i, call)
+    assert.doesNotMatch(call, /GATE_DIGEST|sha256|[{,]\s*password\b/i, call)
   }
-  assert.match(gate, /const PASSWORD_SHA256 = '[0-9a-f]{64}'/)
+  assert.match(gate, /const GATE_DIGEST = '[0-9a-f]{64}'/)
   assert.match(gate, /crypto\.subtle\.digest\('SHA-256'/)
   assert.match(gate, /curtain, not security/)
   assert.match(gate, /sessionStorage/)

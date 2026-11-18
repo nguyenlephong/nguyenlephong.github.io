@@ -45,7 +45,7 @@ export function catalogBranches(catalog: AdminCatalogProps, today: string): Topo
 
 // This is a curtain, not security: every number behind it is already public
 // through the postStats read rule. Only the SHA-256 of the password ships.
-const PASSWORD_SHA256 = '0074de1d7052e1b11898f3aa9d14a0b52d7db438f7960c0b96cf7a55cf217341'
+const GATE_DIGEST = '0074de1d7052e1b11898f3aa9d14a0b52d7db438f7960c0b96cf7a55cf217341'
 const SESSION_KEY = 'admin_unlocked'
 
 type GateState = 'checking' | 'locked' | 'checking-password' | 'open'
@@ -117,7 +117,7 @@ export default function AdminGate({ catalog }: { catalog: AdminCatalogProps }) {
     setState('checking-password')
     let matches = false
     try {
-      matches = (await sha256Hex(password)) === PASSWORD_SHA256
+      matches = (await sha256Hex(password)) === GATE_DIGEST
     } catch {
       setError('noCrypto')
       setState('locked')
