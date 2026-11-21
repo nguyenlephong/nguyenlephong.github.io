@@ -124,7 +124,8 @@ test("about puts contact first: hero actions, a fit link per situation, and a co
   assert.match(page, /data-track="cv_contact_click"\s+data-track-channel="email"\s+data-track-source="about_hero"/);
   assert.match(page, /data-track="cv_resume_download"\s+data-track-source="about_hero"/);
   // Each situation opens a mail with its own subject and is tracked with the situation id.
-  assert.match(page, /mailto:\$\{email\}\?subject=\$\{encodeURIComponent\(t\(`habits\.items\.\$\{id\}\.title`\)\)\}/);
+  assert.match(page, /const situation = t\(`habits\.items\.\$\{id\}\.title`\)/);
+  assert.match(page, /mailto:\$\{email\}\?subject=\$\{encodeURIComponent\(situation\)\}/);
   assert.match(page, /data-track-source="about_fit"\s+data-track-fit=\{id\}/);
   assert.match(page, /<CopyEmailButton[\s\S]*?source="about"/);
   for (const locale of locales) {

@@ -36,7 +36,7 @@ const isTyping = (el: EventTarget | null): boolean =>
  * goes to a phrase, the selection sweeps across, ⌃⌥T goes down, the Glance panel pops. The first
  * click or real ⌃⌥T hands control to the visitor and the autoplay stops for good.
  */
-export default function GlanceDemo({ demo, hint, replaceLabel }: GlanceDemoProps) {
+export default function GlanceDemo({ demo, hint, replaceLabel }: Readonly<GlanceDemoProps>) {
   const count = demo.phrases.length
   const [active, setActive] = useState(0)
   const [panel, setPanel] = useState(0)
@@ -158,15 +158,15 @@ export default function GlanceDemo({ demo, hint, replaceLabel }: GlanceDemoProps
           <span className="glance-window-title">{demo.windowTitle}</span>
         </div>
         <p ref={textRef} className="glance-window-text" lang="en">
-          {demo.parts.map((part, i) =>
+          {demo.parts.map((part) =>
             typeof part === 'number' ? (
               // A span, not a <button>: buttons are inline-block and a long phrase could not wrap on phones.
               <span
-                key={i}
+                key={`phrase-${part}`}
                 ref={(el) => {
                   phraseRefs.current[part] = el
                 }}
-                role="button"
+                role="button" // NOSONAR: a <button> cannot wrap across lines; this span has tabIndex, Enter and Space
                 tabIndex={0}
                 className="glance-phrase"
                 aria-pressed={part === active}
@@ -180,7 +180,7 @@ export default function GlanceDemo({ demo, hint, replaceLabel }: GlanceDemoProps
                 {demo.phrases[part].source}
               </span>
             ) : (
-              <span key={i}>{part}</span>
+              <span key={`text-${part}`}>{part}</span>
             )
           )}
           <span

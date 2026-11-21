@@ -18,7 +18,7 @@ interface CopyEmailButtonProps {
 }
 
 /** Labels come in as props, so this works on routes that ship no client messages. */
-export default function CopyEmailButton({ email, targetId, source, labels }: CopyEmailButtonProps) {
+export default function CopyEmailButton({ email, targetId, source, labels }: Readonly<CopyEmailButtonProps>) {
   const [state, setState] = useState<CopyState>('idle')
   const resetTimer = useRef<number | undefined>(undefined)
 

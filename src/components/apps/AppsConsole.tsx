@@ -40,7 +40,7 @@ export default function AppsConsole({ apps, copy, copyLocale }: AppsConsoleProps
         <h1 className="apps-title">
           {/* Words rise in one by one on load; the heading text stays whole for readers and search. */}
           {copy.title.split(' ').map((word, i) => (
-            <Fragment key={i}>
+            <Fragment key={`${i}-${word}`}>
               {i > 0 && ' '}
               <span className="apps-title-word" style={{ '--w': i } as CSSProperties}>
                 {word}
@@ -123,7 +123,7 @@ function useCardView(app: AppShowcaseItem, position: number) {
   return ref
 }
 
-function AppStage({ app, position, copy, copyLocale }: AppStageProps) {
+function AppStage({ app, position, copy, copyLocale }: Readonly<AppStageProps>) {
   const ref = useCardView(app, position)
   const text = app.copy[copyLocale]
   const appLinks: AppLinks = app.links

@@ -34,7 +34,7 @@ const prefersReducedMotion = (): boolean =>
  * time the stage is in view; after that it only moves when someone presses Spin.
  * Renders two grid items (play + visual) straight into the stage grid.
  */
-export default function DishReel({ dishes, locale, lead, spinLabel, openTemplate }: DishReelProps) {
+export default function DishReel({ dishes, locale, lead, spinLabel, openTemplate }: Readonly<DishReelProps>) {
   const count = dishes.length
   const [offset, setOffset] = useState(0)
   const [spinning, setSpinning] = useState(false)
@@ -72,7 +72,8 @@ export default function DishReel({ dishes, locale, lead, spinLabel, openTemplate
   }
 
   // Back to the first loop with no transition, so the next spin has room to travel. Runs on
-  // transitionend, on transitioncancel (reduced motion switched on mid-spin) or on the fallback timer.
+  // transitionend, or on the fallback timer when the transition is cancelled (reduced motion
+  // switched on mid-spin) and transitionend never fires.
   function settle(): void {
     clearTimeout(fallback.current)
     setSpinning(false)
@@ -117,9 +118,6 @@ export default function DishReel({ dishes, locale, lead, spinLabel, openTemplate
               className="dish-reel-strip"
               style={{ '--i': offset } as CSSProperties}
               onTransitionEnd={(event) => {
-              if (spinning && event.target === event.currentTarget) settle()
-            }}
-            onTransitionCancel={(event) => {
               if (spinning && event.target === event.currentTarget) settle()
             }}
               aria-hidden="true"

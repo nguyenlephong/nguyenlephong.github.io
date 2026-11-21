@@ -75,7 +75,6 @@
 .apps-stage-play { grid-area: play; min-width: 0; }
 .apps-stage-actions { grid-area: actions; }
 .apps-stage-visual { grid-area: visual; margin: 0; }
-.apps-stage-facts { grid-area: facts; }
 
 .apps-stage-name {
   display: flex;
@@ -112,6 +111,7 @@
   line-height: 1.55;
 }
 .apps-stage-facts {
+  grid-area: facts;
   display: grid;
   gap: 1rem 2.5rem;
   margin: 0;
@@ -332,9 +332,9 @@
   padding: 1.25rem 1.375rem 3.75rem;
   font-size: clamp(1rem, 0.95rem + 0.3vw, 1.1875rem);
   line-height: 1.7;
+  position: relative;
 }
 /* The selection is a background that sweeps left to right, like dragging across the words. */
-.glance-window-text { position: relative; }
 .glance-phrase {
   padding: 0.05em 0.12em;
   border-radius: 4px;
@@ -406,7 +406,8 @@
 .glance-panel-pair {
   padding: 2px 6px;
   color: #b9cdff;
-  background: rgb(91 140 255 / 0.22);
+  /* rgb(91 140 255 / 0.22) over the panel, pre-mixed so the contrast is checkable. */
+  background: #2b385c;
   border-radius: 5px;
   font-family: var(--font-mono);
   font-size: 11px;

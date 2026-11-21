@@ -58,7 +58,7 @@ function scopePaths(): { line: string; area: string } {
     const c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6]
     line += ` C${c1[0]},${c1[1]} ${c2[0]},${c2[1]} ${p2[0]},${p2[1]}`
   }
-  const last = pts[pts.length - 1]
+  const last = pts.at(-1) ?? pts[0]
   return { line, area: `${line} L${last[0]},100 L${pts[0][0]},100 Z` }
 }
 const SCOPE = scopePaths()
@@ -302,30 +302,33 @@ export default async function AboutPage({ params }: Props) {
         </h2>
         {/* Each situation leads with its measurement, and ends with a way to say "this is us". */}
         <dl className="about-habits">
-          {HABITS.map((id) => (
-            <div key={id} className="about-habit">
-              <dt>{t(`habits.items.${id}.title`)}</dt>
-              <dd>
-                <p className="about-habit-figure">
-                  <span className="about-habit-number">{t(`habits.items.${id}.figure`)}</span>
-                  <span className="about-habit-figure-label">{t(`habits.items.${id}.figureLabel`)}</span>
-                </p>
-                <p className="about-habit-proof">{t.rich(`habits.items.${id}.proof`, { b: bold })}</p>
-                <p className="about-habit-source">{t(`habits.items.${id}.source`)}</p>
-                <a
-                  href={`mailto:${email}?subject=${encodeURIComponent(t(`habits.items.${id}.title`))}`}
-                  className="about-habit-ask"
-                  data-track="cv_contact_click"
-                  data-track-channel="email"
-                  data-track-source="about_fit"
-                  data-track-fit={id}
-                >
-                  <LuMail aria-hidden="true" />
-                  {t('habits.ask')}
-                </a>
-              </dd>
-            </div>
-          ))}
+          {HABITS.map((id) => {
+            const situation = t(`habits.items.${id}.title`)
+            return (
+              <div key={id} className="about-habit">
+                <dt>{situation}</dt>
+                <dd>
+                  <p className="about-habit-figure">
+                    <span className="about-habit-number">{t(`habits.items.${id}.figure`)}</span>
+                    <span className="about-habit-figure-label">{t(`habits.items.${id}.figureLabel`)}</span>
+                  </p>
+                  <p className="about-habit-proof">{t.rich(`habits.items.${id}.proof`, { b: bold })}</p>
+                  <p className="about-habit-source">{t(`habits.items.${id}.source`)}</p>
+                  <a
+                    href={`mailto:${email}?subject=${encodeURIComponent(situation)}`}
+                    className="about-habit-ask"
+                    data-track="cv_contact_click"
+                    data-track-channel="email"
+                    data-track-source="about_fit"
+                    data-track-fit={id}
+                  >
+                    <LuMail aria-hidden="true" />
+                    {t('habits.ask')}
+                  </a>
+                </dd>
+              </div>
+            )
+          })}
         </dl>
         <p className="about-stack">{t('habits.stack')}</p>
       </section>
