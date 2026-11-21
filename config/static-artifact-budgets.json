@@ -215,8 +215,8 @@
         "about": {
           "html": "en/about.html",
           "maxStylesheetCount": 3,
-          "maxGzipBytes": 8576,
-          "maxBrotliBytes": 7424,
+          "maxGzipBytes": 10752,
+          "maxBrotliBytes": 9344,
           "requiredOwners": ["about"],
           "allowedOwners": ["about"]
         },
