@@ -57,6 +57,8 @@ export type AnalyticsEvent =
   | 'apps_card_view'
   | 'apps_link_click'
   | 'apps_cta_click'
+  // Playable demos on /apps: { app_id, action: 'spin' | 'translate', ... }.
+  | 'apps_demo_interact'
   // Unused since MEP-57 removed the app picker; names kept so old dashboards still resolve.
   // apps_filter_click (search and platform filter) was deleted with those controls.
   | 'apps_app_select'

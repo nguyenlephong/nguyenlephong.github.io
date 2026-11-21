@@ -200,14 +200,14 @@ Measured columns were refreshed from the 2026-11-13 complete export; the
 Gallery Brotli gate moved from 8,192 to 8,448 after the P1 audit work measured
 8,184 bytes. The wave-3 Blog "Start here" list (MEP-36) moved the Blog archive
 CSS Gzip gate from 16,640 to 17,152 (measured 16,648) and its HTML Gzip gate
-from 19,456 to 20,352 (measured 19,644). Wave 4 adds a per-page CSP meta (about 430 B gzip) and the article TOC: Blog archive HTML gate 21,120 (measured 20,413), Notes article HTML gate 22,528 (measured 21,781). Hard limits retain a narrow deterministic-build allowance:
+from 19,456 to 20,352 (measured 19,644). Wave 4 adds a per-page CSP meta (about 430 B gzip) and the article TOC: Blog archive HTML gate 21,120 (measured 20,413), Notes article HTML gate 22,528 (measured 21,781). The 2026-11-21 About revamp (scope figure, fit figures, endpoint plate and their motion) moved the About CSS gates from 8,576 to 10,752 Gzip (measured 10,253) and from 7,424 to 9,344 Brotli (measured 8,916); the Apps demo stages were re-measured in the same export and stay under their gates. Hard limits retain a narrow deterministic-build allowance:
 
 | Route            | Stylesheets | Measured raw | Measured Gzip | Gzip limit | Measured Brotli | Brotli limit |
 | ---------------- | ----------: | -----------: | ------------: | ---------: | --------------: | -----------: |
 | Home | 3 | 56,783 | 13,470 | 14,080 | 11,795 | 12,288 |
-| About | 3 | 32,099 | 8,218 | 8,576 | 7,089 | 7,424 |
+| About | 3 | 40,598 | 10,253 | 10,752 | 8,916 | 9,344 |
 | Gallery | 3 | 39,163 | 9,442 | 9,728 | 8,184 | 8,448 |
-| Apps | 3 | 44,476 | 10,606 | 11,008 | 9,235 | 9,600 |
+| Apps | 3 | 39,900 | 10,675 | 11,008 | 9,352 | 9,600 |
 | English practice | 3 | 38,627 | 9,294 | 9,600 | 8,022 | 8,320 |
 | Offline | 3 | 27,042 | 7,135 | 7,424 | 6,410 | 6,656 |
 | Blog archive | 3 | 82,035 | 16,648 | 17,152 | 14,426 | 14,464 |

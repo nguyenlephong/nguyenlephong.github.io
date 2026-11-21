@@ -372,7 +372,7 @@ test("Apps preview and English workspace responsive rules keep their real owner"
     read("src/app/[locale]/(site)/apps/english/english.css")
   ]);
 
-  // The showroom preview (GlanceVisual) is owned by apps.css; the English preview card was retired in MEP-57.
+  // The Glance demo (GlanceDemo) is owned by apps.css; the English preview card was retired in MEP-57.
   assert.match(appsCss, /\.app-visual\s*\{/);
   assert.doesNotMatch(englishCss, /\.app-visual/);
   for (const css of [appsCss, englishCss]) {

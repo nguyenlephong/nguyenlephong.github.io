@@ -1,5 +1,7 @@
 /* =========================================================
-   Apps showroom (/apps)
+   Apps (/apps): one stage per app, each in the app's own colours,
+   each with a demo you can play before opening the real thing.
+   Stages keep their palette in both site themes, like a poster.
    ========================================================= */
 .apps-page {
   position: relative;
@@ -11,138 +13,496 @@
 }
 
 .apps-header {
-  position: relative;
-  z-index: 1;
-  max-width: 46rem;
-  margin-bottom: 2.5rem;
+  max-width: 48rem;
+  margin-bottom: clamp(2rem, 1.25rem + 2.5vw, 3.5rem);
 }
 .apps-title {
   margin: 0 0 1rem;
-  font-size: clamp(2.25rem, 1.6rem + 2.4vw, 3.5rem);
-  font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -0.02em;
+  font-size: clamp(2.5rem, 1.5rem + 3.6vw, 4.5rem);
+  font-weight: 780;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
   text-wrap: balance;
 }
 .apps-sub {
-  max-width: 60ch;
+  max-width: 56ch;
   margin: 0 0 1.25rem;
   color: var(--fg-muted);
   font-size: var(--text-lg);
   text-wrap: pretty;
 }
+.apps-header .page-back:focus-visible,
+.apps-text-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
 
 .apps-list {
-  position: relative;
-  z-index: 1;
   display: grid;
-  gap: 3rem;
+  gap: clamp(1.5rem, 1rem + 2vw, 2.5rem);
 }
-/* Visual and text share one top edge, so no empty band opens under either column. */
-.apps-item {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-  gap: clamp(2rem, 1rem + 3vw, 4rem);
-  align-items: start;
-  padding-top: 2.5rem;
-  border-top: 1px solid var(--divider);
-}
-.apps-item-visual {
-  display: flex;
-  justify-content: center;
-  padding: clamp(1.25rem, 0.75rem + 2vw, 2.5rem);
-  background: color-mix(in oklab, var(--bg-muted) 72%, transparent);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-}
-.apps-item-visual:has(> img) {
-  padding: 0;
+
+.apps-sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
   overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
-.apps-item-visual > img {
-  display: block;
-  width: 100%;
-  height: auto;
+.apps-mono { font-family: var(--font-mono); font-size: 0.92em; }
+
+/* ---------------------------------------------------------
+   Stage
+   --------------------------------------------------------- */
+.apps-stage {
+  --st-pad: clamp(1.375rem, 0.75rem + 3vw, 4rem);
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "head" "play" "actions" "visual" "facts";
+  gap: 2rem;
+  padding: var(--st-pad);
+  overflow: hidden;
+  color: var(--st-ink);
+  background: var(--st-bg);
+  border-radius: clamp(20px, 0.75rem + 1.2vw, 32px);
+  scroll-margin-top: 6rem;
 }
-.apps-item-name {
+.apps-stage-head { grid-area: head; }
+.apps-stage-play { grid-area: play; min-width: 0; }
+.apps-stage-actions { grid-area: actions; }
+.apps-stage-visual { grid-area: visual; margin: 0; }
+
+.apps-stage-name {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   margin: 0;
-  font-size: var(--text-3xl);
-  font-weight: 650;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+  font-weight: 720;
+  letter-spacing: -0.015em;
 }
-.apps-item-meta {
-  margin: 0.5rem 0 1.25rem;
-  color: var(--fg-muted);
-  font-size: var(--text-sm);
-  font-variant-numeric: tabular-nums;
+.apps-stage-icon {
+  flex: none;
+  width: 2.25rem; height: 2.25rem;
+  border-radius: 10px;
 }
-.apps-item-tagline {
-  max-width: 40ch;
-  margin: 0 0 1.25rem;
-  font-size: var(--text-xl);
+.apps-stage-tagline {
+  max-width: 34ch;
+  margin: 0.875rem 0 0;
+  font-size: clamp(1.125rem, 1rem + 0.45vw, 1.375rem);
   font-weight: 500;
   line-height: 1.4;
   text-wrap: pretty;
 }
-.apps-item-facts {
-  display: grid;
-  gap: 0.625rem;
-  max-width: 62ch;
-  margin: 0;
-  padding-left: 1.125rem;
-  line-height: 1.6;
+.apps-stage-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
-.apps-item-facts li::marker {
-  color: var(--accent);
-}
-.apps-hotkeys-title {
-  margin: 1.5rem 0 0.75rem;
+.apps-stage-meta {
+  max-width: 52ch;
+  margin: 1rem 0 0;
+  color: var(--st-muted);
   font-size: var(--text-sm);
+  line-height: 1.55;
+}
+.apps-stage-facts {
+  grid-area: facts;
+  display: grid;
+  gap: 1rem 2.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.apps-stage-facts li {
+  padding-top: 0.875rem;
+  border-top: 1px solid var(--st-rule);
+  color: var(--st-muted);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+/* Buttons: colours come from the stage. */
+.apps-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0 1.25rem;
+  border: 1.5px solid transparent;
+  border-radius: 14px;
+  font: inherit;
+  font-size: var(--text-base);
+  font-weight: 650;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background var(--d-fast),
+    color var(--d-fast),
+    border-color var(--d-fast),
+    translate var(--d-base) var(--ease),
+    box-shadow var(--d-base) var(--ease);
+}
+.apps-btn svg { flex: none; }
+.apps-btn:hover { translate: 0 -2px; }
+.apps-btn:active { translate: 0 0; }
+.apps-btn:focus-visible { outline: 3px solid var(--st-focus); outline-offset: 3px; }
+.apps-btn--primary { background: var(--st-cta); color: var(--st-cta-ink); }
+.apps-btn--primary:hover { box-shadow: 0 10px 22px -10px var(--st-cta); }
+.apps-btn--quiet {
+  min-height: 44px;
+  padding-inline: 1rem;
+  border-color: var(--st-rule-strong);
+  color: var(--st-ink);
+  background: transparent;
+  font-size: var(--text-sm);
+}
+.apps-btn--quiet:hover { border-color: var(--st-ink); }
+
+/* ---------------------------------------------------------
+   Ăn Gì: the app's paper, turmeric dice and directions blue.
+   #f3ebe0 is the screenshot's own background, so the image sits flush.
+   --------------------------------------------------------- */
+.apps-stage[data-app='an-gi'] {
+  --st-bg: #f3ebe0;
+  --st-ink: #1e1a15;
+  --st-muted: #574e43;
+  --st-rule: rgb(30 26 21 / 0.14);
+  --st-rule-strong: rgb(30 26 21 / 0.3);
+  --st-yellow: #ffc83a;
+  --st-cta: #2b45d8;
+  --st-cta-ink: #fff;
+  --st-focus: #2b45d8;
+}
+.apps-stage[data-app='an-gi'] .apps-stage-icon {
+  background:
+    radial-gradient(circle at 30% 30%, var(--st-ink) 0 2.5px, transparent 3px),
+    radial-gradient(circle at 70% 30%, var(--st-ink) 0 2.5px, transparent 3px),
+    radial-gradient(circle at 50% 50%, var(--st-ink) 0 2.5px, transparent 3px),
+    radial-gradient(circle at 30% 70%, var(--st-ink) 0 2.5px, transparent 3px),
+    radial-gradient(circle at 70% 70%, var(--st-ink) 0 2.5px, transparent 3px),
+    var(--st-yellow);
+  box-shadow: inset 0 -2px 0 rgb(30 26 21 / 0.18);
+}
+
+/* The reel: a slot window over the dish lists the app has. */
+.dish-reel-line {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  margin: 0;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.dish-reel-lead {
+  font-size: clamp(1.75rem, 1.15rem + 2.2vw, 3rem);
+}
+.dish-reel-window {
+  --row: 1.2em;
+  position: relative;
+  display: inline-grid;
+  height: var(--row);
+  padding-inline: 0.2em;
+  overflow: hidden;
+  font-size: clamp(2.375rem, 1.2rem + 5.4vw, 6rem);
+  background: var(--st-yellow);
+  border: 3px solid var(--st-ink);
+  border-radius: 0.18em;
+  box-shadow: 0 0.06em 0 var(--st-ink);
+}
+.dish-reel-strip {
+  display: grid;
+  translate: 0 calc(var(--i, 0) * var(--row) * -1);
+}
+.dish-reel-item {
+  height: var(--row);
+  line-height: var(--row);
+  white-space: nowrap;
+}
+/* Shade the top and bottom only while it rolls, so diacritics stay crisp at rest. */
+.dish-reel-window::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(var(--st-yellow), transparent 30%, transparent 70%, var(--st-yellow));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--d-fast);
+}
+.dish-reel-window[data-spinning]::after { opacity: 1; }
+.dish-reel-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+.apps-btn--spin {
+  border-color: var(--st-ink);
+  color: var(--st-ink);
+  background: transparent;
+}
+.apps-btn--spin:hover { background: var(--st-ink); color: var(--st-bg); }
+.apps-btn--spin:disabled { cursor: progress; translate: 0 0; }
+.apps-btn--primary[aria-disabled='true'] { opacity: 0.6; }
+
+/* ---------------------------------------------------------
+   Glance: a Mac desktop at dusk, a light Mail window, a glass panel.
+   --------------------------------------------------------- */
+.apps-stage[data-app='glance'] {
+  --st-bg:
+    radial-gradient(70% 90% at 100% 0%, #2c3a9e 0%, transparent 70%),
+    radial-gradient(70% 80% at 0% 100%, #5d2f6b 0%, transparent 70%),
+    #151935;
+  --st-ink: #f4f5fb;
+  --st-muted: #c8cce4;
+  --st-rule: rgb(244 245 251 / 0.16);
+  --st-rule-strong: rgb(244 245 251 / 0.32);
+  --st-cta: #f4f5fb;
+  --st-cta-ink: #151935;
+  --st-focus: #9cc3ff;
+}
+/* "Aă": English in, Vietnamese out. */
+.apps-stage[data-app='glance'] .apps-stage-icon {
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, #5b8cff, #2c3fc0);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.18);
+}
+.apps-stage[data-app='glance'] .apps-stage-icon::after {
+  content: 'Aă';
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.apps-stage[data-app='glance'] .apps-btn--primary:hover { box-shadow: 0 10px 26px -10px rgb(156 195 255 / 0.7); }
+.apps-stage[data-app='glance'] kbd {
+  color: var(--st-ink);
+  background: rgb(255 255 255 / 0.08);
+  border-color: rgb(255 255 255 / 0.28);
+}
+
+/* The Glance demo root. */
+.app-visual {
+  width: 100%;
+}
+.glance-demo {
+  display: flex;
+  flex-direction: column;
+}
+.glance-window {
+  overflow: hidden;
+  color: #1c1c21;
+  background: #f7f7f9;
+  border-radius: 12px;
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 0.08),
+    0 32px 64px -24px rgb(0 0 0 / 0.65);
+}
+.glance-window-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.625rem 0.875rem;
+  background: #e8e8ed;
+  border-bottom: 1px solid #d8d8de;
+}
+.glance-dot { width: 11px; height: 11px; border-radius: 50%; }
+.glance-dot--red { background: #ff5f57; }
+.glance-dot--amber { background: #febc2e; }
+.glance-dot--green { background: #28c840; }
+.glance-window-title {
+  margin-inline: auto;
+  padding-right: 3rem;
+  color: #6b6b75;
+  font-size: 12px;
   font-weight: 600;
 }
+/* Bottom room equals the panel overlap, so the panel never covers a word. */
+.glance-window-text {
+  margin: 0;
+  padding: 1.25rem 1.375rem 3.75rem;
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.1875rem);
+  line-height: 1.7;
+  position: relative;
+}
+/* The selection is a background that sweeps left to right, like dragging across the words. */
+.glance-phrase {
+  padding: 0.05em 0.12em;
+  border-radius: 4px;
+  cursor: pointer;
+  background: linear-gradient(#b3d7ff, #b3d7ff) no-repeat 0 0 / 0% 100%;
+  text-decoration: underline dotted #3b6fe0 2px;
+  text-underline-offset: 0.24em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.glance-phrase:hover { background-color: #e6efff; }
+.glance-phrase[aria-pressed='true'] {
+  background-size: 100% 100%;
+  text-decoration-color: transparent;
+}
+.glance-cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  translate: var(--cx, 40%) var(--cy, 70%);
+  opacity: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 3px rgb(0 0 0 / 0.3));
+}
+.glance-cursor[data-shown] { opacity: 1; }
+.glance-phrase:focus-visible { outline: 2px solid #3b6fe0; outline-offset: 2px; }
+
+.glance-panel-live {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+.glance-panel {
+  position: relative;
+  z-index: 1;
+  align-self: flex-end;
+  width: min(100% - 1.5rem, 23rem);
+  margin: -2.75rem 0.75rem 0 0;
+  padding: 0.875rem 1rem;
+  color: #f4f5fb;
+  background: rgb(30 32 46 / 0.84);
+  border: 1px solid rgb(255 255 255 / 0.14);
+  border-radius: 14px;
+  box-shadow: 0 24px 48px -16px rgb(0 0 0 / 0.6);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  animation: glance-pop 460ms cubic-bezier(0.2, 1.35, 0.4, 1) both;
+}
+.glance-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.glance-panel-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #c8cce4;
+  font-size: 12px;
+  font-weight: 650;
+}
+.glance-panel-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #5b8cff;
+  box-shadow: 0 0 0 3px rgb(91 140 255 / 0.28);
+}
+.glance-panel-pair {
+  padding: 2px 6px;
+  color: #b9cdff;
+  /* rgb(91 140 255 / 0.22) over the panel, pre-mixed so the contrast is checkable. */
+  background: #2b385c;
+  border-radius: 5px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+}
+.glance-panel-source {
+  margin: 0.625rem 0 0.375rem;
+  color: #aeb3cc;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.glance-panel-target {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 620;
+  line-height: 1.35;
+}
+.glance-panel-foot {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin: 0.75rem 0 0;
+  color: #aeb3cc;
+  font-size: 12px;
+}
+.glance-panel-foot span { margin-left: 0.25rem; }
+.glance-panel-foot kbd { min-width: 18px; height: 18px; padding: 0 0.3rem; font-size: 10px; }
+.glance-hint {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.625rem 0.875rem;
+  max-width: 52ch;
+  margin: 1.5rem 0 0;
+  color: var(--st-muted);
+  font-size: var(--text-sm);
+}
+.glance-keys { display: inline-flex; gap: 0.3rem; }
+.apps-stage[data-app='glance'] .glance-keys kbd {
+  min-width: 32px;
+  height: 32px;
+  font-size: 13px;
+  border-bottom-width: 3px;
+  transition: translate 90ms, background 90ms, border-color 90ms;
+}
+.apps-stage[data-app='glance'] .glance-keys kbd[data-down] {
+  translate: 0 2px;
+  background: #5b8cff;
+  border-color: #9cc3ff;
+  border-bottom-width: 1px;
+}
+@keyframes glance-pop {
+  from { opacity: 0; translate: 0 16px; scale: 0.92; }
+}
+
 .apps-hotkeys {
   display: grid;
   gap: 0.5rem;
-  margin: 0;
+  margin: 0 0 1.5rem;
 }
 .apps-hotkey-row {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
-.apps-hotkey-row dt {
+.apps-hotkey-row dt { display: inline-flex; gap: 0.25rem; min-width: 5.25rem; }
+.apps-hotkey-row dd { margin: 0; color: var(--st-muted); font-size: var(--text-sm); }
+
+kbd {
   display: inline-flex;
-  gap: 0.25rem;
-  min-width: 5rem;
-}
-.apps-hotkey-row dd {
-  margin: 0;
-  color: var(--fg-muted);
-  font-size: var(--text-sm);
-}
-.apps-item-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 2rem;
-}
-.apps-item-actions .btn {
-  min-height: 44px;
-}
-.apps-item-actions .btn svg {
-  flex: none;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 0.4rem;
+  color: var(--fg);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
 }
 
+/* ---------------------------------------------------------
+   Footer note
+   --------------------------------------------------------- */
 .apps-lab-note {
-  position: relative;
-  z-index: 1;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem 2rem;
-  margin-top: 3.5rem;
+  margin-top: 3rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--divider);
 }
@@ -160,204 +520,191 @@
   font-weight: 600;
   text-underline-offset: 4px;
 }
-.apps-text-link:hover {
-  text-decoration: underline;
-}
-.apps-text-link:focus-visible,
-.apps-header .page-back:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: var(--radius-sm);
-}
+.apps-text-link:hover { text-decoration: underline; }
 
-kbd {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 22px;
-  height: 22px;
-  padding: 0 0.4rem;
-  color: var(--fg);
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-strong);
-  border-bottom-width: 2px;
-  border-radius: 5px;
-  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 600;
-}
 
-/* =========================================================
-   Visual mockup: Glance (static)
-   ========================================================= */
-.app-visual {
+/* ---------------------------------------------------------
+   Ăn Gì deck: the app's own dish covers. Each result is thrown
+   on top; the older ones fan out behind it.
+   --------------------------------------------------------- */
+.dish-deck {
+  position: relative;
+  justify-self: center;
+  align-self: center;
+  /* Narrower than the column so the fanned cards stay inside the paper. */
+  width: min(74%, 24rem);
+  aspect-ratio: 1;
+  margin: 1rem 0 1.5rem;
+}
+.dish-card {
+  position: absolute;
+  inset: 0;
+  padding: 10px;
+  background: #fffaf2;
+  border-radius: 30px;
+  box-shadow:
+    0 1px 0 rgb(30 26 21 / 0.08),
+    0 34px 60px -30px rgb(80 36 10 / 0.6);
+  transition:
+    translate 650ms var(--ease),
+    rotate 650ms var(--ease),
+    scale 650ms var(--ease),
+    filter 650ms var(--ease);
+}
+.dish-card img {
+  display: block;
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  object-fit: cover;
+  border-radius: 21px;
 }
-
-.app-visual-stage {
-  position: relative;
-  width: 100%;
-  max-width: 460px;
-  aspect-ratio: 4 / 3;
-}
-
-/* Faux app window */
-.app-visual-window {
+.dish-card[data-pos='0'] { z-index: 3; rotate: -2deg; }
+.dish-card[data-pos='1'] { z-index: 2; translate: 17% -4%; rotate: 11deg; scale: 0.86; filter: brightness(0.92) saturate(0.9); }
+.dish-card[data-pos='2'] { z-index: 1; translate: -16% -7%; rotate: -13deg; scale: 0.8; filter: brightness(0.84) saturate(0.8); }
+.dish-card-tag {
   position: absolute;
-  inset: 0 18% 28% 0;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-strong);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
+  left: 22px;
+  bottom: 22px;
+  padding: 0.375rem 0.875rem;
+  color: var(--st-ink);
+  background: var(--st-yellow);
+  border: 2px solid var(--st-ink);
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 760;
+  letter-spacing: -0.01em;
 }
-.app-visual-window-bar {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.5rem 0.75rem;
-  background: var(--bg-muted);
-  border-bottom: 1px solid var(--divider);
-}
-.app-visual-dot {
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  background: var(--border-strong);
-}
-.app-visual-dot--red { background: #ff5f57; }
-.app-visual-dot--amber { background: #febc2e; }
-.app-visual-dot--green { background: #28c840; }
-.app-visual-window-title {
-  margin-left: auto;
-  margin-right: auto;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--fg-subtle);
-  letter-spacing: 0;
-}
-.app-visual-window-body {
-  padding: 1rem 1.125rem;
-}
-.app-visual-text {
-  font-size: 0.875rem;
-  line-height: 1.55;
-  color: var(--fg);
-  margin: 0;
-}
-.app-visual-highlight {
-  background: color-mix(in oklab, var(--accent) 30%, transparent);
-  color: var(--fg);
-  padding: 1px 2px;
-  border-radius: 2px;
-}
-[data-theme='dark'] .app-visual-highlight {
-  background: color-mix(in oklab, var(--accent) 45%, transparent);
-}
+.dish-card:not([data-pos='0']) .dish-card-tag { opacity: 0; }
 
-/* Floating translation panel */
-.app-visual-panel {
-  position: absolute;
-  right: 0; bottom: 0;
-  width: 70%;
-  padding: 0.875rem 1rem;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-strong);
-  border-radius: 14px;
-  box-shadow: var(--shadow-lg);
+/* ---------------------------------------------------------
+   Layout
+   --------------------------------------------------------- */
+@media (min-width: 720px) {
+  .apps-stage-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-.app-visual-panel-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-}
-.app-visual-panel-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0;
-  text-transform: uppercase;
-  color: var(--fg-subtle);
-}
-.app-visual-panel-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 25%, transparent);
-}
-.app-visual-panel-pair {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--accent-strong);
-  padding: 2px 6px;
-  background: var(--accent-soft);
-  border-radius: 4px;
-}
-[data-theme='dark'] .app-visual-panel-pair { color: var(--accent); }
-.app-visual-panel-source {
-  font-size: 0.7rem;
-  color: var(--fg-subtle);
-  margin: 0 0 0.5rem;
-  line-height: 1.4;
-}
-.app-visual-panel-divider {
-  height: 1px;
-  background: var(--divider);
-  margin-bottom: 0.5rem;
-}
-.app-visual-panel-target {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--fg);
-  margin: 0 0 0.625rem;
-  line-height: 1.35;
-  letter-spacing: 0;
-}
-.app-visual-panel-foot {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-size: 10px;
-  color: var(--fg-subtle);
-}
-.app-visual-panel-foot kbd {
-  min-width: 18px; height: 18px;
-  font-size: 9px;
-  padding: 0 0.3rem;
-}
-.app-visual-panel-foot span { margin-left: 0.25rem; letter-spacing: 0; }
-
-/* Faux cursor */
-.app-visual-cursor {
-  position: absolute;
-  top: 38%; left: 32%;
-  color: var(--fg);
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
-}
-
-
-@media (max-width: 860px) {
-  .apps-item {
-    grid-template-columns: 1fr;
+@media (min-width: 960px) {
+  .apps-stage { column-gap: clamp(2.5rem, 1rem + 3vw, 4.5rem); row-gap: 2.25rem; }
+  .apps-stage[data-app='an-gi'] {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    grid-template-areas:
+      "head visual"
+      "play visual"
+      "actions visual"
+      "facts facts";
   }
+  .apps-stage[data-app='glance'] {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    /* The empty first and fourth rows centre the copy against the demo. */
+    grid-template-rows: 1fr auto auto 1fr auto;
+    grid-template-areas:
+      "play ."
+      "play head"
+      "play actions"
+      "play ."
+      "facts facts";
+  }
+  .apps-stage[data-app='glance'] .apps-stage-play { align-self: center; }
 }
 @media (max-width: 640px) {
   .apps-sub,
-  .apps-lab-note p {
-    font-size: var(--text-base);
+  .apps-lab-note p { font-size: var(--text-base); }
+  .apps-stage { gap: 1.75rem; }
+  .apps-stage-links .apps-btn,
+  .dish-reel-controls .apps-btn { flex: 1 1 auto; justify-content: center; }
+}
+
+/* ---------------------------------------------------------
+   Motion. Everything below is off under reduced motion; the
+   resting state above is already the finished state.
+   --------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  /* Load: the heading words rise in once. */
+  .apps-title-word {
+    display: inline-block;
+    animation: apps-rise 800ms var(--ease) calc(80ms + var(--w, 0) * 90ms) both;
   }
-  .apps-item-tagline {
-    font-size: var(--text-lg);
+  .apps-sub,
+  .apps-header .page-back { animation: apps-rise 800ms var(--ease) 420ms both; }
+
+  /* Reel: a few loops, then a small overshoot as it lands. */
+  .dish-reel-window[data-spinning] .dish-reel-strip {
+    transition: translate 1.9s cubic-bezier(0.15, 0.9, 0.25, 1.06);
   }
-  .apps-item {
-    padding-top: 2rem;
+  .apps-btn--spin:disabled svg { animation: apps-dice 0.5s linear infinite; }
+  /* Until the first spin, the dice gives a small shake every few seconds. */
+  .apps-btn--spin[data-nudge] svg { animation: apps-nudge 4.5s ease-in-out 2.5s infinite; }
+
+  /* Deck: the new top card is thrown in; while spinning, the top card rattles. */
+  .dish-card[data-pos='0'] { animation: dish-throw 720ms cubic-bezier(0.2, 1.25, 0.4, 1) both; }
+  .dish-deck[data-spinning] .dish-card[data-pos='0'] {
+    animation: dish-rattle 180ms ease-in-out infinite alternate;
   }
+
+  /* Glance: the autoplay cursor glides between phrases; the selection sweeps across. */
+  .glance-cursor { transition: translate 720ms cubic-bezier(0.3, 0.7, 0.2, 1), opacity 240ms; }
+  .glance-phrase { transition: background-size 560ms cubic-bezier(0.4, 0, 0.2, 1), background-color var(--d-fast); }
+
+  /* Glance wallpaper drifts slowly, like a desktop that is awake. */
+  .apps-stage[data-app='glance']::before,
+  .apps-stage[data-app='glance']::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 55%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    filter: blur(70px);
+    pointer-events: none;
+  }
+  .apps-stage[data-app='glance']::before {
+    top: -20%;
+    right: -10%;
+    background: rgb(76 96 230 / 0.55);
+    animation: apps-drift 16s ease-in-out infinite alternate;
+  }
+  .apps-stage[data-app='glance']::after {
+    bottom: -25%;
+    left: -10%;
+    background: rgb(168 70 160 / 0.45);
+    animation: apps-drift 19s ease-in-out -6s infinite alternate-reverse;
+  }
+
+  /* Scroll: each stage rises into place as it enters. Translate only, so demo geometry stays exact. */
+  @supports (animation-timeline: view()) {
+    .apps-stage {
+      animation: apps-stage-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glance-panel { animation: none; }
+  .apps-btn,
+  .glance-phrase,
+  .dish-card,
+  .apps-stage[data-app='glance'] .glance-keys kbd { transition: none; }
+  .apps-btn:hover { translate: none; }
+}
+@keyframes apps-rise { from { opacity: 0; translate: 0 0.45em; } }
+@keyframes apps-dice { to { rotate: 1turn; } }
+@keyframes apps-nudge {
+  0%, 14%, 100% { rotate: 0deg; scale: 1; }
+  3% { rotate: -24deg; scale: 1.15; }
+  6% { rotate: 18deg; scale: 1.15; }
+  9% { rotate: -10deg; }
+  12% { rotate: 4deg; }
+}
+@keyframes dish-throw {
+  from { opacity: 0; translate: 45% 55%; rotate: 28deg; scale: 0.7; }
+}
+@keyframes dish-rattle {
+  from { rotate: -5deg; translate: 0 -2%; }
+  to { rotate: 3deg; translate: 0 1%; }
+}
+@keyframes apps-drift {
+  to { translate: -18% 22%; }
+}
+@keyframes apps-stage-in {
+  from { translate: 0 9vh; }
 }

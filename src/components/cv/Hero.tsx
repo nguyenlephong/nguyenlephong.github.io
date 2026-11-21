@@ -108,8 +108,12 @@ export default function Hero() {
             zaloNote: t('topology.zaloNote'),
             bonbonEdge: t.rich('topology.bonbonMeta', { date }),
             bonbonNote: t('topology.bonbonNote'),
+            logiupEdge: t.rich('topology.logiupMeta', { date }),
+            logiupNote: t('topology.logiupNote'),
             previousEdge: t.rich('topology.previousMeta', { date }),
             previousNote: t('topology.previousNote'),
+            primedataEdge: t.rich('topology.primedataMeta', { date }),
+            primedataNote: t('topology.primedataNote'),
           }}
         />
       </div>

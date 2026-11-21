@@ -74,13 +74,17 @@
     "getInTouch": "Gửi email",
     "socialProfiles": "Mạng xã hội",
     "topology": {
-      "label": "Vai trò hiện tại và vai trò trước đó",
+      "label": "Vai trò hiện tại và các vai trò trước",
       "zaloNote": "app desktop · hơn 18 triệu MAU",
       "bonbonNote": "pre-seed 500.000 USD, Tasco dẫn dắt",
       "previousNote": "dẫn team delivery · 8 dev + 3 QC",
       "zaloMeta": "Lead · toàn thời gian · từ <date>03/2026</date>",
       "bonbonMeta": "Đồng sáng lập · từ <date>04/2026</date>",
-      "previousMeta": "trước đó · <date>08/2025 – 03/2026</date>"
+      "previousMeta": "trước đó · <date>08/2025 – 03/2026</date>",
+      "logiupMeta": "Tech Lead · từ <date>03/2026</date>",
+      "logiupNote": "SaaS logistics multi-tenant",
+      "primedataMeta": "trước đó · <date>07/2020 – 04/2024</date>",
+      "primedataNote": "sản phẩm CDP · dẫn team front-end"
     }
   },
   "Sections": {
@@ -582,14 +586,15 @@
   },
   "About": {
     "title": "Tôi vẫn tự viết những phần khó nhất và không để team phải đứng chờ tôi.",
-    "lede": "Tôi làm phần mềm từ năm 2018: ở một startup còn rất sớm, một công ty outsource, một công ty làm sản phẩm, ở Zalo và ở một công ty đang chuyển giao CTO. Tháng 3/2026 Zalo nhận tôi quay lại làm Lead, cũng năm đó tôi đồng sáng lập một startup. Mỗi lần chuyển việc, cách làm của tôi lại đổi. Có hai thói quen tôi giữ nguyên. Thay đổi thì ship từng bước nhỏ, lỗi là rollback được. Với team thì mặc định tin trước.",
+    "lede": "Tôi làm phần mềm từ năm 2018: ở một startup còn rất sớm, một công ty outsource, một công ty làm sản phẩm, ở Zalo và ở một công ty vừa đổi CTO. Tháng 3/2026 Zalo nhận tôi quay lại làm Lead, cũng năm đó tôi đồng sáng lập một startup. Mỗi lần chuyển việc, cách làm của tôi lại đổi. Có hai thói quen tôi giữ nguyên. Thay đổi thì ship từng bước nhỏ, lỗi là rollback được. Với team thì mặc định tin trước.",
     "arc": {
       "label": "Các chặng từ năm 2018",
       "early": "Startup, outsource",
       "product": "Sản phẩm",
       "scale": "Big tech",
       "handover": "Chuyển giao",
-      "now": "Lead, đồng sáng lập"
+      "now": "Lead, đồng sáng lập",
+      "axis": "Phạm vi trách nhiệm"
     },
     "story": {
       "title": "Những chặng đã qua",
@@ -599,35 +604,40 @@
           "where": "Propman Guru, rồi Splus Software",
           "env": "Startup giai đoạn đầu, rồi outsource",
           "body": "Tôi bắt đầu làm front-end ở Propman Guru, một startup bất động sản còn rất sớm. Sau đó là 16 tháng ở Splus Software, công ty outsource: hơn 8 dự án cho khách hàng giáo dục, F&B, ngân hàng và thương mại điện tử, lần đầu dẫn một team nhỏ. Năm 2019 tôi nhận giải Best Rookie of the Year.",
-          "shift": "Ở đây tôi đi trọn một vòng dự án, từ lúc nhận yêu cầu của khách đến lúc bàn giao."
+          "shift": "Ở đây tôi đi trọn một vòng dự án, từ lúc nhận yêu cầu của khách đến lúc bàn giao.",
+          "measure": "8+ dự án khách hàng"
         },
         "product": {
           "dates": "2020–2024",
           "where": "PrimeData",
           "env": "Startup sản phẩm B2B",
           "body": "Gần bốn năm với một sản phẩm: CDxP, nền tảng dữ liệu khách hàng. Tôi dẫn team front-end bốn người, giữ tracking SDK dưới <b>200 KB</b> và làm bộ feature flag runtime đầu tiên của mình.",
-          "shift": "Ở lâu với một sản phẩm thì phải sống với quyết định của chính mình. Feature flag, giới hạn dung lượng và bộ test chạy trước mỗi lần release thành thói quen từ đây."
+          "shift": "Ở lâu với một sản phẩm thì phải sống với quyết định của chính mình. Feature flag, giới hạn dung lượng và bộ test chạy trước mỗi lần release thành thói quen từ đây.",
+          "measure": "team front-end 4 người"
         },
         "scale": {
           "dates": "2024–2025",
           "where": "Zalo PC",
           "env": "Big tech, sản phẩm đại chúng",
           "body": "App desktop hơn <b>18 triệu MAU</b>. Tôi làm dark mode, đổi theme động và module tải file. Tôi cũng dẫn dắt design system trên Storybook mà hơn 50 developer dùng chung.",
-          "shift": "Component dùng chung và một app có hàng triệu người dùng buộc tôi đặt độ ổn định lên trước tốc độ."
+          "shift": "Sửa một component dùng chung là chạm tới hàng triệu người dùng, nên tôi quen kiểm tra độ ổn định trước rồi mới tính chuyện nhanh.",
+          "measure": "hơn 18 triệu MAU"
         },
         "handover": {
           "dates": "2025–2026",
           "where": "NDSVN",
           "env": "Doanh nghiệp, đối tác thanh toán và viễn thông",
           "body": "Tôi vào ngay sau đợt chuyển giao CTO, nhận phụ trách kỹ thuật cho team delivery 8 developer và 3 QC. Tôi dựng quy trình phỏng vấn có cấu trúc để tuyển người, rồi ra nền tảng feature flag cho <b>30+ tenant</b>.",
-          "shift": "Dẫn team lúc đó nghĩa là viết ra cách cả team làm việc, để không quyết định nào phải chờ một người."
+          "shift": "Lúc đó dẫn team chủ yếu là viết ra cách cả team làm việc, để không việc gì phải chờ một mình tôi.",
+          "measure": "8 developer + 3 QC"
         },
         "now": {
           "dates": "2026–nay",
           "where": "Zalo PC, BonBon Mobility, LogiUP",
           "env": "Big tech, startup của mình, SaaS B2B",
           "body": "Zalo nhận tôi quay lại làm Lead từ tháng 3/2026, dẫn mảng tin nhắn đa thiết bị và lưu trữ phía client, trong đó có sao lưu tin nhắn trên PC rồi khôi phục trên điện thoại. Ngoài Zalo, tôi đồng sáng lập BonBon Mobility. BonBon thắng Wash3000 của Tasco Foundry giữa khoảng 100 hồ sơ và nhận vòng pre-seed <b>500.000 USD</b> do Tasco dẫn dắt. Ở LogiUP, một SaaS logistics multi-tenant, tôi là Tech Lead kiêm system architect của team bốn người.",
-          "shift": "Ở vai trò này, phần lớn việc của tôi là ra quyết định: kiến trúc tách ra sao, cái gì ship ở trạng thái mặc định tắt, bài review bảo mật của đối tác sẽ chấp nhận điều gì."
+          "shift": "Ở vai trò này, phần lớn việc của tôi là ra quyết định: tách kiến trúc thế nào, cái gì ship ở trạng thái tắt sẵn, đối tác review bảo mật thì chấp nhận được tới đâu.",
+          "measure": "pre-seed 500.000 USD"
         }
       }
     },
@@ -637,25 +647,34 @@
         "scale": {
           "title": "Team cần đưa tính năng lớn tới người dùng thật, nhanh mà không đổ vỡ",
           "proof": "Ngay đợt rollout đầu, <b>80%</b> người dùng đi hết trọn luồng sao lưu và khôi phục. Đó là tính năng sao lưu tin nhắn trên PC, khôi phục trên điện thoại, của một app desktop hơn 18 triệu MAU. Tôi cùng team đưa nó tới người dùng thật sau <b>2 sprint</b>, lúc vừa quay lại Zalo PC làm Lead và còn đang thử việc. Team rollout theo từng đợt, đợt nào cũng theo dõi đủ kỹ để thấy lỗi là sửa ngay.",
-          "source": "Zalo PC · 2026"
+          "source": "Zalo PC · 2026",
+          "figure": "80%",
+          "figureLabel": "người dùng đi hết luồng sao lưu và khôi phục ngay đợt rollout đầu"
         },
         "handover": {
           "title": "Team vừa mất người dẫn dắt kỹ thuật",
           "proof": "Chỉ sau <b>2 tuần</b> kể từ đợt chuyển giao CTO ở NDSVN, team đã theo kịp nhịp sprint. Tôi nhận phụ trách kỹ thuật cho 8 developer và 3 QC của team. Lúc đó điều mọi người cần nhất là biết mình đang đứng ở đâu, nên tôi bắt đầu từ 1:1 và từ việc hằng ngày của từng bạn, rồi cùng mỗi bạn lên lộ trình phát triển 3, 6 và 12 tháng. Ghi nhận dựa trên số liệu rõ ràng, như velocity của từng người qua mỗi sprint, để công của ai thì người đó được nhận.",
-          "source": "NDSVN · 2025–2026"
+          "source": "NDSVN · 2025–2026",
+          "figure": "2 tuần",
+          "figureLabel": "để team theo kịp nhịp sprint sau đợt chuyển giao CTO"
         },
         "zeroToOne": {
           "title": "Team cần đi từ ý tưởng tới sản phẩm thật, nhanh",
           "proof": "Chúng tôi đi từ ý tưởng tới sản phẩm chạy được trong 4 tuần, sau đó chạy thử thực tế một tháng. Đó là BonBon, startup tôi đồng sáng lập. BonBon thắng Wash3000 của Tasco Foundry giữa khoảng 100 hồ sơ, rồi gọi được vòng pre-seed <b>500.000 USD</b> do Tasco dẫn dắt.",
-          "source": "BonBon · 2026"
+          "source": "BonBon · 2026",
+          "figure": "4 tuần",
+          "figureLabel": "từ ý tưởng tới sản phẩm chạy được, rồi chạy thử thực tế một tháng"
         },
         "platform": {
           "title": "Sản phẩm B2B, nhiều khách hàng dùng chung một nền tảng",
           "proof": "Với SaaS cho doanh nghiệp, lỗi đắt nhất là để khách này thấy dữ liệu của khách kia. Ở LogiUP, tôi đặt việc tách dữ liệu theo từng khách làm nền móng, ở mọi lớp từ token tới từng lần kiểm tra quyền, để team 4 người cứ thế ship tính năng mà không phải lo chuyện đó. Phần AI điền tờ khai hải quan cũng theo cùng tinh thần: AI gợi ý, người dùng xác nhận từng phần, vì sai một ô là khách mất tiền. Luồng tờ khai xuất khẩu đã vào UAT từ 10/2026.",
-          "source": "LogiUP, NDSVN · 2025–2026"
+          "source": "LogiUP, NDSVN · 2025–2026",
+          "figure": "8/8",
+          "figureLabel": "phần tờ khai hải quan, phần nào cũng có người xác nhận sau khi AI gợi ý"
         }
       },
-      "stack": "Đang dùng (tháng 11/2026): TypeScript, React, Next.js, Electron, Go, NestJS, PostgreSQL, Redis, Kubernetes, PostHog."
+      "stack": "Đang dùng (tháng 11/2026): TypeScript, React, Next.js, Electron, Go, NestJS, PostgreSQL, Redis, Kubernetes, PostHog.",
+      "ask": "Team bạn đang như vậy? Gửi email cho tôi"
     },
     "writing": {
       "title": "Tôi học bằng cách viết ra.",
@@ -663,7 +682,7 @@
       "teaching": "Tháng 5/2023 tôi dạy một khoá front-end theo dự án ở Vietnam Australia Center cho <b>12 học viên</b>, đi từ yêu cầu tới app React chạy được."
     },
     "closing": {
-      "body": "Tôi làm tốt nhất ở những sản phẩm có người dùng thật đang trông vào, cùng một team muốn ship đều tay. Phần của tôi là giữ cho thay đổi rủi ro luôn rollback được, giữ hướng đi rõ, để không ai phải ngồi chờ tôi quyết.",
+      "body": "Tôi làm tốt nhất ở những sản phẩm có người dùng thật đang trông vào, cùng một team muốn ship đều tay. Phần của tôi là giữ cho thay đổi rủi ro luôn rollback được và hướng đi luôn rõ.",
       "linksLabel": "CV, email và kinh nghiệm",
       "resume": "CV (PDF)",
       "email": "Email",
