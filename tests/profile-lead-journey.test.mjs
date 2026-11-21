@@ -386,10 +386,12 @@ test("hero leads with both the Zalo PC role and the BonBon co-founder role", asy
   assert.match(topology, /track\('cv_hero_node_select', \{ node: e\.id, surface: 'topology' \}\)/);
   assert.match(topology, /href: '#experience'/);
   assert.match(topology, /href: '#case-bonbon'/);
+  assert.match(topology, /href: '#case-logiup'/);
+  assert.match(topology, /name: 'PrimeData VN'/);
   // Topology dates are mono date tokens in every locale.
   for (const locale of locales) {
     const topo = JSON.parse(await read(`messages/${locale}.json`)).Hero.topology;
-    for (const key of ["zaloMeta", "bonbonMeta", "previousMeta"]) assert.match(topo[key], /<date>.+<\/date>/);
+    for (const key of ["zaloMeta", "bonbonMeta", "logiupMeta", "previousMeta", "primedataMeta"]) assert.match(topo[key], /<date>.+<\/date>/);
   }
   assert.match(analytics, /\| 'cv_hero_node_select'/);
   assert.match(hero, /track\('cv_announcement_click', \{ target: 'bonbon_pre_seed_note' \}\)/);

@@ -74,13 +74,17 @@
     "getInTouch": "Email me",
     "socialProfiles": "Social profiles",
     "topology": {
-      "label": "Current roles and the one before",
+      "label": "Current roles and earlier ones",
       "zaloNote": "desktop client · 18M+ MAU",
       "bonbonNote": "$500K pre-seed, led by Tasco",
       "previousNote": "delivery lead · 8 dev + 3 QC",
       "zaloMeta": "Lead · full-time · since <date>Mar 2026</date>",
       "bonbonMeta": "Co-founder · since <date>Apr 2026</date>",
-      "previousMeta": "previous · <date>Aug 2025 – Mar 2026</date>"
+      "previousMeta": "previous · <date>Aug 2025 – Mar 2026</date>",
+      "logiupMeta": "Tech Lead · since <date>Mar 2026</date>",
+      "logiupNote": "multi-tenant logistics SaaS",
+      "primedataMeta": "previous · <date>Jul 2020 – Apr 2024</date>",
+      "primedataNote": "CDP product · front-end lead"
     }
   },
   "Sections": {

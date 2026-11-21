@@ -10,11 +10,15 @@ export type HeroTopologyLabels = {
   zaloNote: string
   bonbonEdge: ReactNode
   bonbonNote: string
+  logiupEdge: ReactNode
+  logiupNote: string
   previousEdge: ReactNode
   previousNote: string
+  primedataEdge: ReactNode
+  primedataNote: string
 }
 
-type NodeId = 'zalo_pc' | 'bonbon' | 'ndsvn'
+type NodeId = 'zalo_pc' | 'bonbon' | 'logiup' | 'ndsvn' | 'primedata'
 
 type Edge = {
   id: NodeId
@@ -26,20 +30,29 @@ type Edge = {
 }
 
 /**
- * "Current deployment": Phong as the root node, live edges to the two current roles and a
- * faded dashed edge to the previous one. Plain DOM text carries every fact; the wires are
+ * "Current deployment": Phong as the root node, live edges to the current roles and faded
+ * dotted edges to the earlier ones. Plain DOM text carries every fact; the wires are
  * CSS strokes that draw in once on load from an already-complete default.
  */
 export default function HeroTopology({ labels }: { labels: HeroTopologyLabels }) {
   const edges: Edge[] = [
     { id: 'zalo_pc', name: 'Zalo PC', href: '#experience', edge: labels.zaloEdge, note: labels.zaloNote },
     { id: 'bonbon', name: 'BonBon Mobility', href: '#case-bonbon', edge: labels.bonbonEdge, note: labels.bonbonNote },
+    { id: 'logiup', name: 'LogiUP', href: '#case-logiup', edge: labels.logiupEdge, note: labels.logiupNote },
     {
       id: 'ndsvn',
       name: 'NDSVN',
       href: '#experience',
       edge: labels.previousEdge,
       note: labels.previousNote,
+      previous: true,
+    },
+    {
+      id: 'primedata',
+      name: 'PrimeData VN',
+      href: '#experience',
+      edge: labels.primedataEdge,
+      note: labels.primedataNote,
       previous: true,
     },
   ]
@@ -66,7 +79,7 @@ export default function HeroTopology({ labels }: { labels: HeroTopologyLabels })
               href={e.href}
               onClick={() => {
                 track('cv_hero_node_select', { node: e.id, surface: 'topology' })
-                if (e.id === 'bonbon') openCaseFile('bonbon', 'hero')
+                if (e.id === 'bonbon' || e.id === 'logiup') openCaseFile(e.id, 'hero')
               }}
             >
               <span className="ht-node-name">{e.name}</span>

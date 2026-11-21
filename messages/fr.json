@@ -73,13 +73,17 @@
     "getInTouch": "M'écrire",
     "socialProfiles": "Profils sociaux",
     "topology": {
-      "label": "Rôles actuels et rôle précédent",
+      "label": "Rôles actuels et rôles précédents",
       "zaloNote": "client desktop · 18M+ MAU",
       "bonbonNote": "pre-seed de 500 000 $, menée par Tasco",
       "previousNote": "lead delivery · 8 dev + 3 QC",
       "zaloMeta": "Lead · temps plein · depuis <date>mars 2026</date>",
       "bonbonMeta": "Cofondateur · depuis <date>avr. 2026</date>",
-      "previousMeta": "précédent · <date>août 2025 – mars 2026</date>"
+      "previousMeta": "précédent · <date>août 2025 – mars 2026</date>",
+      "logiupMeta": "Tech Lead · depuis <date>mars 2026</date>",
+      "logiupNote": "SaaS logistique multi-tenant",
+      "primedataMeta": "précédent · <date>juil. 2020 – avr. 2024</date>",
+      "primedataNote": "produit CDP · lead front-end"
     }
   },
   "Sections": {

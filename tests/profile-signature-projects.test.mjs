@@ -150,9 +150,10 @@ test('case files and the smaller entries are wired to the map and tracked on vie
     read('src/components/cv/HeroTopology.tsx'),
   ]);
   for (const src of [hero, topology]) {
-    assert.match(src, /openCaseFile\('bonbon', 'hero'\)/);
+    assert.match(src, /openCaseFile\('bonbon', 'hero'\)|openCaseFile\(e\.id, 'hero'\)/);
     assert.match(src, /cv_hero_node_select/);
   }
+  assert.match(topology, /e\.id === 'bonbon' \|\| e\.id === 'logiup'\) openCaseFile\(e\.id, 'hero'\)/);
 
   assert.match(exporter, /\['LogiUP - Multi-tenant Logistics SaaS', \[0, 1, 2, 3, 4\]\]/);
   assert.match(exporter, /\['BonBon Mobility - VETC Mini App & Automotive Platform', \[0, 1, 2, 3\]\]/);

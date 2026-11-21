@@ -73,13 +73,17 @@
     "getInTouch": "メールを送る",
     "socialProfiles": "ソーシャルプロフィール",
     "topology": {
-      "label": "現在の役割と直前の役割",
+      "label": "現在の役割とこれまでの役割",
       "zaloNote": "デスクトップクライアント · 18M+ MAU",
       "bonbonNote": "Tasco リードの 50 万ドル プレシード",
       "previousNote": "デリバリーリード · 開発 8 + QC 3",
       "zaloMeta": "Lead · フルタイム · <date>2026年3月</date>から",
       "bonbonMeta": "共同創業者 · <date>2026年4月</date>から",
-      "previousMeta": "前職 · <date>2025年8月 – 2026年3月</date>"
+      "previousMeta": "前職 · <date>2025年8月 – 2026年3月</date>",
+      "logiupMeta": "テックリード · <date>2026年3月</date>から",
+      "logiupNote": "マルチテナント物流SaaS",
+      "primedataMeta": "前職 · <date>2020年7月 – 2024年4月</date>",
+      "primedataNote": "CDPプロダクト · フロントエンドリード"
     }
   },
   "Sections": {

@@ -73,13 +73,17 @@
     "getInTouch": "发邮件",
     "socialProfiles": "社交主页",
     "topology": {
-      "label": "当前角色与上一段角色",
+      "label": "当前角色与过往角色",
       "zaloNote": "桌面客户端 · 18M+ MAU",
       "bonbonNote": "Tasco 领投 50 万美元 Pre-seed",
       "previousNote": "交付负责人 · 8 开发 + 3 QC",
       "zaloMeta": "Lead · 全职 · <date>2026年3月</date>起",
       "bonbonMeta": "联合创始人 · <date>2026年4月</date>起",
-      "previousMeta": "上一段 · <date>2025年8月 – 2026年3月</date>"
+      "previousMeta": "上一段 · <date>2025年8月 – 2026年3月</date>",
+      "logiupMeta": "技术负责人 · <date>2026年3月</date>起",
+      "logiupNote": "多租户物流 SaaS",
+      "primedataMeta": "更早 · <date>2020年7月 – 2024年4月</date>",
+      "primedataNote": "CDP 产品 · 前端负责人"
     }
   },
   "Sections": {

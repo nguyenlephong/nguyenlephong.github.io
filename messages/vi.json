@@ -74,13 +74,17 @@
     "getInTouch": "Gửi email",
     "socialProfiles": "Mạng xã hội",
     "topology": {
-      "label": "Vai trò hiện tại và vai trò trước đó",
+      "label": "Vai trò hiện tại và các vai trò trước",
       "zaloNote": "app desktop · hơn 18 triệu MAU",
       "bonbonNote": "pre-seed 500.000 USD, Tasco dẫn dắt",
       "previousNote": "dẫn team delivery · 8 dev + 3 QC",
       "zaloMeta": "Lead · toàn thời gian · từ <date>03/2026</date>",
       "bonbonMeta": "Đồng sáng lập · từ <date>04/2026</date>",
-      "previousMeta": "trước đó · <date>08/2025 – 03/2026</date>"
+      "previousMeta": "trước đó · <date>08/2025 – 03/2026</date>",
+      "logiupMeta": "Tech Lead · từ <date>03/2026</date>",
+      "logiupNote": "SaaS logistics multi-tenant",
+      "primedataMeta": "trước đó · <date>07/2020 – 04/2024</date>",
+      "primedataNote": "sản phẩm CDP · dẫn team front-end"
     }
   },
   "Sections": {

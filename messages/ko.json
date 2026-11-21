@@ -73,13 +73,17 @@
     "getInTouch": "이메일 보내기",
     "socialProfiles": "소셜 프로필",
     "topology": {
-      "label": "현재 역할과 이전 역할",
+      "label": "현재 역할과 이전 역할들",
       "zaloNote": "데스크톱 클라이언트 · 18M+ MAU",
       "bonbonNote": "Tasco 주도 50만 달러 프리시드",
       "previousNote": "딜리버리 리드 · 개발 8 + QC 3",
       "zaloMeta": "Lead · 풀타임 · <date>2026년 3월</date>부터",
       "bonbonMeta": "공동 창업자 · <date>2026년 4월</date>부터",
-      "previousMeta": "이전 · <date>2025년 8월 – 2026년 3월</date>"
+      "previousMeta": "이전 · <date>2025년 8월 – 2026년 3월</date>",
+      "logiupMeta": "테크 리드 · <date>2026년 3월</date>부터",
+      "logiupNote": "멀티테넌트 물류 SaaS",
+      "primedataMeta": "이전 · <date>2020년 7월 – 2024년 4월</date>",
+      "primedataNote": "CDP 제품 · 프론트엔드 리드"
     }
   },
   "Sections": {
