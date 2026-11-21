@@ -324,7 +324,8 @@
       "product": "Produit",
       "scale": "Big tech",
       "handover": "Passation",
-      "now": "Lead, cofondateur"
+      "now": "Lead, cofondateur",
+      "axis": "Périmètre de responsabilité"
     },
     "story": {
       "title": "Comment j'en suis arrivé là",
@@ -334,35 +335,40 @@
           "where": "Propman Guru, puis Splus Software",
           "env": "Startup naissante, puis sous-traitance",
           "body": "J'ai débuté en front-end chez Propman Guru, une jeune startup immobilière, parmi ses premiers ingénieurs. Puis 16 mois chez Splus Software, une agence de sous-traitance : plus de 8 projets clients (éducation, restauration, banque, e-commerce) et ma première petite équipe. Best Rookie of the Year 2019.",
-          "shift": "J'y ai appris le cycle complet d'un projet, des premiers besoins du client jusqu'à la passation."
+          "shift": "J'y ai appris le cycle complet d'un projet, des premiers besoins du client jusqu'à la passation.",
+          "measure": "8+ projets clients"
         },
         "product": {
           "dates": "2020–2024",
           "where": "PrimeData",
           "env": "Startup produit B2B",
           "body": "Près de quatre ans sur un seul produit, CDxP, une plateforme de données clients. J'ai dirigé son équipe front-end de quatre personnes, gardé le SDK de tracking sous <b>200 KB</b> et construit mes premiers feature flags runtime.",
-          "shift": "Rester sur un produit, c'est vivre avec ses propres décisions. Feature flags, budgets de taille et tests avant chaque release sont devenus des réflexes."
+          "shift": "Rester sur un produit, c'est vivre avec ses propres décisions. Feature flags, budgets de taille et tests avant chaque release sont devenus des réflexes.",
+          "measure": "équipe front-end de 4"
         },
         "scale": {
           "dates": "2024–2025",
           "where": "Zalo PC",
           "env": "Big tech, grand public",
           "body": "Un client desktop à <b>18M+ MAU</b>. J'ai livré le mode sombre, les thèmes dynamiques et le module de téléchargement, et dirigé le design system Storybook utilisé par plus de 50 développeurs.",
-          "shift": "Avec des composants partagés et une app utilisée par des millions de personnes, la stabilité passe avant la vitesse."
+          "shift": "Modifier un composant partagé, c’était le modifier pour des millions d’utilisateurs : j’ai appris à vérifier la stabilité avant de chercher la vitesse.",
+          "measure": "18M+ MAU"
         },
         "handover": {
           "dates": "2025–2026",
           "where": "NDSVN",
           "env": "Entreprise, partenaires paiement et télécom",
           "body": "Arrivé juste après un changement de CTO, j'ai pris la responsabilité technique d'une équipe delivery de 8 développeurs et 3 QC. J'ai mis en place des entretiens structurés et livré une plateforme de feature flags pour <b>30+ tenants</b>.",
-          "shift": "Diriger, c'était écrire comment l'équipe travaille, pour qu'aucune décision n'attende une seule personne."
+          "shift": "Diriger, c'était écrire comment l'équipe travaille, pour qu'aucune décision n'attende une seule personne.",
+          "measure": "8 développeurs + 3 QC"
         },
         "now": {
           "dates": "2026–aujourd'hui",
           "where": "Zalo PC, BonBon Mobility, LogiUP",
           "env": "Big tech, ma startup, SaaS B2B",
           "body": "Zalo m'a réembauché comme Lead en mars 2026 : je dirige la messagerie multi-appareils et le stockage côté client, dont la sauvegarde des messages sur PC avec restauration sur mobile. En dehors de Zalo, j'ai cofondé BonBon Mobility, lauréat de Wash3000 de Tasco Foundry parmi environ 100 candidatures, avec une levée pre-seed de <b>500 k$</b> menée par Tasco. Chez LogiUP, un SaaS logistique multi-tenant, je suis Tech Lead et architecte système d'une équipe de quatre.",
-          "shift": "Dans ce rôle, mon travail consiste surtout à décider : comment découper l'architecture, ce qui part désactivé par défaut, ce qu'acceptera la revue de sécurité d'un partenaire."
+          "shift": "Dans ce rôle, mon travail consiste surtout à décider : comment découper l'architecture, ce qui part désactivé par défaut, ce qu'acceptera la revue de sécurité d'un partenaire.",
+          "measure": "pre-seed de 500 000 $"
         }
       }
     },
@@ -372,25 +378,34 @@
         "scale": {
           "title": "Une équipe qui doit livrer une grosse fonctionnalité à de vrais utilisateurs, sans mise en production ratée",
           "proof": "Dès la première vague de déploiement, <b>80 %</b> des utilisateurs sont allés au bout du parcours complet de sauvegarde et de restauration. Il s'agit de la sauvegarde des messages sur PC avec restauration sur mobile, dans un client desktop de 18M+ MAU, en production pour de vrais utilisateurs en <b>2 sprints</b>. Zalo PC venait de me réembaucher comme Lead et j'étais encore en période d'essai. Nous avons déployé par vagues, en suivant chacune d'assez près pour corriger vite.",
-          "source": "Zalo PC · 2026"
+          "source": "Zalo PC · 2026",
+          "figure": "80 %",
+          "figureLabel": "des utilisateurs ont terminé sauvegarde et restauration dès la première vague"
         },
         "handover": {
           "title": "Une équipe qui vient de perdre son lead technique",
           "proof": "<b>2 semaines</b> après le changement de CTO chez NDSVN, l'équipe avait retrouvé son rythme de sprint. J'avais pris la responsabilité technique de ses 8 développeurs et 3 QC. Dans ces moments-là, chacun veut surtout savoir où il en est : j'ai donc commencé par des 1:1 et par le travail quotidien de chacun, puis j'ai écrit avec chaque personne un plan de progression à 3, 6 et 12 mois. La reconnaissance suivait des chiffres clairs, comme la vélocité de sprint de chacun, pour revenir à ceux qui l'avaient méritée.",
-          "source": "NDSVN · 2025–2026"
+          "source": "NDSVN · 2025–2026",
+          "figure": "2 semaines",
+          "figureLabel": "pour que l’équipe retrouve son rythme de sprint après le changement de CTO"
         },
         "zeroToOne": {
           "title": "Une équipe qui a une idée et a besoin vite d'un produit qui marche",
           "proof": "Nous sommes passés de l'idée à un produit fonctionnel en quatre semaines, puis nous avons mené un pilote terrain d'un mois. C'est BonBon, la startup que j'ai cofondée. Elle a remporté le Wash3000 de Tasco Foundry parmi une centaine de candidatures, puis levé un pre-seed de <b>500 k$</b> mené par Tasco.",
-          "source": "BonBon · 2026"
+          "source": "BonBon · 2026",
+          "figure": "4 semaines",
+          "figureLabel": "de l’idée à un produit qui tourne, puis un pilote terrain d’un mois"
         },
         "platform": {
           "title": "Un produit B2B où de nombreux clients partagent une même plateforme",
           "proof": "En SaaS B2B, le bug le plus coûteux, c'est un client qui voit les données d'un autre. Chez LogiUP, j'ai mis l'isolation par client dans les fondations, à chaque couche, du token à chaque contrôle de droits, pour qu'une équipe de quatre continue à livrer sans s'en soucier. Le parcours douanier assisté par IA suit la même règle : l'IA propose, une personne valide chaque section, car un seul champ faux coûte de l'argent au client. Les déclarations d'export sont en UAT depuis octobre 2026.",
-          "source": "LogiUP, NDSVN · 2025–2026"
+          "source": "LogiUP, NDSVN · 2025–2026",
+          "figure": "8 sur 8",
+          "figureLabel": "sections de la déclaration douanière, chacune validée par une personne après la suggestion de l’IA"
         }
       },
-      "stack": "Outils actuels (novembre 2026) : TypeScript, React, Next.js, Electron, Go, NestJS, PostgreSQL, Redis, Kubernetes, PostHog."
+      "stack": "Outils actuels (novembre 2026) : TypeScript, React, Next.js, Electron, Go, NestJS, PostgreSQL, Redis, Kubernetes, PostHog.",
+      "ask": "Votre équipe ressemble à ça ? Écrivez-moi"
     },
     "writing": {
       "title": "J'apprends en écrivant.",
@@ -398,7 +413,7 @@
       "teaching": "En mai 2023, j'ai donné un cours de projet front-end au Vietnam Australia Center : <b>12 étudiants</b>, des besoins à une app React fonctionnelle."
     },
     "closing": {
-      "body": "Je travaille le mieux sur un produit dont de vrais utilisateurs dépendent, avec une équipe qui veut continuer à livrer. Mon rôle : garder les changements risqués réversibles et le cap clair, pour que personne n'ait à attendre ma décision.",
+      "body": "Je travaille le mieux sur un produit dont de vrais utilisateurs dépendent, avec une équipe qui veut continuer à livrer. Mon rôle : garder les changements risqués réversibles et le cap clair.",
       "linksLabel": "CV, e-mail et expérience",
       "resume": "CV (PDF)",
       "email": "E-mail",

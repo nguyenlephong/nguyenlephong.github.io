@@ -324,7 +324,8 @@
       "product": "产品",
       "scale": "大厂",
       "handover": "交接",
-      "now": "Lead、联合创始"
+      "now": "Lead、联合创始",
+      "axis": "职责范围"
     },
     "story": {
       "title": "一路走来",
@@ -334,35 +335,40 @@
           "where": "Propman Guru，之后 Splus Software",
           "env": "早期创业公司，之后外包",
           "body": "我在早期房地产创业公司 Propman Guru 做前端起步，是最早的几位工程师之一。之后在外包公司 Splus Software 待了 16 个月，做了 8 个以上教育、餐饮、银行和电商客户项目，也第一次带小团队。2019 年获得 Best Rookie of the Year。",
-          "shift": "在这里我走完了项目的完整一圈，从客户的第一份需求到交付交接。"
+          "shift": "在这里我走完了项目的完整一圈，从客户的第一份需求到交付交接。",
+          "measure": "8+ 个客户项目"
         },
         "product": {
           "dates": "2020–2024",
           "where": "PrimeData",
           "env": "B2B 产品创业公司",
           "body": "近四年专注一个产品：客户数据平台 CDxP。我带领 4 人前端团队，把追踪 SDK 控制在 <b>200 KB</b> 以内，并做了我的第一套运行时 feature flag。",
-          "shift": "长期做一个产品，就得和自己的决定一起生活。feature flag、体积预算和发布前的测试从此成了习惯。"
+          "shift": "长期做一个产品，就得和自己的决定一起生活。feature flag、体积预算和发布前的测试从此成了习惯。",
+          "measure": "4 人前端团队"
         },
         "scale": {
           "dates": "2024–2025",
           "where": "Zalo PC",
           "env": "大厂，消费级产品",
           "body": "<b>18M+ MAU</b> 的桌面客户端。我交付了深色模式、动态主题和下载模块，并主导了 50 多名开发者共用的 Storybook 设计系统。",
-          "shift": "共享组件加上数百万人使用的应用，让稳定排在速度之前。"
+          "shift": "改一个共享组件，就会影响数百万用户，所以我习惯先确认稳定，再谈速度。",
+          "measure": "18M+ MAU"
         },
         "handover": {
           "dates": "2025–2026",
           "where": "NDSVN",
           "env": "企业，支付与电信合作方",
           "body": "我在 CTO 交接后加入，接手 8 名开发和 3 名 QC 的交付团队的技术负责。我建立了结构化面试，并交付了支持 <b>30+ 租户</b>的 feature flag 平台。",
-          "shift": "带团队意味着把团队的做事方式写下来，让决定不必等某一个人。"
+          "shift": "带团队意味着把团队的做事方式写下来，让决定不必等某一个人。",
+          "measure": "8 名开发 + 3 名 QC"
         },
         "now": {
           "dates": "2026–至今",
           "where": "Zalo PC、BonBon Mobility、LogiUP",
           "env": "大厂、自己的创业公司、B2B SaaS",
           "body": "2026 年 3 月，Zalo 重新聘请我担任 Lead。我负责多设备消息与客户端存储，其中包括 PC 端消息备份和移动端恢复。在 Zalo 之外，我联合创办了 BonBon Mobility，在约 100 份申请中赢得 Tasco Foundry Wash3000，并完成 Tasco 领投的 <b>50 万美元</b> pre-seed 轮。在多租户物流 SaaS LogiUP，我是 4 人团队的技术负责人兼系统架构师。",
-          "shift": "在这个角色里，我的大部分工作是做决定：架构怎么拆分，什么默认关闭再上线，合作方的安全审查会接受什么。"
+          "shift": "在这个角色里，我的大部分工作是做决定：架构怎么拆分，什么默认关闭再上线，合作方的安全审查会接受什么。",
+          "measure": "50 万美元 Pre-seed"
         }
       }
     },
@@ -372,25 +378,34 @@
         "scale": {
           "title": "要把大功能交到真实用户手里，又不能出事故的团队",
           "proof": "第一批放量时，<b>80%</b> 的用户完整走完了备份和恢复流程。这是电脑端消息备份、手机端恢复功能，跑在月活超过 1800 万的桌面客户端上，<b>2 个 Sprint</b> 就交到了真实用户手里。当时 Zalo PC 刚把我请回去做 Lead，我还在试用期。我们分批放量，每一批都盯得足够紧，有问题能马上修。",
-          "source": "Zalo PC · 2026"
+          "source": "Zalo PC · 2026",
+          "figure": "80%",
+          "figureLabel": "的用户在首轮发布中走完备份与恢复全流程"
         },
         "handover": {
           "title": "刚失去技术带头人的团队",
           "proof": "NDSVN 交接 CTO 后 <b>2 周</b>，团队就回到了正常的 Sprint 节奏。当时我接手了这支团队 8 名开发和 3 名 QC 的技术工作。这种时候，大家最想知道的是自己处在什么位置，所以我先从 1:1 和每个人的日常工作入手，再和每个人一起写下 3 个月、6 个月、12 个月的成长计划。认可看清楚的数据，比如每个人的 Sprint 速率，功劳归到真正做出来的人。",
-          "source": "NDSVN · 2025–2026"
+          "source": "NDSVN · 2025–2026",
+          "figure": "2 周",
+          "figureLabel": "CTO 交接后，团队回到正常的 Sprint 节奏"
         },
         "zeroToOne": {
           "title": "有了想法、需要尽快做出可用产品的团队",
           "proof": "我们从想法到可用的产品用了四周，接着做了一个月的实地试点。这就是我联合创办的创业公司 BonBon。它在约 100 份申请中赢得 Tasco Foundry 的 Wash3000，随后完成由 Tasco 领投的 <b>50 万美元</b>种子前轮融资。",
-          "source": "BonBon · 2026"
+          "source": "BonBon · 2026",
+          "figure": "4 周",
+          "figureLabel": "从想法到可运行的产品，之后一个月实地试点"
         },
         "platform": {
           "title": "许多客户共用一个平台的 B2B 产品",
           "proof": "做 B2B SaaS，代价最大的 bug 是一个客户看到了另一个客户的数据。在 LogiUP，我把按客户隔离做进了地基，从令牌到每一次权限检查，每一层都隔离，这样四个人的团队可以放心持续交付。AI 辅助报关流程也守同样的规矩：AI 给建议，每一部分由人确认，因为填错一个字段，客户就要赔钱。出口报关单自 2026 年 10 月起进入 UAT。",
-          "source": "LogiUP, NDSVN · 2025–2026"
+          "source": "LogiUP, NDSVN · 2025–2026",
+          "figure": "8/8",
+          "figureLabel": "报关单各部分，AI 给出建议后都由人逐一确认"
         }
       },
-      "stack": "目前在用（截至 2026 年 11 月）：TypeScript、React、Next.js、Electron、Go、NestJS、PostgreSQL、Redis、Kubernetes、PostHog。"
+      "stack": "目前在用（截至 2026 年 11 月）：TypeScript、React、Next.js、Electron、Go、NestJS、PostgreSQL、Redis、Kubernetes、PostHog。",
+      "ask": "你的团队也是这样？给我发邮件"
     },
     "writing": {
       "title": "我靠写下来学习。",
@@ -398,7 +413,7 @@
       "teaching": "2023 年 5 月，我在 Vietnam Australia Center 讲授前端项目课程：<b>12 名</b>学员，从需求到可运行的 React 应用。"
     },
     "closing": {
-      "body": "我最能发挥的地方，是有真实用户依赖的产品，加上一支想持续交付的团队。我的职责是让有风险的改动随时可以撤回，让方向保持清楚，这样没有人需要等我拍板。",
+      "body": "我最能发挥的地方，是有真实用户依赖的产品，加上一支想持续交付的团队。我的职责是让有风险的改动随时可以撤回，让方向保持清楚。",
       "linksLabel": "简历、邮箱和经历",
       "resume": "简历 (PDF)",
       "email": "邮箱",

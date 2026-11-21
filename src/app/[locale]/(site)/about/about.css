@@ -1,7 +1,9 @@
 /* =========================================================
-   About: the career route and the habits it left.
+   About: the career route, the scope it carried, the teams it
+   fits, and one endpoint to reach him.
    Same "system spec" grammar as the homepage: nodes and edges,
-   mono only for dates and sources, no cards, no kicker labels.
+   numbers sit on what they measure, mono only for dates and
+   sources, no cards, no kicker labels.
    ========================================================= */
 .about-page-v3 {
   /* One line box of an h3; dates and rail nodes align to it. */
@@ -17,18 +19,18 @@
   margin-inline: auto;
 }
 
-/* ---------- Intro and route figure ---------- */
+/* ---------- Intro ---------- */
 .about-intro {
   padding-top: clamp(3rem, 2rem + 4vw, 6rem);
 }
 .about-title {
-  max-width: 16ch;
+  max-width: 21ch;
   margin: 0;
   color: var(--fg);
-  font-size: clamp(2.5rem, 1.5rem + 4vw, 4.5rem);
-  font-weight: 700;
+  font-size: clamp(2.5rem, 1.5rem + 3.4vw, 4.375rem);
+  font-weight: 720;
   line-height: 1.02;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
   text-wrap: balance;
 }
 .about-lede {
@@ -40,54 +42,172 @@
   text-wrap: pretty;
 }
 
-.about-arc {
-  --arc-year: 1.25rem;
-  --arc-gap: 0.5rem;
+/* Wide screens: lede and actions beside the scope figure, so the figure sits in the first screen. */
+@media (min-width: 1100px) {
+  .about-intro-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    column-gap: clamp(2.5rem, 1rem + 3vw, 5rem);
+    align-items: end;
+  }
+  .about-intro-grid .about-scope { margin-top: 1.5rem; }
+}
+
+/* The two next steps, before anyone scrolls. */
+.about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+.about-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0 1.25rem;
+  color: var(--fg);
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  font-weight: 620;
+  text-decoration: none;
+  transition:
+    background var(--d-fast) var(--ease),
+    border-color var(--d-fast) var(--ease),
+    color var(--d-fast) var(--ease),
+    translate var(--d-base) var(--ease);
+}
+.about-btn svg { flex: none; }
+.about-btn:hover { border-color: var(--fg); translate: 0 -1px; }
+.about-btn--primary {
+  color: var(--bg);
+  background: var(--fg);
+  border-color: var(--fg);
+}
+.about-btn--primary:hover {
+  color: var(--fg-on-accent);
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
+}
+.about-btn:focus-visible,
+.about-arc a:focus-visible,
+.about-habit-ask:focus-visible,
+.about-copy:focus-visible,
+.about-endpoint a:focus-visible,
+.about-closing-links a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+.about-where {
+  flex-basis: 100%;
+  margin: 0.25rem 0 0;
+  color: var(--fg-subtle);
+  font-size: var(--text-sm);
+}
+
+/* ---------- Scope figure ----------
+   Stations at the middle of each fifth, height by scope level.
+   --pad leaves room above the top station for its label. */
+.about-scope {
+  --pad: 3.25rem;
   position: relative;
+  height: clamp(190px, 11rem + 6vw, 300px);
+  margin: clamp(2.5rem, 2rem + 2vw, 4rem) 0 0;
+}
+.about-scope-axis {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--fg-subtle);
+  font-size: 0.8125rem;
+}
+.about-scope-svg {
+  position: absolute;
+  top: var(--pad);
+  left: 0;
+  width: 100%;
+  height: calc(100% - var(--pad));
+  overflow: visible;
+}
+.about-scope-grid {
+  stroke: var(--divider);
+  stroke-width: 1;
+  stroke-dasharray: 2 5;
+}
+.about-scope-line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+.about-scope-stop { stop-color: var(--accent); stop-opacity: 0.24; }
+.about-scope-stop--end { stop-opacity: 0; }
+.about-scope-node {
+  position: absolute;
+  left: calc(var(--x) * 1%);
+  top: calc(var(--pad) + (100% - var(--pad)) * var(--y) / 100);
+  width: 14px;
+  height: 14px;
+  translate: -50% -50%;
+  border: 2.5px solid var(--accent);
+  border-radius: 50%;
+  background: var(--bg);
+}
+.about-scope-node.is-now { background: var(--accent); }
+.about-scope-measure {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  translate: -50% 0;
+  padding: 0.25rem 0.625rem;
+  color: var(--fg);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: var(--text-sm);
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px -12px color-mix(in oklab, var(--fg) 40%, transparent);
+}
+/* Every other label sits under its station, so neighbours never overlap on a narrow figure. */
+.about-scope-node:nth-child(even of .about-scope-node) .about-scope-measure {
+  top: calc(100% + 10px);
+  bottom: auto;
+}
+.about-scope-node.is-now .about-scope-measure {
+  color: var(--fg-on-accent);
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
+}
+
+/* The stations as links: year, environment, and (on narrow screens) the measure. */
+.about-arc {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  margin: clamp(2.5rem, 2rem + 2vw, 3.5rem) 0 0;
+  margin: 1rem 0 0;
   padding: 0;
   list-style: none;
-}
-/* The edge runs node to node: each node sits at the middle of a fifth. */
-.about-arc::before {
-  content: '';
-  position: absolute;
-  top: calc(var(--arc-year) + var(--arc-gap) + var(--about-node) / 2 - 0.5px);
-  left: 10%;
-  right: 10%;
-  height: 1px;
-  background: var(--border-strong);
-  transform-origin: left center;
 }
 .about-arc a {
   display: grid;
   justify-items: center;
-  row-gap: var(--arc-gap);
+  align-content: start;
+  row-gap: 0.25rem;
   min-height: 44px;
-  padding-bottom: 0.25rem;
-  border-radius: var(--radius-sm);
+  padding-block: 0.25rem;
+  color: inherit;
   text-align: center;
+  text-decoration: none;
 }
 .about-arc-year {
   color: var(--fg-muted);
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   font-variant-numeric: tabular-nums;
-  line-height: var(--arc-year);
   transition: color var(--d-fast) var(--ease);
-}
-.about-arc-node {
-  position: relative;
-  width: var(--about-node);
-  height: var(--about-node);
-  border: 1.5px solid var(--border-strong);
-  border-radius: 50%;
-  background: var(--bg);
-  transition:
-    border-color var(--d-fast) var(--ease),
-    transform var(--d-base) var(--ease);
 }
 .about-arc-env {
   max-width: 14ch;
@@ -101,53 +221,56 @@
   text-wrap: balance;
 }
 /* Korean wraps between words, not inside them. */
-:lang(ko) .about-arc-env {
+:lang(ko) .about-arc-env,
+:lang(ko) .about-arc-measure {
   word-break: keep-all;
 }
-.about-arc .is-now .about-arc-node {
-  border-color: var(--accent);
-  background: var(--accent);
-}
-.about-arc .is-now .about-arc-env {
+.about-arc-measure {
+  max-width: 14ch;
+  color: var(--accent);
+  font-size: 0.8125rem;
   font-weight: 650;
+  line-height: 1.35;
+  text-wrap: balance;
 }
-.about-arc a:hover .about-arc-node {
-  border-color: var(--accent);
-  transform: scale(1.25);
-}
-.about-arc a:hover .about-arc-year {
-  color: var(--fg);
-}
+.about-arc .is-now .about-arc-env { font-weight: 650; }
+.about-arc a:hover .about-arc-year { color: var(--fg); }
+.about-arc a:hover .about-arc-env { text-decoration: underline; text-underline-offset: 0.25em; }
 
-/* The page's one authored moment: the route draws in once from the left. */
-@media (prefers-reduced-motion: no-preference) {
-  .about-arc::before {
-    animation: about-arc-draw 800ms var(--ease) 120ms both;
+/* Wide screens: the measure rides on its station, so the list keeps it for readers only. */
+@media (min-width: 900px) {
+  .about-arc-measure {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 }
-@keyframes about-arc-draw {
-  from {
-    transform: scaleX(0);
-  }
+@media (max-width: 899px) {
+  .about-scope { --pad: 1.5rem; height: clamp(140px, 30vw, 200px); }
+  .about-scope-measure { display: none; }
 }
 
 /* ---------- Shared section rhythm ---------- */
 .about-block {
-  padding-top: clamp(4rem, 3rem + 3vw, 6rem);
+  padding-top: clamp(4.5rem, 3rem + 4vw, 7rem);
 }
 .about-heading {
   max-width: 24ch;
-  margin: 0 0 2rem;
+  margin: 0 0 2.25rem;
   color: var(--fg);
   font-size: clamp(2rem, 1.4rem + 2vw, 2.75rem);
-  font-weight: 650;
+  font-weight: 680;
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   text-wrap: balance;
 }
 
 /* ---------- Story: a vertical rail, one node per period ---------- */
 .about-story {
+  position: relative;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -156,7 +279,7 @@
   position: relative;
   display: grid;
   grid-template-columns: var(--about-date-col) var(--about-rail-col) minmax(0, 62ch);
-  padding-bottom: 2.5rem;
+  padding-bottom: 3rem;
   scroll-margin-top: 96px;
 }
 .about-period::before {
@@ -181,6 +304,7 @@
 .about-period::after {
   content: '';
   position: absolute;
+  z-index: 1;
   top: calc(var(--about-row) / 2 - var(--about-node) / 2);
   left: calc(var(--about-date-col) + var(--about-rail-col) / 2 - var(--about-node) / 2);
   box-sizing: border-box;
@@ -213,10 +337,10 @@
 .about-period-body h3 {
   margin: 0;
   color: var(--fg);
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1.375rem;
+  font-weight: 650;
   line-height: var(--about-row);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   text-wrap: balance;
 }
 .about-period-body p {
@@ -226,9 +350,25 @@
   text-wrap: pretty;
 }
 .about-period-body .about-period-env {
-  margin-top: 0.125rem;
+  margin-top: 0.25rem;
   font-size: var(--text-sm);
   line-height: 1.5;
+}
+.about-period-photo {
+  max-width: 32rem;
+  margin: 1.5rem 0 0;
+}
+.about-period-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 48px -30px color-mix(in oklab, var(--fg) 45%, transparent);
+}
+.about-period-photo figcaption {
+  margin-top: 0.625rem;
+  color: var(--fg-subtle);
+  font-size: var(--text-sm);
 }
 /* What the move changed: the line a skimmer should land on. Below the body by
    default; on wide screens it moves into the margin as an annotation. */
@@ -266,22 +406,22 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* ---------- Habits: a two-column spec, hairline rows ---------- */
+/* ---------- Fit: each situation leads with its measurement ---------- */
 .about-habits {
   margin: 0;
   border-top: 1px solid var(--divider);
 }
 .about-habit {
   display: grid;
-  grid-template-columns: minmax(0, 17rem) minmax(0, 62ch);
-  column-gap: 3rem;
-  padding-block: 1.5rem;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 0.5rem;
+  padding-block: 2rem;
   border-bottom: 1px solid var(--divider);
 }
 .about-habit dt {
   color: var(--fg);
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: 650;
   line-height: 1.3;
   letter-spacing: -0.01em;
   text-wrap: balance;
@@ -291,6 +431,29 @@
 }
 .about-habit dd p {
   margin: 0;
+}
+.about-habit dd .about-habit-figure {
+  display: grid;
+  gap: 0.375rem;
+  margin-bottom: 0.75rem;
+}
+.about-habit-number {
+  color: var(--accent);
+  font-size: clamp(2.75rem, 2rem + 2.6vw, 4.25rem);
+  font-weight: 760;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  font-variant-numeric: tabular-nums;
+}
+.about-habit-figure-label {
+  max-width: 26ch;
+  color: var(--fg-muted);
+  font-size: var(--text-sm);
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+.about-habit dd .about-habit-proof {
+  max-width: 62ch;
   color: var(--fg-muted);
   line-height: 1.65;
   text-wrap: pretty;
@@ -301,6 +464,31 @@
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   line-height: 1.5;
+}
+.about-habit-ask {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  margin-top: 0.25rem;
+  color: var(--accent);
+  font-weight: 620;
+  text-decoration: none;
+}
+.about-habit-ask:hover { text-decoration: underline; text-underline-offset: 0.25em; }
+/* Wide: measurement | situation | proof, in three columns. */
+@media (min-width: 960px) {
+  .about-habit {
+    grid-template-columns: minmax(0, 15rem) minmax(0, 15rem) minmax(0, 1fr);
+    column-gap: clamp(1.5rem, 1rem + 1.5vw, 3rem);
+    align-items: start;
+  }
+  .about-habit dd { display: contents; }
+  .about-habit dd .about-habit-figure { grid-column: 1; grid-row: 1 / span 3; margin: 0; }
+  .about-habit dt { grid-column: 2; grid-row: 1 / span 3; }
+  .about-habit-proof { grid-column: 3; grid-row: 1; }
+  .about-habit-source { grid-column: 3; grid-row: 2; }
+  .about-habit-ask { grid-column: 3; grid-row: 3; justify-self: start; }
 }
 .about-stack {
   max-width: 68ch;
@@ -321,7 +509,8 @@
   text-wrap: pretty;
 }
 .about-writing a,
-.about-closing-links a {
+.about-closing-links a,
+.about-endpoint-row a:not(.about-address) {
   color: var(--fg);
   text-decoration: underline;
   text-decoration-color: var(--border-strong);
@@ -330,24 +519,114 @@
   transition: text-decoration-color var(--d-fast) var(--ease);
 }
 .about-writing a:hover,
-.about-closing-links a:hover {
+.about-closing-links a:hover,
+.about-endpoint-row a:not(.about-address):hover {
   text-decoration-color: var(--accent);
 }
 
-/* ---------- Closing ---------- */
+/* ---------- Endpoint ---------- */
+.about-closing {
+  padding-bottom: clamp(2rem, 1rem + 3vw, 4rem);
+}
+.about-closing-title { max-width: 20ch; }
 .about-closing-line {
-  max-width: 44ch;
-  margin: 0;
-  color: var(--fg);
-  font-size: clamp(1.25rem, 1.05rem + 0.8vw, 1.625rem);
-  font-weight: 500;
-  line-height: 1.45;
-  letter-spacing: -0.01em;
+  max-width: 56ch;
+  margin: 0 0 2rem;
+  color: var(--fg-muted);
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  line-height: 1.65;
   text-wrap: pretty;
 }
-.about-closing-line b {
-  font-weight: 700;
+/* The endpoint is a figure: a plate on the same dotted grid as the homepage map. */
+.about-endpoint {
+  margin: 0;
+  padding: 0.5rem clamp(1rem, 0.5rem + 2vw, 2rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 1px 1px, color-mix(in oklab, var(--fg) 8%, transparent) 1px, transparent 0) 0 0 / 24px 24px,
+    radial-gradient(60% 120% at 100% 50%, color-mix(in oklab, var(--accent) 12%, transparent), transparent 70%),
+    color-mix(in oklab, var(--bg-elevated) 90%, transparent);
+  box-shadow: 0 24px 60px -36px color-mix(in oklab, var(--fg) 35%, transparent);
 }
+.about-endpoint-row:last-child { border-bottom: 0; }
+.about-endpoint-row {
+  display: grid;
+  grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
+  column-gap: 2rem;
+  align-items: center;
+  padding-block: 1rem;
+  border-bottom: 1px solid var(--divider);
+}
+.about-endpoint-row dt {
+  color: var(--fg-subtle);
+  font-size: var(--text-sm);
+}
+.about-endpoint-row dd {
+  margin: 0;
+  color: var(--fg);
+}
+.about-endpoint-email dd {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+}
+.about-port {
+  flex: none;
+  width: 40px;
+  height: 12px;
+  overflow: visible;
+}
+.about-port path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+}
+.about-port circle {
+  fill: var(--bg);
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+.about-address {
+  color: var(--fg);
+  font-size: clamp(1.125rem, 0.95rem + 0.9vw, 1.625rem);
+  font-weight: 680;
+  letter-spacing: -0.015em;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.about-address:hover { color: var(--accent); }
+.about-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 40px;
+  padding: 0 0.875rem;
+  color: var(--bg);
+  background: var(--fg);
+  border: 0;
+  border-radius: 10px;
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 620;
+  cursor: pointer;
+  transition: background var(--d-fast) var(--ease), color var(--d-fast) var(--ease);
+}
+.about-copy:hover,
+.about-copy[data-state='copied'] {
+  color: var(--fg-on-accent);
+  background: var(--accent-strong);
+}
+.about-copy-status {
+  flex-basis: 100%;
+  margin: 0;
+  color: var(--fg-muted);
+  font-size: var(--text-sm);
+}
+/* The status stays in the accessibility tree while empty, so the first message is announced. */
+.about-copy-status:empty { height: 0; margin-top: -0.5rem; overflow: hidden; }
 .about-closing-links {
   display: flex;
   flex-wrap: wrap;
@@ -379,18 +658,18 @@
     margin-top: 1rem;
     font-size: 1rem;
   }
-  .about-arc {
-    margin-top: 2rem;
-  }
+  .about-actions .about-btn { flex: 1 1 auto; justify-content: center; }
+  .about-arc-env,
+  .about-arc-measure { font-size: 0.75rem; }
   .about-block {
-    padding-top: 3rem;
+    padding-top: 3.5rem;
   }
   .about-heading {
     margin-bottom: 1.5rem;
   }
   .about-period {
     grid-template-columns: var(--about-rail-col) minmax(0, 1fr);
-    padding-bottom: 1.5rem;
+    padding-bottom: 2rem;
   }
   .about-period-shift {
     grid-column: 2;
@@ -398,9 +677,6 @@
   }
   .about-period-body p {
     margin-top: 0.5rem;
-  }
-  .about-closing-line {
-    font-size: 1.125rem;
   }
   .about-period::before {
     left: calc(var(--about-rail-col) / 2 - 0.5px);
@@ -416,11 +692,81 @@
     grid-column: 2;
   }
   .about-habit {
+    padding-block: 1.5rem;
+  }
+  .about-endpoint-row {
     grid-template-columns: minmax(0, 1fr);
     row-gap: 0.25rem;
-    padding-block: 1rem;
-  }
-  .about-arc-env {
-    font-size: 0.8125rem;
   }
 }
+
+/* ---------- Motion ----------
+   The resting state above is already the finished page; everything here only adds,
+   and none of it runs under reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .about-scope-svg {
+    animation: about-wipe 1300ms var(--ease) 200ms both;
+  }
+  .about-scope-node {
+    animation: about-pop 520ms cubic-bezier(0.2, 1.4, 0.4, 1) calc(380ms + var(--i) * 190ms) both;
+  }
+  .about-scope-measure {
+    animation: about-rise-label 520ms var(--ease) calc(520ms + var(--i) * 190ms) both;
+  }
+  /* The one loop on screen: the current station is live. */
+  .about-scope-node.is-now::after {
+    content: '';
+    position: absolute;
+    inset: -2.5px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    animation: about-ping 2.4s var(--ease) 2s infinite;
+  }
+  .about-title,
+  .about-lede,
+  .about-actions {
+    animation: about-rise 700ms var(--ease) both;
+  }
+  .about-lede { animation-delay: 90ms; }
+  .about-actions { animation-delay: 180ms; }
+
+  /* The rail fills with accent as the story scrolls past, and each node lights as it arrives. */
+  @supports (animation-timeline: view()) {
+    /* Each rail segment ends at the next node, so the fill stops exactly at the last one. */
+    .about-period::before {
+      width: 2px;
+      margin-left: -0.5px;
+      background: linear-gradient(var(--accent), var(--accent)) no-repeat 0 0 / 100% 0% var(--border-strong);
+      animation: about-fill linear both;
+      animation-timeline: view();
+      animation-range: entry 60% cover 60%;
+    }
+    .about-period::after {
+      animation: about-light linear both;
+      animation-timeline: view();
+      animation-range: entry 70% entry 100%;
+    }
+    .about-habit-number,
+    .about-period-photo {
+      animation: about-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 80%;
+    }
+  }
+  .about-port path { animation: about-flow 1.1s linear infinite; }
+}
+@keyframes about-wipe { from { clip-path: inset(-20% 100% -20% 0); } to { clip-path: inset(-20% -2% -20% 0); } }
+@keyframes about-pop { from { scale: 0; opacity: 0; } }
+@keyframes about-rise { from { opacity: 0; translate: 0 14px; } }
+/* The label is centred with translate, so its rise keeps the -50%. */
+@keyframes about-rise-label { from { opacity: 0; translate: -50% 10px; } }
+@keyframes about-ping {
+  0% { scale: 1; opacity: 0.7; }
+  70%, 100% { scale: 2.6; opacity: 0; }
+}
+@keyframes about-fill { to { background-size: 100% 100%; } }
+@keyframes about-light {
+  from { border-color: var(--border-strong); background: var(--bg); }
+  to { border-color: var(--accent); background: var(--accent); }
+}
+@keyframes about-flow { to { stroke-dashoffset: -8; } }

@@ -593,7 +593,8 @@
       "product": "Product",
       "scale": "Big tech",
       "handover": "Handover",
-      "now": "Lead, co-founder"
+      "now": "Lead, co-founder",
+      "axis": "Scope of responsibility"
     },
     "story": {
       "title": "How I got here",
@@ -603,35 +604,40 @@
           "where": "Propman Guru, then Splus Software",
           "env": "Early startup, then outsourcing",
           "body": "I started in front-end at Propman Guru, an early real-estate startup. Then 16 months at Splus Software, an outsourcing agency: 8+ client projects in education, F&B, banking and e-commerce, and my first small team. Best Rookie of the Year 2019.",
-          "shift": "I learned the whole delivery cycle, from a client's first requirements to the handover."
+          "shift": "I learned the whole delivery cycle, from a client's first requirements to the handover.",
+          "measure": "8+ client projects"
         },
         "product": {
           "dates": "2020–2024",
           "where": "PrimeData",
           "env": "B2B product startup",
           "body": "Almost four years on one product, CDxP, a customer data platform. I led its front-end team of four, kept the tracking SDK under <b>200 KB</b> and built my first runtime feature flags.",
-          "shift": "Staying with one product meant living with my own decisions. Feature flags, size budgets and a test suite the team released against became habits."
+          "shift": "Staying with one product meant living with my own decisions. Feature flags, size budgets and a test suite the team released against became habits.",
+          "measure": "front-end team of 4"
         },
         "scale": {
           "dates": "2024–2025",
           "where": "Zalo PC",
           "env": "Big tech, consumer",
           "body": "A desktop client with <b>18M+ MAU</b>. I shipped dark mode, dynamic theming and the download module, and led the Storybook design system used by 50+ developers.",
-          "shift": "Shared components and a client used by millions put stability ahead of speed."
+          "shift": "Changing a shared component meant changing it for millions of users, so I learned to check stability before speed.",
+          "measure": "18M+ MAU"
         },
         "handover": {
           "dates": "2025–2026",
           "where": "NDSVN",
           "env": "Enterprise, payment and telecom partners",
           "body": "I joined right after a CTO transition and took technical ownership of a delivery team of 8 developers and 3 QC. I set up structured interviews for hiring and shipped a feature-flag platform for <b>30+ tenants</b>.",
-          "shift": "Leading meant writing down how the team works, so decisions did not wait for one person."
+          "shift": "Leading meant writing down how the team works, so decisions did not wait for one person.",
+          "measure": "8 developers + 3 QC"
         },
         "now": {
           "dates": "2026–now",
           "where": "Zalo PC, BonBon Mobility, LogiUP",
           "env": "Big tech, own startup, B2B SaaS",
           "body": "Zalo hired me back as Lead in March 2026, for cross-device messaging and client storage, including PC message backup with restore on mobile. Outside Zalo, I co-founded BonBon Mobility: it won Tasco Foundry's Wash3000 out of about 100 applicants and closed a <b>$500K</b> pre-seed round led by Tasco. At LogiUP, a multi-tenant logistics SaaS, I am Tech Lead and system architect for a team of four.",
-          "shift": "In this role most of my work is decisions: how the architecture splits, what ships default off and what a partner's security review will accept."
+          "shift": "In this role most of my work is decisions: how the architecture splits, what ships default off and what a partner's security review will accept.",
+          "measure": "$500K pre-seed"
         }
       }
     },
@@ -641,25 +647,34 @@
         "scale": {
           "title": "A team that has to ship a big feature to real users without a bad release",
           "proof": "In the first rollout wave, <b>80%</b> of users completed the full backup and restore flow. That was PC message backup with restore on mobile, on an 18M+ MAU desktop client, live for real users in <b>2 sprints</b>. Zalo PC had just hired me back as Lead and I was still on probation. We shipped in waves and watched each wave closely enough to fix issues fast.",
-          "source": "Zalo PC · 2026"
+          "source": "Zalo PC · 2026",
+          "figure": "80%",
+          "figureLabel": "of users finished backup and restore in the first rollout wave"
         },
         "handover": {
           "title": "A team that just lost its technical lead",
           "proof": "Within <b>2 weeks</b> of the CTO transition at NDSVN, the team was back on sprint pace. I had taken technical ownership of its 8 developers and 3 QC. In that moment people mostly want to know where they stand, so I started with 1:1s and their daily work, then wrote a 3, 6 and 12-month growth plan with each person. Credit followed clear numbers, such as each person's sprint velocity, so it went to the people who earned it.",
-          "source": "NDSVN · 2025–2026"
+          "source": "NDSVN · 2025–2026",
+          "figure": "2 weeks",
+          "figureLabel": "to get the team back on sprint pace after the CTO handover"
         },
         "zeroToOne": {
           "title": "A team with an idea that needs a working product, fast",
           "proof": "We went from idea to a working product in four weeks, then ran a one-month field pilot. That is BonBon, the startup I co-founded. It won Tasco Foundry's Wash3000 out of about 100 applications, then raised a <b>$500K</b> pre-seed led by Tasco.",
-          "source": "BonBon · 2026"
+          "source": "BonBon · 2026",
+          "figure": "4 weeks",
+          "figureLabel": "from idea to a working product, then a one-month field pilot"
         },
         "platform": {
           "title": "A B2B product where many customers share one platform",
           "proof": "In B2B SaaS the most expensive bug is one customer seeing another's data. At LogiUP I made per-customer isolation part of the foundation, at every layer from the token to each permission check, so a team of four can keep shipping without worrying about it. The AI-assisted customs flow follows the same rule: the AI suggests, a person confirms each section, because one wrong field costs the customer money. Export declarations have been in UAT since October 2026.",
-          "source": "LogiUP, NDSVN · 2025–2026"
+          "source": "LogiUP, NDSVN · 2025–2026",
+          "figure": "8 of 8",
+          "figureLabel": "customs declaration sections, each confirmed by a person after the AI suggests values"
         }
       },
-      "stack": "Currently using, as of November 2026: TypeScript, React, Next.js, Electron, Go, NestJS, PostgreSQL, Redis, Kubernetes, PostHog."
+      "stack": "Currently using, as of November 2026: TypeScript, React, Next.js, Electron, Go, NestJS, PostgreSQL, Redis, Kubernetes, PostHog.",
+      "ask": "Sounds like your team? Email me"
     },
     "writing": {
       "title": "I learn by writing it down.",
@@ -667,7 +682,7 @@
       "teaching": "In May 2023 I taught a front-end project course at Vietnam Australia Center: <b>12 students</b>, from requirements to working React apps."
     },
     "closing": {
-      "body": "I do my best work on a product real users depend on, with a team that wants to keep shipping. My part is to keep risky changes reversible and the direction clear, so nobody has to wait for me to decide.",
+      "body": "I do my best work on a product real users depend on, with a team that wants to keep shipping. My part is keeping risky changes reversible and the direction clear.",
       "linksLabel": "Résumé, email and experience",
       "resume": "Résumé (PDF)",
       "email": "Email",

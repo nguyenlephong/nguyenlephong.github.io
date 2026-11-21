@@ -28,9 +28,10 @@ test("about tells the career arc, one period per move, in every locale", () => {
   for (const locale of locales) {
     const about = messages[locale].About;
     assert.deepEqual(Object.keys(about.story.periods), periods, `${locale} periods`);
-    assert.deepEqual(Object.keys(about.arc).filter((k) => k !== "label"), periods, `${locale} arc`);
+    assert.deepEqual(Object.keys(about.arc).filter((k) => k !== "label" && k !== "axis"), periods, `${locale} arc`);
+    assert.ok(about.arc.axis?.trim(), `${locale} arc.axis`);
     for (const id of periods) {
-      for (const field of ["dates", "where", "env", "body", "shift"]) {
+      for (const field of ["dates", "where", "env", "body", "shift", "measure"]) {
         assert.ok(about.story.periods[id][field]?.trim(), `${locale} ${id}.${field}`);
       }
     }
@@ -114,5 +115,28 @@ test("about keeps its route-owned stylesheet and motion guard", () => {
   assert.match(aboutCss, /\.about-page-v3\s*\{/);
   assert.match(aboutCss, /\.about-period::before\s*\{/);
   assert.match(aboutCss, /\.about-habit\s*\{/);
-  assert.match(aboutCss, /@media \(prefers-reduced-motion: no-preference\)\s*\{\s*\.about-arc::before/);
+  assert.match(aboutCss, /@media \(prefers-reduced-motion: no-preference\)\s*\{\s*\.about-scope-svg/);
+  // Scroll-driven extras are progressive: only where view timelines exist.
+  assert.match(aboutCss, /@supports \(animation-timeline: view\(\)\)/);
+});
+
+test("about puts contact first: hero actions, a fit link per situation, and a copyable endpoint", () => {
+  assert.match(page, /data-track="cv_contact_click"\s+data-track-channel="email"\s+data-track-source="about_hero"/);
+  assert.match(page, /data-track="cv_resume_download"\s+data-track-source="about_hero"/);
+  // Each situation opens a mail with its own subject and is tracked with the situation id.
+  assert.match(page, /mailto:\$\{email\}\?subject=\$\{encodeURIComponent\(t\(`habits\.items\.\$\{id\}\.title`\)\)\}/);
+  assert.match(page, /data-track-source="about_fit"\s+data-track-fit=\{id\}/);
+  assert.match(page, /<CopyEmailButton[\s\S]*?source="about"/);
+  for (const locale of locales) {
+    const about = messages[locale].About;
+    assert.ok(about.habits.ask?.trim(), `${locale} habits.ask`);
+    for (const id of habits) {
+      const item = about.habits.items[id];
+      assert.ok(item.figure?.trim() && item.figureLabel?.trim(), `${locale} habit ${id} figure`);
+    }
+  }
+  // Figures repeat numbers the proofs already carry.
+  assert.equal(en.habits.items.scale.figure, "80%");
+  assert.match(en.habits.items.scale.proof, /80%/);
+  assert.match(en.habits.items.handover.proof, /2 weeks/);
 });
