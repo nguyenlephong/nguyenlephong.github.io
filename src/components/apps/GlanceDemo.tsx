@@ -161,12 +161,12 @@ export default function GlanceDemo({ demo, hint, replaceLabel }: Readonly<Glance
           {demo.parts.map((part) =>
             typeof part === 'number' ? (
               // A span, not a <button>: buttons are inline-block and a long phrase could not wrap on phones.
-              <span
+              <span // NOSONAR: focusable with tabIndex, Enter and Space; a <button> cannot wrap across lines
                 key={`phrase-${part}`}
                 ref={(el) => {
                   phraseRefs.current[part] = el
                 }}
-                role="button" // NOSONAR: a <button> cannot wrap across lines; this span has tabIndex, Enter and Space
+                role="button"
                 tabIndex={0}
                 className="glance-phrase"
                 aria-pressed={part === active}
