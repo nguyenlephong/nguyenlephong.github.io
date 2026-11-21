@@ -17,9 +17,21 @@ export interface AppCopy {
   tagline: string
   hardware: string
   facts: string[]
-  // Per-locale overrides, e.g. the English entry point of a web app.
-  links?: AppLinks
-  screenshotAlt?: string
+}
+
+// Ăn Gì demo: a reel of the dish lists the app really has, each landing on its live dish page.
+export interface DishDemo {
+  slug: string
+  name: Record<AppsCopyLocale, string>
+  // Fills the CTA template, e.g. "quán lẩu" / "hotpot places".
+  places: Record<AppsCopyLocale, string>
+}
+
+// Glance demo: a sentence whose numbered parts are clickable phrases with a canned translation.
+export interface GlanceDemo {
+  windowTitle: string
+  parts: (string | number)[]
+  phrases: { source: string; target: string }[]
 }
 
 export interface AppShowcaseItem {
@@ -37,8 +49,8 @@ export interface AppShowcaseItem {
   homepage?: string
   hotkeys: { keys: string[]; action: Record<AppsCopyLocale, string> }[]
   links: AppLinks
-  visual?: 'glance'
-  screenshot?: { path: string; width: number; height: number }
+  dishes?: DishDemo[]
+  glanceDemo?: GlanceDemo
   copy: Record<AppsCopyLocale, AppCopy>
 }
 
@@ -51,28 +63,41 @@ export interface AppsPageCopy {
   links: Record<keyof AppLinks, string>
   labNote: string
   github: string
+  dishLead: string
+  spin: string
+  // {places} is replaced with DishDemo.places.
+  openDish: string
+  glanceHint: string
 }
 
 export const appsPageCopy: Record<AppsCopyLocale, AppsPageCopy> = {
   en: {
-    title: 'Useful apps',
-    sub: 'I build small tools that get repeated daily tasks done faster, at work and outside it.',
+    title: 'Apps I made',
+    sub: 'Small tools I built to get repeated daily chores done faster, at work and at home. Each one has a demo you can try on this page.',
     back: '← Back to CV',
     status: { shipped: 'Shipped', beta: 'Beta', wip: 'In progress' },
     hotkeys: 'Shortcuts',
     links: { site: 'Open the app', article: 'Read the story', repo: 'Source', download: 'Download', docs: 'Docs' },
     labNote: 'The rest of my code is on GitHub.',
     github: 'See them on GitHub',
+    dishLead: "Today we're having",
+    spin: 'Spin',
+    openDish: 'Find {places}',
+    glanceHint: "Click an underlined phrase, or press the same shortcut you'd use on a Mac.",
   },
   vi: {
-    title: 'Ứng dụng hữu ích',
-    sub: 'Tôi tự xây công cụ bổ trợ để làm nhanh những việc lặp lại mỗi ngày, trong công việc lẫn đời sống.',
+    title: 'Ứng dụng tôi làm',
+    sub: 'Mấy công cụ nhỏ tôi tự làm để bớt việc lặp lại mỗi ngày, ở chỗ làm lẫn ở nhà. App nào cũng có bản thử ngay trên trang này.',
     back: '← Quay lại CV',
     status: { shipped: 'Đã phát hành', beta: 'Beta', wip: 'Đang làm' },
     hotkeys: 'Phím tắt',
     links: { site: 'Mở app', article: 'Đọc bài viết', repo: 'Source code', download: 'Tải về', docs: 'Hướng dẫn' },
     labNote: 'Code các dự án khác tôi để trên GitHub.',
     github: 'Xem trên GitHub',
+    dishLead: 'Hôm nay ăn',
+    spin: 'Quay đại',
+    openDish: 'Xem {places} trên Ăn Gì',
+    glanceHint: 'Bấm vào một cụm gạch chân, hoặc bấm phím tắt này y như trên Mac.',
   },
 }
 
@@ -92,14 +117,22 @@ export const apps: AppShowcaseItem[] = [
     homepage: 'https://angiday.startup.id.vn/',
     hotkeys: [],
     links: {
-      site: `https://angiday.startup.id.vn/?${AN_GI_UTM}&utm_content=apps_card_vi`,
       article: '/blog/perspectives/an-gi-hom-nay-an-gi-o-dau',
     },
-    screenshot: {
-      path: '/blogs/an-gi-hom-nay-an-gi-o-dau/pick-a-place-and-get-directions.webp',
-      width: 1440,
-      height: 960,
-    },
+    // Dish lists on the live app: /an/<slug> in Vietnamese, /en/eat/<slug> in English (checked 2026-11-21).
+    dishes: [
+      { slug: 'lau', name: { vi: 'Lẩu', en: 'Hotpot' }, places: { vi: 'quán lẩu', en: 'hotpot places' } },
+      { slug: 'bun', name: { vi: 'Bún', en: 'Bún' }, places: { vi: 'quán bún', en: 'bún places' } },
+      { slug: 'ca-phe', name: { vi: 'Cà phê', en: 'Coffee' }, places: { vi: 'quán cà phê', en: 'coffee places' } },
+      { slug: 'hu-tieu', name: { vi: 'Hủ tiếu', en: 'Hủ tiếu' }, places: { vi: 'quán hủ tiếu', en: 'hủ tiếu places' } },
+      { slug: 'an-vat', name: { vi: 'Ăn vặt', en: 'Snacks' }, places: { vi: 'quán ăn vặt', en: 'street snack places' } },
+      { slug: 'mi', name: { vi: 'Mì', en: 'Noodles' }, places: { vi: 'quán mì', en: 'egg noodle places' } },
+      { slug: 'com', name: { vi: 'Cơm', en: 'Rice' }, places: { vi: 'quán cơm', en: 'rice plate places' } },
+      { slug: 'mon-han', name: { vi: 'Món Hàn', en: 'Korean' }, places: { vi: 'quán món Hàn', en: 'Korean places' } },
+      { slug: 'chay', name: { vi: 'Chay', en: 'Vegetarian' }, places: { vi: 'quán chay', en: 'vegetarian places' } },
+      { slug: 'mon-nhat', name: { vi: 'Món Nhật', en: 'Japanese' }, places: { vi: 'quán món Nhật', en: 'Japanese places' } },
+      { slug: 'buffet', name: { vi: 'Buffet', en: 'Buffet' }, places: { vi: 'quán buffet', en: 'buffet places' } },
+    ],
     copy: {
       en: {
         tagline: 'Saves you the daily “where do we eat” debate. Pick a dish and it gives you one place nearby, with directions.',
@@ -110,8 +143,6 @@ export const apps: AppShowcaseItem[] = [
           'In another city, turn on Near you to find places around where you are standing. The regional specialties page lists what each province is known for.',
           'No account needed, and the server does not store your location. Know a good place? Send it in. I review each one before it goes live.',
         ],
-        links: { site: `https://angiday.startup.id.vn/en?${AN_GI_UTM}&utm_content=apps_card_en` },
-        screenshotAlt: 'Two screens of the app: the home screen asking what to eat today, and a hotpot place with its address and a directions button.',
       },
       vi: {
         tagline: 'Đỡ phải hỏi nhau trưa nay ăn đâu. Chọn món đang thèm, app đưa ra một quán gần bạn kèm đường đi.',
@@ -122,7 +153,6 @@ export const apps: AppShowcaseItem[] = [
           'Đi tỉnh khác thì bật Gần bạn, app tìm quán quanh chỗ bạn đang đứng. Trang Đặc sản vùng miền cho biết tỉnh nào nên ăn món gì.',
           'Không cần tài khoản, server không lưu vị trí của bạn. Biết quán ngon thì góp vào, tôi duyệt từng quán rồi mới lên app.',
         ],
-        screenshotAlt: 'Hai màn hình Ăn Gì: trang chủ hỏi hôm nay ăn gì, và một quán lẩu kèm địa chỉ, nút chỉ đường.',
       },
     },
   },
@@ -144,7 +174,15 @@ export const apps: AppShowcaseItem[] = [
       download: 'https://github.com/nguyenlephong/glance/releases',
       docs: 'https://github.com/nguyenlephong/glance#readme',
     },
-    visual: 'glance',
+    glanceDemo: {
+      windowTitle: 'Mail',
+      parts: ['Hi team, please ', 0, ' before Friday. The new sync ships ', 1, ', so we can ', 2, '.'],
+      phrases: [
+        { source: 'review the release notes', target: 'xem lại ghi chú phát hành' },
+        { source: 'behind a feature flag', target: 'sau một feature flag' },
+        { source: 'turn it off without a new build', target: 'tắt nó đi mà không cần build mới' },
+      ],
+    },
     copy: {
       en: {
         tagline: 'Select text in any Mac app and press one shortcut to read it in the other language.',
@@ -169,6 +207,14 @@ export const apps: AppShowcaseItem[] = [
     },
   },
 ]
+
+const AN_GI_ORIGIN = 'https://angiday.startup.id.vn'
+
+/** Live dish page on Ăn Gì for the reel's result, tagged so the app can tell demo visits apart. */
+export function anGiDishUrl(slug: string, locale: AppsCopyLocale): string {
+  const path = locale === 'vi' ? `/an/${slug}` : `/en/eat/${slug}`
+  return `${AN_GI_ORIGIN}${path}?${AN_GI_UTM}&utm_content=apps_demo_${locale}`
+}
 
 export function appsCopyLocale(contentLocale: string): AppsCopyLocale {
   return contentLocale === 'vi' ? 'vi' : 'en'

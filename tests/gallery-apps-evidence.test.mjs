@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import test from "node:test";
 
 // MEP-29 (gallery as an evidence page) and MEP-57 (/apps without console theatre).
@@ -65,11 +65,9 @@ test("/apps lists shipped apps only, with localized copy and no console controls
     "../src/app/[locale]/(site)/apps/apps.data.ts"
   );
   assert.deepEqual(apps.map((a) => a.id), ["an-gi", "glance"]);
-  // Outbound app links carry UTM tags so the app's analytics can attribute the visit.
+  // The dish reel's CTA (UTM-tagged, see the demo test) is the way into Ăn Gì; no second site link.
   const anGi = apps.find((a) => a.id === "an-gi");
-  for (const site of [anGi.links.site, anGi.copy.en.links.site]) {
-    assert.match(site, /[?&]utm_source=nguyenlephong\.github\.io&utm_medium=apps_page&utm_campaign=an_gi_launch&utm_content=apps_card_(?:vi|en)$/);
-  }
+  assert.equal(anGi.links.site, undefined);
   assert.doesNotMatch(anGi.homepage, /utm_/);
   assert.equal(appsCopyLocale("fr"), "en");
   assert.equal(appsCopyLocale("vi"), "vi");
@@ -85,4 +83,40 @@ test("/apps lists shipped apps only, with localized copy and no console controls
   assert.match(list, /track\('apps_card_view'/);
   assert.match(list, /track\('apps_link_click'/);
   assert.doesNotMatch(read("src/lib/analytics.ts"), /'apps_filter_click'/);
+});
+
+test("/apps demos land on live Ăn Gì dish pages and track every play", async () => {
+  const { apps, appsPageCopy, anGiDishUrl } = await import(
+    "../src/app/[locale]/(site)/apps/apps.data.ts"
+  );
+  const anGi = apps.find((a) => a.id === "an-gi");
+  assert.ok(anGi.dishes.length >= 2, "the reel needs at least two dishes to spin");
+  assert.equal(new Set(anGi.dishes.map((d) => d.slug)).size, anGi.dishes.length);
+  assert.equal(
+    anGiDishUrl("lau", "vi"),
+    "https://angiday.startup.id.vn/an/lau?utm_source=nguyenlephong.github.io&utm_medium=apps_page&utm_campaign=an_gi_launch&utm_content=apps_demo_vi"
+  );
+  assert.match(anGiDishUrl("lau", "en"), /^https:\/\/angiday\.startup\.id\.vn\/en\/eat\/lau\?.*utm_content=apps_demo_en$/);
+  for (const locale of ["en", "vi"]) assert.match(appsPageCopy[locale].openDish, /\{places\}/);
+
+  const glance = apps.find((a) => a.id === "glance").glanceDemo;
+  const indexes = glance.parts.filter((p) => typeof p === "number");
+  assert.deepEqual(indexes, glance.phrases.map((_, i) => i), "each phrase appears once, in order");
+
+  const reel = read("src/components/apps/DishReel.tsx");
+  const demo = read("src/components/apps/GlanceDemo.tsx");
+  assert.match(reel, /track\('apps_demo_interact', \{ app_id: 'an-gi', action: 'spin'/);
+  assert.match(reel, /track\('apps_link_click'/);
+  assert.match(reel, /prefers-reduced-motion: reduce/);
+  assert.match(demo, /track\('apps_demo_interact', \{ app_id: 'glance', action: 'translate'/);
+  assert.match(demo, /input: 'hotkey'/);
+  assert.match(read("src/lib/analytics.ts"), /\| 'apps_demo_interact'/);
+  for (const src of [reel, demo]) assert.doesNotMatch(src, /setInterval/);
+  // Autoplay (first reel spin, Glance walkthrough) never runs under reduced motion.
+  assert.match(demo, /if \(!auto \|\| !inView \|\| window\.matchMedia\('\(prefers-reduced-motion: reduce\)'\)\.matches\) return/);
+  assert.match(reel, /if \(!prefersReducedMotion\(\)\) timer = setTimeout\(\(\) => spinRef\.current\('auto'\)/);
+  // Every dish in the reel has its cover in the deck.
+  for (const d of anGi.dishes) {
+    assert.ok(existsSync(`public/apps/an-gi/covers/${d.slug}.webp`), `missing cover for ${d.slug}`);
+  }
 });
