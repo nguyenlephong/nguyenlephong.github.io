@@ -116,13 +116,29 @@ function iconButton(label: string, path: string, className = "bdv-tool"): HTMLBu
   return button;
 }
 
-/** Clone a figure's SVG for the stage without duplicating the ids that label the original. */
+/**
+ * Clone a figure's SVG for the stage: no ids shared with the original, and every box
+ * becomes a focusable button so keyboard and screen-reader users can open its details.
+ */
 function cloneForStage(source: SVGSVGElement): SVGSVGElement {
   const clone = source.cloneNode(true) as SVGSVGElement;
   const title = source.querySelector("title")?.textContent ?? "";
   clone.removeAttribute("aria-labelledby");
+  clone.setAttribute("role", "group");
   clone.setAttribute("aria-label", title);
   clone.querySelectorAll("title[id], desc[id]").forEach((node) => node.removeAttribute("id"));
+  clone.querySelectorAll("marker[id]").forEach((marker) => {
+    const id = marker.id;
+    marker.id = `bdv-${id}`;
+    clone
+      .querySelectorAll(`[marker-end="url(#${id})"]`)
+      .forEach((path) => path.setAttribute("marker-end", `url(#bdv-${id})`));
+  });
+  clone.querySelectorAll<SVGGElement>("[data-c4-node]").forEach((node) => {
+    node.setAttribute("tabindex", "0");
+    node.setAttribute("role", "button");
+    node.setAttribute("aria-label", node.dataset["c4Name"] ?? "");
+  });
   clone.removeAttribute("class");
   clone.classList.add("dgm-svg", "bdv-svg");
   return clone;
@@ -144,6 +160,8 @@ class DiagramViewer {
   private returnFocus: HTMLElement | null = null;
   private readonly pointers = new Map<number, { x: number; y: number }>();
   private gesture: { moved: number; startDist: number; startBox: Box; target: Element | null } | null = null;
+  // Pointer capture retargets click and dblclick to the stage, so remember what was pressed.
+  private lastDownTarget: Element | null = null;
   private resizeObserver: ResizeObserver | null = null;
 
   constructor(locale: string, host: HTMLElement) {
@@ -171,6 +189,7 @@ class DiagramViewer {
 
     this.stage = el("div", "bdv-stage");
     this.stage.tabIndex = 0;
+    this.stage.setAttribute("role", "group");
     this.stage.setAttribute("aria-describedby", "bdv-hint");
     this.panel = el("aside", "bdv-panel");
     this.panel.setAttribute("aria-live", "polite");
@@ -187,7 +206,7 @@ class DiagramViewer {
     this.stage.addEventListener("pointerdown", this.onPointerDown);
     this.stage.addEventListener("pointermove", this.onPointerMove);
     this.stage.addEventListener("pointerup", this.onPointerUp);
-    this.stage.addEventListener("pointercancel", this.onPointerUp);
+    this.stage.addEventListener("pointercancel", this.onPointerCancel);
     this.stage.addEventListener("dblclick", this.onDoubleClick);
     this.dialog.addEventListener("keydown", this.onKeyDown);
     this.dialog.addEventListener("close", this.onClose);
@@ -223,6 +242,7 @@ class DiagramViewer {
     this.svg = cloneForStage(source);
     this.stage.replaceChildren(this.svg);
     this.heading.textContent = source.querySelector("title")?.textContent ?? "";
+    this.stage.setAttribute("aria-label", this.heading.textContent);
     this.renderTabs();
     this.base = this.fittedBase();
     this.setBox(this.base);
@@ -328,8 +348,13 @@ class DiagramViewer {
     };
   }
 
-  private zoomBy(factor: number, at: { x: number; y: number } | null, animate: boolean): void {
+  private zoomBy(requested: number, at: { x: number; y: number } | null, animate: boolean): void {
     const focus = at ?? { x: this.box.x + this.box.w / 2, y: this.box.y + this.box.h / 2 };
+    // Clamp the factor itself so zooming at a limit does not drift the view.
+    const minW = this.base.w / 10;
+    const maxW = this.base.w * 1.6;
+    const factor = this.box.w / Math.min(maxW, Math.max(minW, this.box.w / requested));
+    if (Math.abs(factor - 1) < 1e-6) return;
     const w = this.box.w / factor;
     const h = this.box.h / factor;
     const next = {
@@ -363,6 +388,7 @@ class DiagramViewer {
   private readonly onPointerDown = (event: PointerEvent): void => {
     if (event.button !== 0) return;
     cancelAnimationFrame(this.frame);
+    this.lastDownTarget = event.target as Element;
     this.stage.setPointerCapture(event.pointerId);
     this.pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
     const points = [...this.pointers.values()];
@@ -407,13 +433,27 @@ class DiagramViewer {
     else this.renderPanel(null);
   };
 
+  private readonly onPointerCancel = (event: PointerEvent): void => {
+    // The browser took the touch (scroll, system gesture): never treat it as a tap.
+    this.pointers.delete(event.pointerId);
+    if (this.pointers.size > 0) return;
+    this.gesture = null;
+    delete this.stage.dataset["dragging"];
+  };
+
   private readonly onDoubleClick = (event: MouseEvent): void => {
-    if ((event.target as Element).closest("[data-c4-node]")) return;
+    if (this.lastDownTarget?.closest("[data-c4-node]")) return;
     this.zoomBy(2, this.toDrawing(event.clientX, event.clientY), true);
   };
 
   private readonly onKeyDown = (event: KeyboardEvent): void => {
     if (event.target instanceof HTMLButtonElement && (event.key === "Enter" || event.key === " ")) return;
+    const node = event.target instanceof Element ? event.target.closest<SVGGElement>("[data-c4-node]") : null;
+    if (node && (event.key === "Enter" || event.key === " ")) {
+      event.preventDefault();
+      this.select(node.dataset["c4Node"] ?? "", "key");
+      return;
+    }
     const panStep = 0.12;
     const actions: Record<string, () => void> = {
       "+": () => this.zoomBy(ZOOM_STEP, null, true),
@@ -473,7 +513,11 @@ class DiagramViewer {
     }
     const clear = el("button", "bdv-clear", this.copy.clear);
     clear.type = "button";
-    clear.addEventListener("click", () => this.renderPanel(null));
+    clear.addEventListener("click", () => {
+      this.renderPanel(null);
+      // The focused button is gone; keep focus in the viewer so the shortcuts still work.
+      (node.isConnected ? node : this.stage).focus({ preventScroll: true });
+    });
     children.push(clear);
     this.panel.replaceChildren(...children);
   }

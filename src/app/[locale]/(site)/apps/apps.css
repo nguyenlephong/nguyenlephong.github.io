@@ -780,7 +780,7 @@ kbd {
 
   /* Wishjar: the jar wobbles, a new note drops in, a swapped pronoun pops. */
   .wish-jar-svg[data-shaken] { animation: wish-shake 560ms cubic-bezier(0.3, 0.7, 0.3, 1); }
-  .wish-note { animation: wish-drop 520ms cubic-bezier(0.2, 1.2, 0.4, 1) both; }
+  .wish-text { animation: wish-drop 520ms cubic-bezier(0.2, 1.2, 0.4, 1) both; }
   .wish-pronoun { animation: wish-pop 420ms cubic-bezier(0.2, 1.4, 0.4, 1); }
   .wish-jar-button:hover .wish-jar-svg { rotate: -4deg; transition: rotate var(--d-base) var(--ease); }
 

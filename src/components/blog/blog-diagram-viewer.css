@@ -69,6 +69,7 @@
   background: var(--bg);
   color: var(--fg);
   overflow: hidden;
+  overscroll-behavior: contain;
 }
 .bdv[open] {
   display: grid;
@@ -100,6 +101,9 @@
   border: 1px solid var(--border);
   border-radius: 999px;
   background: var(--bg-muted);
+}
+.bdv-tabs[hidden] {
+  display: none;
 }
 .bdv-tab {
   min-height: 32px;
@@ -169,6 +173,15 @@
   cursor: pointer;
   transition: opacity var(--d-fast);
 }
+.bdv-svg .c4-node:focus {
+  outline: none;
+}
+.bdv-svg .c4-node:focus-visible > rect,
+.bdv-svg .c4-node:focus-visible > path:first-child {
+  stroke: var(--blog-accent-ink, var(--accent));
+  stroke-width: 3;
+  stroke-dasharray: 6 3;
+}
 .bdv-svg[data-has-active] .c4-node:not([data-active]) {
   opacity: 0.38;
 }
@@ -185,6 +198,7 @@
   padding: 1.25rem;
   border-left: 1px solid var(--border);
   overflow-y: auto;
+  overscroll-behavior: contain;
 }
 .bdv-caption,
 .bdv-pick,
@@ -264,7 +278,7 @@
     grid-template-rows: minmax(0, 1fr) auto;
   }
   .bdv-panel {
-    max-height: 38dvh;
+    max-height: 30dvh;
     border-left: 0;
     border-top: 1px solid var(--border);
     padding: 1rem;

@@ -32,12 +32,12 @@ const LEGEND_COPY = {
     async: 'Optional, build time',
   },
   vi: {
-    person: 'Người dùng',
+    person: 'Người',
     focal: 'Khối chính',
     system: 'Trong hệ thống',
     container: 'Trong hệ thống',
     component: 'Trong hệ thống',
-    store: 'Lưu dữ liệu',
+    store: 'Kho dữ liệu',
     external: 'Hệ thống ngoài',
     sync: 'Gọi trực tiếp',
     async: 'Tuỳ chọn, lúc build',
@@ -251,8 +251,9 @@ function validate(spec) {
     }
   }
   for (const edge of spec.edges) {
-    if (!ids.has(edge.from) || !ids.has(edge.to)) {
-      if (edge.from !== 'outside') throw new Error(`[c4] ${spec.id} edge ${edge.from}->${edge.to} names a missing node`)
+    const fromOk = edge.from === 'outside' || ids.has(edge.from)
+    if (!fromOk || !ids.has(edge.to)) {
+      throw new Error(`[c4] ${spec.id} edge ${edge.from}->${edge.to} names a missing node`)
     }
   }
   if (spec.nodes.filter((n) => n.focal).length > 2) throw new Error(`[c4] ${spec.id} has more than 2 focal nodes`)

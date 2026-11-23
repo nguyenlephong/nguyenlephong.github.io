@@ -119,8 +119,9 @@ export default function WishJar({ demo, locale, shakeLabel, forLabel, occasionLa
           <span className="wish-jar-label">{shakeLabel}</span>
         </button>
 
-        <figure className="wish-note" key={`${line.id}-${shakes}`}>
-          <blockquote lang="vi" className="wish-text" aria-live="polite">
+        {/* The live region stays mounted so screen readers announce each new wish; the drop animation moves to the text. */}
+        <figure className="wish-note" aria-live="polite" aria-atomic="true">
+          <blockquote lang="vi" className="wish-text" key={`${line.id}-${shakes}`}>
             {parts.map((part, i) =>
               part.pronoun ? (
                 <mark key={`${i}-${audience.id}`} className="wish-pronoun">
