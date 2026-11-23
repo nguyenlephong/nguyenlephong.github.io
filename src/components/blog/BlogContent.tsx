@@ -1,5 +1,6 @@
 import {
   enhanceArticleTables,
+  hasArticleDiagram,
   hasArticleWorkflowCanvas,
   localizeArticleHtmlLinks
 } from "@/lib/content/article-html";
@@ -13,15 +14,16 @@ interface BlogContentProps {
 /**
  * Render trusted repository-authored HTML as a Server Component. Locale-aware
  * links are present in the exported document before hydration. The optional
- * canvas enhancer mounts, then requests its drawing module, only for authored
- * markup that explicitly needs it.
+ * enhancer mounts, then requests the canvas or diagram-viewer module, only for
+ * authored markup that explicitly needs it.
  */
 export default function BlogContent({ html, locale }: BlogContentProps) {
   const localizedHtml = enhanceArticleTables(
     localizeArticleHtmlLinks(html, locale),
     locale
   );
-  const needsWorkflowEnhancer = hasArticleWorkflowCanvas(localizedHtml);
+  const workflow = hasArticleWorkflowCanvas(localizedHtml);
+  const diagram = hasArticleDiagram(localizedHtml);
 
   return (
     <>
@@ -30,7 +32,9 @@ export default function BlogContent({ html, locale }: BlogContentProps) {
         data-article-content
         dangerouslySetInnerHTML={{ __html: localizedHtml }}
       />
-      {needsWorkflowEnhancer && <BlogWorkflowEnhancer locale={locale} />}
+      {(workflow || diagram) && (
+        <BlogWorkflowEnhancer locale={locale} workflow={workflow} diagram={diagram} />
+      )}
     </>
   );
 }

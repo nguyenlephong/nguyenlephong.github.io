@@ -113,6 +113,47 @@
   ],
   "posts": [
     {
+      "slug": "c4-model-an-gi-va-wishjar",
+      "category": "architecture",
+      "title": "Ăn Gì and Wishjar in the C4 Model, Including What Won't Scale Yet",
+      "summary": "C4 diagrams of two side projects I run in production: where state lives, how paid APIs are capped, and what would break first at ten times the traffic.",
+      "date": "2026-11-23",
+      "readingMinutes": 8,
+      "tags": [
+        "Software Architecture",
+        "System Design",
+        "Scalability",
+        "Side Projects",
+        "Product Engineering",
+        "Architecture Decisions"
+      ],
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "wishjar-loi-chuc-hay-cho-moi-dip",
+      "category": "perspectives",
+      "title": "Wishjar: Vietnamese Wishes With the Right Pronouns, One Shake Away",
+      "summary": "Wishjar is a free web app with 1,008 Vietnamese wishes, pickup lines and captions. Pick who it's for, shake the jar and get a line with the right pronouns.",
+      "date": "2026-11-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Side Projects",
+        "Product Engineering",
+        "Web App",
+        "AI Product",
+        "Privacy"
+      ],
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
       "slug": "an-gi-hom-nay-an-gi-o-dau",
       "category": "perspectives",
       "title": "Where to Eat in Vietnam: I Built an App That Picks One Place",

@@ -254,6 +254,131 @@
 .apps-btn--primary[aria-disabled='true'] { opacity: 0.6; }
 
 /* ---------------------------------------------------------
+   Wishjar: the app's school notebook page (vở ô ly), purple ink,
+   a red margin line and paper strips in a jar.
+   --------------------------------------------------------- */
+.apps-stage[data-app='wishjar'] {
+  --st-bg:
+    linear-gradient(90deg, transparent 0 calc(var(--st-pad) * 0.55), rgb(232 71 91 / 0.55) calc(var(--st-pad) * 0.55) calc(var(--st-pad) * 0.55 + 2px), transparent 0),
+    repeating-linear-gradient(0deg, rgb(196 187 239 / 0.55) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(90deg, rgb(220 214 245 / 0.5) 0 1px, transparent 1px 28px),
+    #fbfbf7;
+  --st-ink: #2a1f6b;
+  --st-muted: #4f4592;
+  --st-rule: rgb(59 42 140 / 0.16);
+  --st-rule-strong: rgb(59 42 140 / 0.34);
+  --st-sun: #ffd23f;
+  --st-cta: #3b2a8c;
+  --st-cta-ink: #fff;
+  --st-focus: #e8475b;
+}
+.apps-stage[data-app='wishjar'] .apps-stage-icon {
+  background:
+    linear-gradient(#e8475b 0 30%, transparent 0),
+    linear-gradient(90deg, #ffd23f 0 33%, #5cd6a9 0 66%, #ff8fb8 0) bottom / 100% 55% no-repeat,
+    #fff;
+  box-shadow: inset 0 0 0 2.5px #3b2a8c;
+}
+.wish-jar { display: grid; gap: 1.25rem; }
+.wish-occasions,
+.wish-audiences {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+.wish-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 40px;
+  padding: 0 0.9rem;
+  border: 2px solid var(--st-cta);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--st-ink);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 650;
+  cursor: pointer;
+  transition: background var(--d-fast), color var(--d-fast);
+}
+.wish-chip[aria-pressed='true'] { background: var(--st-cta); color: #fff; }
+.wish-chip:focus-visible,
+.wish-jar-button:focus-visible { outline: 3px solid var(--st-focus); outline-offset: 3px; }
+.wish-chip-pair {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  opacity: 0.75;
+}
+.wish-for { color: var(--st-muted); font-size: var(--text-sm); font-weight: 600; }
+.wish-scene {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+}
+.wish-jar-button {
+  display: grid;
+  justify-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem;
+  border: 0;
+  border-radius: 16px;
+  background: none;
+  color: #e8475b;
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  cursor: pointer;
+}
+.wish-jar-svg { width: 100%; height: auto; transform-origin: 50% 90%; }
+.wish-note {
+  position: relative;
+  margin: 0;
+  padding: 1.5rem 1.25rem 1.1rem;
+  background: #fff;
+  border-radius: 6px 6px 18px 6px;
+  box-shadow: 0 1px 0 var(--st-rule-strong), 0 14px 30px -18px rgb(59 42 140 / 0.45);
+  rotate: -0.6deg;
+}
+/* Washi tape holding the note, like the app. */
+.wish-note::before {
+  content: '';
+  position: absolute;
+  top: -0.6rem;
+  left: 1.25rem;
+  width: 4.5rem;
+  height: 1.2rem;
+  background: rgb(255 210 63 / 0.85);
+  rotate: -3deg;
+}
+.wish-text {
+  margin: 0;
+  color: var(--st-ink);
+  font-size: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  font-weight: 600;
+  line-height: 1.75;
+  text-wrap: pretty;
+  background: repeating-linear-gradient(transparent 0 calc(1.75em - 1.5px), rgb(196 187 239 / 0.9) calc(1.75em - 1.5px) 1.75em);
+}
+.wish-pronoun {
+  display: inline-block;
+  padding: 0 0.15em;
+  border-radius: 4px;
+  background: var(--st-sun);
+  color: inherit;
+}
+.wish-gloss {
+  margin-top: 0.75rem;
+  color: var(--st-muted);
+  font-size: var(--text-sm);
+  line-height: 1.55;
+}
+.wish-controls { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+/* ---------------------------------------------------------
    Glance: a Mac desktop at dusk, a light Mail window, a glass panel.
    --------------------------------------------------------- */
 .apps-stage[data-app='glance'] {
@@ -604,8 +729,21 @@ kbd {
       "facts facts";
   }
   .apps-stage[data-app='glance'] .apps-stage-play { align-self: center; }
+  .apps-stage[data-app='wishjar'] {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+      "head play"
+      "actions play"
+      ". play"
+      "facts facts";
+  }
+  .wish-scene { grid-template-columns: 8rem minmax(0, 1fr); gap: 1.5rem; }
 }
 @media (max-width: 640px) {
+  .apps-stage[data-app='wishjar'] { grid-template-areas: "head" "play" "actions" "facts"; }
+  .wish-scene { grid-template-columns: 4.5rem minmax(0, 1fr); align-items: start; gap: 0.75rem; }
+  .wish-note { padding: 1.25rem 1rem 1rem; }
   .apps-sub,
   .apps-lab-note p { font-size: var(--text-base); }
   .apps-stage { gap: 1.75rem; }
@@ -639,6 +777,12 @@ kbd {
   .dish-deck[data-spinning] .dish-card[data-pos='0'] {
     animation: dish-rattle 180ms ease-in-out infinite alternate;
   }
+
+  /* Wishjar: the jar wobbles, a new note drops in, a swapped pronoun pops. */
+  .wish-jar-svg[data-shaken] { animation: wish-shake 560ms cubic-bezier(0.3, 0.7, 0.3, 1); }
+  .wish-text { animation: wish-drop 520ms cubic-bezier(0.2, 1.2, 0.4, 1) both; }
+  .wish-pronoun { animation: wish-pop 420ms cubic-bezier(0.2, 1.4, 0.4, 1); }
+  .wish-jar-button:hover .wish-jar-svg { rotate: -4deg; transition: rotate var(--d-base) var(--ease); }
 
   /* Glance: the autoplay cursor glides between phrases; the selection sweeps across. */
   .glance-cursor { transition: translate 720ms cubic-bezier(0.3, 0.7, 0.2, 1), opacity 240ms; }
@@ -701,6 +845,18 @@ kbd {
 @keyframes dish-rattle {
   from { rotate: -5deg; translate: 0 -2%; }
   to { rotate: 3deg; translate: 0 1%; }
+}
+@keyframes wish-shake {
+  20% { rotate: -14deg; }
+  40% { rotate: 11deg; }
+  60% { rotate: -7deg; }
+  80% { rotate: 3deg; }
+}
+@keyframes wish-drop {
+  from { opacity: 0; translate: -18% -30%; rotate: -9deg; scale: 0.8; }
+}
+@keyframes wish-pop {
+  from { scale: 1.35; }
 }
 @keyframes apps-drift {
   to { translate: -18% 22%; }

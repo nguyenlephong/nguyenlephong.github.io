@@ -125,6 +125,11 @@ export type AnalyticsEvent =
   | 'blog_related_click'
   // Article tag row linking back into the archive filter or search
   | 'blog_tag_click'
+  // Diagram viewer on articles with <figure data-blog-diagram>: open { diagram, source: button | figure | node },
+  // select { diagram, node, source: tap | open }, switch { diagram, from, source: tab | drill }
+  | 'blog_diagram_open'
+  | 'blog_diagram_select'
+  | 'blog_diagram_switch'
   // Byline and author box on blog posts and notes (target: byline | cv | resume | email)
   | 'blog_author_click'
   // Notes articles

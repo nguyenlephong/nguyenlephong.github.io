@@ -1370,6 +1370,23 @@
   fill: var(--blog-accent);
   font-weight: 700;
 }
+/* C4 figures (scripts/render-c4-diagrams.mjs): a solid paper so label masks match it. */
+.blog-c4 {
+  background: var(--bg);
+}
+/* Captions here are full sentences, so they read in sentence case. */
+.blog-c4 figcaption {
+  line-height: 1.5;
+  text-transform: none;
+}
+.dgm-svg .dgm-mask {
+  fill: var(--bg);
+}
+.dgm-svg .dgm-boundary {
+  fill: none;
+  stroke: var(--border-strong);
+  stroke-dasharray: 6 4;
+}
 
 /* ---- comparison tables ---- */
 .blog-content .blog-table-wrap {

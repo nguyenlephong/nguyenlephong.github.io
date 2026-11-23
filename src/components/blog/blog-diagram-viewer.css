@@ -1,0 +1,297 @@
+/* Diagram viewer: loaded with blog-diagram-viewer.ts, only on articles that carry
+   a <figure data-blog-diagram>. Static figure styles live in blog.css. */
+
+/* ---- inline figure: expand control ---- */
+.blog-c4[data-diagram-ready] > svg {
+  cursor: zoom-in;
+}
+.blog-c4[data-diagram-ready] .c4-node {
+  transition: opacity var(--d-fast);
+}
+.blog-c4[data-diagram-ready] .c4-node:hover {
+  opacity: 0.8;
+}
+.bdv-expand {
+  display: flex;
+  width: fit-content;
+  margin: 0.9rem auto 0;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 36px;
+  padding: 0 0.8rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--fg);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    border-color var(--d-fast),
+    background var(--d-fast),
+    translate var(--d-fast) var(--ease);
+}
+.bdv-expand svg,
+.bdv-tool svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bdv-expand:hover {
+  border-color: var(--blog-accent);
+  translate: 0 -1px;
+}
+.bdv-expand:focus-visible,
+.bdv-tool:focus-visible,
+.bdv-tab:focus-visible,
+.bdv-drill:focus-visible,
+.bdv-clear:focus-visible,
+.bdv-stage:focus-visible {
+  outline: 2px solid var(--blog-accent-ink, var(--accent));
+  outline-offset: 2px;
+}
+
+/* ---- dialog ---- */
+.bdv {
+  width: min(1400px, calc(100vw - 2rem));
+  height: min(900px, calc(100dvh - 2rem));
+  max-width: none;
+  max-height: none;
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--border-strong);
+  border-radius: 16px;
+  background: var(--bg);
+  color: var(--fg);
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+.bdv[open] {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) auto;
+}
+.bdv::backdrop {
+  background: color-mix(in oklab, var(--bg) 40%, rgb(0 0 0 / 0.55));
+  backdrop-filter: blur(4px);
+}
+.bdv-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  padding: 0.75rem 0.75rem 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.bdv-heading {
+  flex: 1 1 14rem;
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.bdv-tabs {
+  display: inline-flex;
+  padding: 3px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-muted);
+}
+.bdv-tabs[hidden] {
+  display: none;
+}
+.bdv-tab {
+  min-height: 32px;
+  padding: 0 0.85rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--fg-muted);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.bdv-tab[aria-pressed="true"] {
+  background: var(--bg);
+  color: var(--fg);
+  box-shadow: inset 0 0 0 1px var(--border-strong);
+}
+.bdv-tools {
+  display: inline-flex;
+  gap: 0.35rem;
+}
+.bdv-tool {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--fg);
+  cursor: pointer;
+  transition: border-color var(--d-fast), background var(--d-fast);
+}
+.bdv-tool:hover {
+  border-color: var(--blog-accent);
+}
+.bdv-close {
+  margin-left: 0.35rem;
+}
+
+.bdv-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 22rem);
+  min-height: 0;
+}
+.bdv-stage {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+  touch-action: none;
+  cursor: grab;
+  /* Plain paper: label masks in the drawing are filled with --bg. */
+  background: var(--bg);
+}
+.bdv-stage[data-dragging] {
+  cursor: grabbing;
+}
+.bdv-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+}
+.bdv-svg .c4-node {
+  cursor: pointer;
+  transition: opacity var(--d-fast);
+}
+.bdv-svg .c4-node:focus {
+  outline: none;
+}
+.bdv-svg .c4-node:focus-visible > rect,
+.bdv-svg .c4-node:focus-visible > path:first-child {
+  stroke: var(--blog-accent-ink, var(--accent));
+  stroke-width: 3;
+  stroke-dasharray: 6 3;
+}
+.bdv-svg[data-has-active] .c4-node:not([data-active]) {
+  opacity: 0.38;
+}
+.bdv-svg .c4-node[data-active] > rect,
+.bdv-svg .c4-node[data-active] > path:first-child {
+  stroke: var(--blog-accent);
+  stroke-width: 3;
+}
+
+.bdv-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 1.25rem;
+  border-left: 1px solid var(--border);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.bdv-caption,
+.bdv-pick,
+.bdv-detail {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.bdv-pick {
+  color: var(--fg-subtle);
+}
+.bdv-tag {
+  margin: 0;
+  color: var(--fg-muted);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+.bdv-name {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 750;
+  letter-spacing: -0.015em;
+}
+.bdv-drill,
+.bdv-clear {
+  align-self: flex-start;
+  min-height: 40px;
+  padding: 0 1rem;
+  border-radius: 10px;
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 650;
+  cursor: pointer;
+}
+.bdv-drill {
+  margin-top: 0.35rem;
+  border: 1px solid var(--blog-accent);
+  background: var(--blog-accent-soft);
+  color: var(--fg);
+}
+.bdv-clear {
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--fg-muted);
+  padding-inline: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.bdv-hint {
+  margin: 0;
+  padding: 0.55rem 1.25rem;
+  border-top: 1px solid var(--border);
+  color: var(--fg-subtle);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 760px) {
+  .bdv {
+    width: 100vw;
+    height: 100dvh;
+    border: 0;
+    border-radius: 0;
+  }
+  .bdv-bar {
+    padding: 0.6rem 0.6rem 0.6rem 1rem;
+  }
+  .bdv-tabs {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+  }
+  .bdv-tab {
+    flex: 1 0 auto;
+  }
+  .bdv-body {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+  }
+  .bdv-panel {
+    max-height: 30dvh;
+    border-left: 0;
+    border-top: 1px solid var(--border);
+    padding: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bdv-expand,
+  .bdv-tool,
+  .c4-node {
+    transition: none;
+  }
+  .bdv-expand:hover {
+    translate: none;
+  }
+}

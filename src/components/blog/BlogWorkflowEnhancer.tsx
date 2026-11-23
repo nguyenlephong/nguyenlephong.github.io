@@ -5,15 +5,19 @@ import { usePathname } from "next/navigation";
 
 interface BlogWorkflowEnhancerProps {
   locale: string;
+  workflow: boolean;
+  diagram: boolean;
 }
 
 /**
- * Mount the optional canvas runtime only for an article that rendered its
- * explicit workflow marker. The drawing implementation stays behind a second
- * dynamic boundary, so ordinary articles never download it.
+ * Mount the optional article runtimes (workflow canvas, diagram viewer) only
+ * for an article that rendered their explicit markers. Each implementation
+ * stays behind its own dynamic boundary, so ordinary articles download neither.
  */
 export default function BlogWorkflowEnhancer({
-  locale
+  locale,
+  workflow,
+  diagram
 }: BlogWorkflowEnhancerProps) {
   const pathname = usePathname();
 
@@ -22,22 +26,36 @@ export default function BlogWorkflowEnhancer({
     if (!root) return;
 
     let active = true;
-    let cleanup: (() => void) | undefined;
+    const cleanups: Array<() => void> = [];
+    const keep = (cleanup: () => void) => {
+      if (active) cleanups.push(cleanup);
+      else cleanup();
+    };
 
-    void import("./blog-workflow-canvas")
-      .then(({ mountBlogWorkflowCanvases }) => {
-        if (!active) return;
-        cleanup = mountBlogWorkflowCanvases(root, locale);
-      })
-      .catch(() => {
-        // Optional illustration failure must not affect the article.
-      });
+    if (workflow) {
+      void import("./blog-workflow-canvas")
+        .then(({ mountBlogWorkflowCanvases }) => {
+          if (active) keep(mountBlogWorkflowCanvases(root, locale));
+        })
+        .catch(() => {
+          // Optional illustration failure must not affect the article.
+        });
+    }
+    if (diagram) {
+      void import("./blog-diagram-viewer")
+        .then(({ mountBlogDiagrams }) => {
+          if (active) keep(mountBlogDiagrams(root, locale));
+        })
+        .catch(() => {
+          // Without the viewer the inline SVG still reads fine.
+        });
+    }
 
     return () => {
       active = false;
-      cleanup?.();
+      cleanups.forEach((cleanup) => cleanup());
     };
-  }, [locale, pathname]);
+  }, [locale, pathname, workflow, diagram]);
 
   return null;
 }

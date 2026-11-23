@@ -191,9 +191,11 @@ test("keeps article HTML server-rendered and canvas drawing behind a second lazy
 
   assert.doesNotMatch(content, /^["']use client["']/m);
   assert.match(content, /localizeArticleHtmlLinks\(html, locale\)/);
+  assert.match(content, /const workflow = hasArticleWorkflowCanvas\(localizedHtml\)/);
+  assert.match(content, /const diagram = hasArticleDiagram\(localizedHtml\)/);
   assert.match(
     content,
-    /needsWorkflowEnhancer && <BlogWorkflowEnhancer locale=\{locale\} \/>/
+    /\(workflow \|\| diagram\) && \(\s*<BlogWorkflowEnhancer locale=\{locale\} workflow=\{workflow\} diagram=\{diagram\} \/>/
   );
   assert.match(enhancer, /^["']use client["']/m);
   assert.match(
@@ -202,7 +204,7 @@ test("keeps article HTML server-rendered and canvas drawing behind a second lazy
   );
   assert.match(enhancer, /const pathname = usePathname\(\)/);
   assert.match(enhancer, /import\(["']\.\/blog-workflow-canvas["']\)/);
-  assert.match(enhancer, /\}, \[locale, pathname\]\)/);
+  assert.match(enhancer, /\}, \[locale, pathname, workflow, diagram\]\)/);
   assert.doesNotMatch(enhancer, /Small pace, real summit/);
   assert.match(canvas, /Small pace, real summit/);
   assert.match(

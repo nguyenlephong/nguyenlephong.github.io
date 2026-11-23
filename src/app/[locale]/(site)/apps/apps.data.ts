@@ -27,6 +27,30 @@ export interface DishDemo {
   places: Record<AppsCopyLocale, string>
 }
 
+// Wishjar demo: real lines from the Wishjar library (src/data/wishes/*.json, checked 2026-11-23).
+// `text` keeps the app's {you}/{me} pronoun slots; `gloss` is the English meaning for the en page.
+export interface WishDemoAudience {
+  id: string
+  label: Record<AppsCopyLocale, string>
+  you: string
+  me: string
+}
+
+export interface WishDemoLine {
+  id: string
+  occasion: string
+  // Recipients the line suits, first one is the default; ids from WishDemo.audiences.
+  audiences: string[]
+  text: string
+  gloss: string
+}
+
+export interface WishDemo {
+  occasions: { id: string; emoji: string; label: Record<AppsCopyLocale, string> }[]
+  audiences: WishDemoAudience[]
+  lines: WishDemoLine[]
+}
+
 // Glance demo: a sentence whose numbered parts are clickable phrases with a canned translation.
 export interface GlanceDemo {
   windowTitle: string
@@ -42,7 +66,7 @@ export interface AppShowcaseItem {
   // JSON-LD operatingSystem and the meta line.
   platforms: string[]
   stack: string[]
-  license: string
+  license?: string
   // schema.org applicationCategory for the JSON-LD.
   category: string
   // Clean public URL for the JSON-LD; links.site carries the UTM-tagged one.
@@ -50,6 +74,7 @@ export interface AppShowcaseItem {
   hotkeys: { keys: string[]; action: Record<AppsCopyLocale, string> }[]
   links: AppLinks
   dishes?: DishDemo[]
+  wishDemo?: WishDemo
   glanceDemo?: GlanceDemo
   copy: Record<AppsCopyLocale, AppCopy>
 }
@@ -68,6 +93,11 @@ export interface AppsPageCopy {
   // {places} is replaced with DishDemo.places.
   openDish: string
   glanceHint: string
+  shake: string
+  wishFor: string
+  wishOccasion: string
+  // Primary CTA under the wish card.
+  openWish: string
 }
 
 export const appsPageCopy: Record<AppsCopyLocale, AppsPageCopy> = {
@@ -84,6 +114,10 @@ export const appsPageCopy: Record<AppsCopyLocale, AppsPageCopy> = {
     spin: 'Spin',
     openDish: 'Find {places}',
     glanceHint: "Click an underlined phrase, or press the same shortcut you'd use on a Mac.",
+    shake: 'Shake the jar',
+    wishFor: 'Send to',
+    wishOccasion: 'Occasion',
+    openWish: 'Open this one in Wishjar',
   },
   vi: {
     title: 'Ứng dụng tôi làm',
@@ -98,6 +132,10 @@ export const appsPageCopy: Record<AppsCopyLocale, AppsPageCopy> = {
     spin: 'Quay đại',
     openDish: 'Xem {places} trên Ăn Gì',
     glanceHint: 'Bấm vào một cụm gạch chân, hoặc bấm phím tắt này y như trên Mac.',
+    shake: 'Lắc hũ',
+    wishFor: 'Gửi cho',
+    wishOccasion: 'Dịp',
+    openWish: 'Mở câu này trên Wishjar',
   },
 }
 
@@ -152,6 +190,119 @@ export const apps: AppShowcaseItem[] = [
           'Sổ tay có 454 quán, gom từ 326 ghi chú review ăn uống tôi lưu lại (số liệu ngày 17/11/2026). Quán nào cũng ghi rõ nguồn.',
           'Đi tỉnh khác thì bật Gần bạn, app tìm quán quanh chỗ bạn đang đứng. Trang Đặc sản vùng miền cho biết tỉnh nào nên ăn món gì.',
           'Không cần tài khoản, server không lưu vị trí của bạn. Biết quán ngon thì góp vào, tôi duyệt từng quán rồi mới lên app.',
+        ],
+      },
+    },
+  },
+  {
+    id: 'wishjar',
+    name: 'Wishjar',
+    status: 'shipped',
+    version: 'v0.1.0',
+    platforms: ['Web', 'PWA'],
+    stack: ['TypeScript', 'Node.js', 'Claude Haiku'],
+    category: 'LifestyleApplication',
+    homepage: 'https://wishjar.startup.id.vn/',
+    hotkeys: [],
+    links: {
+      article: '/blog/perspectives/wishjar-loi-chuc-hay-cho-moi-dip',
+    },
+    wishDemo: {
+      occasions: [
+        { id: 'morning', emoji: '☀️', label: { vi: 'Chào buổi sáng', en: 'Good morning' } },
+        { id: 'monday', emoji: '🫠', label: { vi: 'Đầu tuần', en: 'Monday' } },
+        { id: 'payday', emoji: '💸', label: { vi: 'Lương về', en: 'Payday' } },
+        { id: 'flirt', emoji: '🎣', label: { vi: 'Thả thính', en: 'Flirting' } },
+      ],
+      // Default pronoun pairs from the app's catalog (src/catalog.ts AUDIENCES).
+      audiences: [
+        { id: 'colleague', label: { vi: 'Đồng nghiệp', en: 'Colleague' }, you: 'bạn', me: 'mình' },
+        { id: 'crush', label: { vi: 'Crush', en: 'Crush' }, you: 'cậu', me: 'tớ' },
+        { id: 'lover', label: { vi: 'Người yêu', en: 'Partner' }, you: 'em', me: 'anh' },
+        { id: 'parent', label: { vi: 'Bố mẹ', en: 'Parents' }, you: 'bố mẹ', me: 'con' },
+      ],
+      lines: [
+        {
+          id: '3w5e31', occasion: 'morning', audiences: ['colleague'],
+          text: 'Mong {you} vừa ngồi xuống đã nghe câu hỏi dễ thương nhất buổi sáng: “Trưa nay ăn gì?”',
+          gloss: 'Hope the first thing you hear at your desk is the sweetest question of the morning: “What’s for lunch?”',
+        },
+        {
+          id: 'iav7v0', occasion: 'morning', audiences: ['crush', 'lover'],
+          text: '{You} cứ từ từ tỉnh ngủ. Phần nhớ {you} từ sáng sớm đã có {me} làm thay rồi.',
+          gloss: 'Take your time waking up. The missing-you part has been covered since early morning, by me.',
+        },
+        {
+          id: '1podz2b', occasion: 'morning', audiences: ['colleague'],
+          text: 'Mong laptop sáng nay mở lên ngoan ngoãn, không tranh thủ cập nhật đúng lúc {you} cần tỏ ra chuyên nghiệp.',
+          gloss: 'May your laptop boot up nicely today, and not start an update right when you need to look professional.',
+        },
+        {
+          id: 'z10grj', occasion: 'monday', audiences: ['parent', 'lover'],
+          text: 'Đầu tuần bận mấy cũng nhớ ăn đúng bữa nha. {Me} không ở cạnh nhắc hoài được nên gửi câu này đứng canh {you}.',
+          gloss: 'However busy the week starts, eat on time. I can’t be there to keep reminding you, so this message stands guard.',
+        },
+        {
+          id: 'r8krpa', occasion: 'monday', audiences: ['colleague'],
+          text: 'Mong cuộc họp của {you} hôm nay ngắn đến mức chiếc bánh quy trên bàn còn chưa kịp mềm.',
+          gloss: 'May today’s meeting be so short the cookie on the table doesn’t even go soft.',
+        },
+        {
+          id: '1cjfax3', occasion: 'monday', audiences: ['crush', 'colleague', 'lover'],
+          text: '{You} thắng được cái báo thức sáng thứ Hai là đã dẫn trước cả tuần 1-0 rồi đó.',
+          gloss: 'Beat the Monday alarm and you’re already 1-0 up on the whole week.',
+        },
+        {
+          id: 'l8jv9f', occasion: 'payday', audiences: ['colleague', 'crush'],
+          text: 'Lương về rồi, {you} nhớ chụp màn hình làm kỷ niệm. Vài hôm nữa mở lại còn có tư liệu chứng minh mình từng giàu.',
+          gloss: 'Payday! Take a screenshot as a souvenir. In a few days it’ll be proof you were once rich.',
+        },
+        {
+          id: 'ooiatw', occasion: 'payday', audiences: ['lover', 'crush'],
+          text: 'Lương về, {me} không cần quà đâu. {You} để dành mua thứ {you} thích, thấy {you} vui là phần lời của {me} rồi.',
+          gloss: 'Payday, and I don’t need a gift. Buy something you like. Seeing you happy is my share of the profit.',
+        },
+        {
+          id: '1vkd8qg', occasion: 'payday', audiences: ['colleague', 'parent'],
+          text: 'Tiền tự thưởng của {you} không cần hội đồng phê duyệt. Niềm vui nhỏ thôi mà, ký cái rẹt nha.',
+          gloss: 'Treating yourself needs no board approval. It’s a small joy, just sign it off.',
+        },
+        {
+          id: '186w0a6', occasion: 'flirt', audiences: ['crush', 'lover'],
+          text: 'Điện thoại còn 5% thì cần sạc. {Me} gặp {you} năm phút là đầy pin, công nghệ này hơi bị đỉnh.',
+          gloss: 'A phone at 5% needs a charger. Five minutes with you and I’m at 100%. Pretty great tech.',
+        },
+        {
+          id: '6duexc', occasion: 'flirt', audiences: ['colleague', 'crush'],
+          text: 'Hộp cơm {me} có món mặn, món xào, thiếu mỗi người ngồi đối diện. {You} bổ sung giúp cho đủ mâm nha.',
+          gloss: 'My lunchbox has a main and a stir-fry, just missing someone across the table. Mind filling that seat?',
+        },
+        {
+          id: '1o60tvz', occasion: 'flirt', audiences: ['lover', 'crush'],
+          text: 'Wi-Fi yếu thì nhập lại mật khẩu. Còn tín hiệu từ {you} yếu quá, {me} phải đứng gần thêm chút mới bắt được.',
+          gloss: 'Weak Wi-Fi, you re-enter the password. Your signal’s weak too, so I’ll have to stand a bit closer.',
+        },
+      ],
+    },
+    copy: {
+      en: {
+        tagline: 'A jar of 1,008 Vietnamese wishes, pickup lines and captions. Pick who it is for, shake, and the pronouns come out right.',
+        hardware: 'phone browsers, installable as an app',
+        facts: [
+          '28 occasions, from good morning and payday to birthdays, weddings and Lunar New Year. Upcoming holidays, lunar ones included, sit one tap away.',
+          'Vietnamese changes its words for you and I with every relationship. Pick the recipient and Wishjar fills them in. Type your own or swap them.',
+          'Copy it, share it to Zalo or Messenger, or save a 1080×1350 notebook-page card. Five AI buttons (funnier, shorter, sweeter, more polite, poem) each return three rewrites.',
+          'No account. It works offline once loaded, because the whole library ships with the app. Only the AI rewrite calls a server, behind daily limits.',
+        ],
+      },
+      vi: {
+        tagline: 'Hũ 1.008 lời chúc, câu thả thính, caption tiếng Việt. Chọn gửi cho ai, lắc một cái là có câu đúng xưng hô.',
+        hardware: 'điện thoại, cài được như app',
+        facts: [
+          '28 dịp, từ chào buổi sáng, lương về tới sinh nhật, đám cưới, Tết. Ngày lễ sắp tới, tính cả lịch âm, nằm sẵn ngay dưới hũ.',
+          'Gửi crush, sếp hay bố mẹ thì mỗi người một cách xưng hô. Chọn người nhận là app điền sẵn, muốn gọi khác thì gõ lại hoặc đảo chiều.',
+          'Sao chép, gửi qua Zalo, Messenger hoặc tạo ảnh 1080×1350 kiểu trang vở. Nhờ AI chỉnh cho vui hơn, ngắn hơn, ngọt hơn, lễ phép hơn hay thành thơ, mỗi lần ra ba bản.',
+          'Không cần tài khoản. Tải một lần là mất mạng vẫn lắc được, vì cả thư viện nằm sẵn trong app. Chỉ phần AI chỉnh câu mới gọi server, có giới hạn mỗi ngày.',
         ],
       },
     },
@@ -214,6 +365,26 @@ const AN_GI_ORIGIN = 'https://angiday.startup.id.vn'
 export function anGiDishUrl(slug: string, locale: AppsCopyLocale): string {
   const path = locale === 'vi' ? `/an/${slug}` : `/en/eat/${slug}`
   return `${AN_GI_ORIGIN}${path}?${AN_GI_UTM}&utm_content=apps_demo_${locale}`
+}
+
+const WISHJAR_ORIGIN = 'https://wishjar.startup.id.vn'
+const WISHJAR_UTM = 'utm_source=nguyenlephong.github.io&utm_medium=apps_page&utm_campaign=wishjar_launch'
+
+/** The same wish, recipient and occasion on live Wishjar (it reads o, a and w from the query). */
+export function wishjarUrl(line: Pick<WishDemoLine, 'id' | 'occasion'>, audience: string, locale: AppsCopyLocale): string {
+  const query = new URLSearchParams({ o: line.occasion, a: audience, w: line.id })
+  return `${WISHJAR_ORIGIN}/?${query}&${WISHJAR_UTM}&utm_content=apps_demo_${locale}`
+}
+
+/** Fill Wishjar's {you}/{me} slots, keeping the capital letter of {You}/{Me}. Returns text and pronoun parts. */
+export function personalizeWish(text: string, you: string, me: string): { text: string; pronoun: boolean }[] {
+  return text.split(/(\{(?:you|me)\})/i).filter(Boolean).map((part) => {
+    const match = /^\{(you|me)\}$/i.exec(part)
+    if (!match) return { text: part, pronoun: false }
+    const word = match[1].toLowerCase() === 'you' ? you : me
+    const upper = match[1][0] === match[1][0].toUpperCase()
+    return { text: upper ? word[0].toUpperCase() + word.slice(1) : word, pronoun: true }
+  })
 }
 
 export function appsCopyLocale(contentLocale: string): AppsCopyLocale {

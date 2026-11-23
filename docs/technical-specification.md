@@ -855,14 +855,15 @@ The same complete export records public initial CSS by route. Before the split,
 all non-content routes loaded 122,511 raw / 19,439 Brotli bytes in two files;
 Blog loaded 172,786 / 27,474 in three, and Notes loaded 187,507 / 30,800 in
 four. Route ownership produces the following measurements (refreshed from the
-2026-11-13 complete export; About and Apps from the 2026-11-21 export) and hard gates:
+2026-11-13 complete export; About from the 2026-11-21 export, Apps from the 2026-11-23
+export after the Wishjar stage) and hard gates:
 
 | Public route | Stylesheets | Measured raw | Measured Brotli | Brotli gate |
 |--------------|-------------:|-------------:|----------------:|-------------:|
 | Home | 3 | 56,783 | 11,795 | 12,288 |
 | About | 3 | 40,598 | 8,916 | 9,344 |
 | Gallery | 3 | 39,163 | 8,184 | 8,448 |
-| Apps | 3 | 39,900 | 9,352 | 9,600 |
+| Apps | 3 | 43,447 | 10,060 | 10,368 |
 | English practice | 3 | 38,627 | 8,022 | 8,320 |
 | Offline | 3 | 27,042 | 6,410 | 6,656 |
 | Blog archive | 3 | 82,035 | 14,426 | 14,464 |
