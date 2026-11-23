@@ -348,6 +348,18 @@ export function hasArticleWorkflowCanvas(html: string): boolean {
   return found;
 }
 
+/** True when the article has an authored diagram figure that the zoom viewer enhances. */
+export function hasArticleDiagram(html: string): boolean {
+  let found = false;
+  transformArticleStartTags(html, (tag, tagName) => {
+    if (tagName === "figure" && tagHasAttribute(tag, "data-blog-diagram")) {
+      found = true;
+    }
+    return tag;
+  });
+  return found;
+}
+
 const REFERENCE_SECTION_IDS = new Set([
   "references",
   "sources",
