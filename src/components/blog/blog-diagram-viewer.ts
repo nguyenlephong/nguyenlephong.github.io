@@ -36,8 +36,8 @@ const COPY: Record<"en" | "vi", ViewerCopy> = {
     zoomOut: "Zoom out",
     fit: "Fit",
     levels: "C4 levels",
-    hint: "Drag to move, scroll or pinch to zoom, + and - on the keyboard.",
-    pick: "Pick a box to read what it does and why it is there.",
+    hint: "Drag to move. Scroll, pinch or press + and - to zoom.",
+    pick: "Tap a box to see what it does and why it is there.",
     drill: "Look inside",
     clear: "Back to the caption"
   },
@@ -48,7 +48,7 @@ const COPY: Record<"en" | "vi", ViewerCopy> = {
     zoomOut: "Thu nhỏ",
     fit: "Vừa khung",
     levels: "Các tầng C4",
-    hint: "Kéo để di chuyển, cuộn hoặc chụm hai ngón để zoom, phím + và - cũng được.",
+    hint: "Kéo để di chuyển. Cuộn chuột, chụm hai ngón hoặc bấm + và - để zoom.",
     pick: "Bấm vào một khối để xem nó làm gì và vì sao có nó.",
     drill: "Xem bên trong",
     clear: "Quay lại chú thích"

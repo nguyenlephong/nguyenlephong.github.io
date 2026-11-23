@@ -115,7 +115,7 @@
     {
       "slug": "c4-model-an-gi-va-wishjar",
       "category": "architecture",
-      "title": "Vẽ kiến trúc Ăn Gì và Wishjar theo C4: app nhỏ mà vẫn có đường để lớn",
+      "title": "Kiến trúc Ăn Gì và Wishjar theo C4 model, và những chỗ chưa sẵn sàng scale",
       "summary": "Sơ đồ C4 của hai side project mình đang chạy thật: state nằm ở đâu, API tốn tiền được chặn trần ra sao, và chỗ nào sẽ gãy trước khi traffic tăng gấp mười.",
       "date": "2026-11-23",
       "readingMinutes": 9,

@@ -1374,6 +1374,11 @@
 .blog-c4 {
   background: var(--bg);
 }
+/* Captions here are full sentences, so they read in sentence case. */
+.blog-c4 figcaption {
+  line-height: 1.5;
+  text-transform: none;
+}
 .dgm-svg .dgm-mask {
   fill: var(--bg);
 }

@@ -115,7 +115,7 @@
     {
       "slug": "c4-model-an-gi-va-wishjar",
       "category": "architecture",
-      "title": "Drawing Ăn Gì and Wishjar in C4: Small Apps With Room to Grow",
+      "title": "Ăn Gì and Wishjar in the C4 Model, Including What Won't Scale Yet",
       "summary": "C4 diagrams of two side projects I run in production: where state lives, how paid APIs are capped, and what would break first at ten times the traffic.",
       "date": "2026-11-23",
       "readingMinutes": 8,

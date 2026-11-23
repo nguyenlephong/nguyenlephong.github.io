@@ -22,23 +22,23 @@ const NODE_CLASS = {
 const LEGEND_COPY = {
   en: {
     person: 'Person',
-    focal: 'Focus',
+    focal: 'In focus',
     system: 'In the system',
     container: 'In the system',
     component: 'In the system',
     store: 'Data store',
-    external: 'Outside',
+    external: 'External system',
     sync: 'Request',
     async: 'Optional, build time',
   },
   vi: {
     person: 'Người dùng',
-    focal: 'Trọng tâm',
+    focal: 'Khối chính',
     system: 'Trong hệ thống',
     container: 'Trong hệ thống',
     component: 'Trong hệ thống',
     store: 'Lưu dữ liệu',
-    external: 'Bên ngoài',
+    external: 'Hệ thống ngoài',
     sync: 'Gọi trực tiếp',
     async: 'Tuỳ chọn, lúc build',
   },
@@ -114,13 +114,13 @@ function labelBox(points, text, edge) {
 }
 
 function renderZone(zone, locale) {
-  const label = pick(zone.label, locale).toLocaleUpperCase(locale)
+  const label = pick(zone.label, locale)
   const width = Math.ceil(label.length * LABEL_CHAR + 16)
   const lx = zone.labelX ?? zone.x + 16
   return [
     `<rect class="dgm-boundary" x="${zone.x}" y="${zone.y}" width="${zone.w}" height="${zone.h}" rx="10" stroke-width="1.2"/>`,
     `<rect class="dgm-mask" x="${lx}" y="${zone.y - 8}" width="${width}" height="${LABEL_H}" rx="2"/>`,
-    `<text class="dgm-t-mono" x="${lx + 8}" y="${zone.y + 4}" font-size="${LABEL_FONT}" letter-spacing="0.08em">${escapeXml(label)}</text>`,
+    `<text class="dgm-t-mono" x="${lx + 8}" y="${zone.y + 4}" font-size="${LABEL_FONT}" letter-spacing="0.02em">${escapeXml(label)}</text>`,
   ].join('')
 }
 
@@ -136,11 +136,11 @@ function renderEdge(edge, diagramId, locale) {
 function renderEdgeLabel(edge, locale) {
   const raw = pick(edge.label, locale)
   if (!raw) return ''
-  const text = raw.toLocaleUpperCase(locale)
+  const text = raw
   const box = labelBox(edge.points, text, edge)
   return [
     `<rect class="dgm-mask" x="${box.x}" y="${box.y}" width="${box.width}" height="${box.height}" rx="2"/>`,
-    `<text class="dgm-t-mono" x="${box.x + box.width / 2}" y="${box.y + 11.5}" text-anchor="middle" font-size="${LABEL_FONT}" letter-spacing="0.06em">${escapeXml(text)}</text>`,
+    `<text class="dgm-t-mono" x="${box.x + box.width / 2}" y="${box.y + 11.5}" text-anchor="middle" font-size="${LABEL_FONT}" letter-spacing="0.02em">${escapeXml(text)}</text>`,
   ].join('')
 }
 
