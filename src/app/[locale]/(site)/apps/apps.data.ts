@@ -223,7 +223,7 @@ export const apps: AppShowcaseItem[] = [
       ],
       lines: [
         {
-          id: '3w5e31', occasion: 'morning', audiences: ['colleague', 'crush'],
+          id: '3w5e31', occasion: 'morning', audiences: ['colleague'],
           text: 'Mong {you} vừa ngồi xuống đã nghe câu hỏi dễ thương nhất buổi sáng: “Trưa nay ăn gì?”',
           gloss: 'Hope the first thing you hear at your desk is the sweetest question of the morning: “What’s for lunch?”',
         },
@@ -291,7 +291,7 @@ export const apps: AppShowcaseItem[] = [
         facts: [
           '28 occasions, from good morning and payday to birthdays, weddings and Lunar New Year. Upcoming holidays, lunar ones included, sit one tap away.',
           'Vietnamese changes its words for you and I with every relationship. Pick the recipient and Wishjar fills them in. Type your own or swap them.',
-          'Copy it, share it to Zalo or Messenger, or save a 1080×1350 notebook-page card. AI buttons rewrite a line three ways: funnier, shorter, sweeter, more polite or as a poem.',
+          'Copy it, share it to Zalo or Messenger, or save a 1080×1350 notebook-page card. Five AI buttons (funnier, shorter, sweeter, more polite, poem) each return three rewrites.',
           'No account. It works offline once loaded, because the whole library ships with the app. Only the AI rewrite calls a server, behind daily limits.',
         ],
       },

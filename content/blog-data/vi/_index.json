@@ -115,8 +115,8 @@
     {
       "slug": "c4-model-an-gi-va-wishjar",
       "category": "architecture",
-      "title": "Kiến trúc Ăn Gì và Wishjar theo C4 model, và những chỗ chưa sẵn sàng scale",
-      "summary": "Sơ đồ C4 của hai side project mình đang chạy thật: state nằm ở đâu, API tốn tiền được chặn trần ra sao, và chỗ nào sẽ gãy trước khi traffic tăng gấp mười.",
+      "title": "Vẽ Ăn Gì và Wishjar bằng C4 model: chỗ nào sẵn sàng scale, chỗ nào chưa",
+      "summary": "Sơ đồ C4 của hai side project mình đang chạy thật: state nằm ở đâu, API tốn tiền được chặn trần ra sao, và chỗ nào sẽ quá tải trước khi traffic tăng gấp mười.",
       "date": "2026-11-23",
       "readingMinutes": 9,
       "tags": [
@@ -132,7 +132,7 @@
     {
       "slug": "wishjar-loi-chuc-hay-cho-moi-dip",
       "category": "perspectives",
-      "title": "Lời chúc hay cho mọi dịp, đúng cách xưng hô: mình làm Wishjar",
+      "title": "Gửi lời chúc gì cho hay? Mình làm hũ lời chúc đúng xưng hô",
       "summary": "Wishjar là app miễn phí với 1.008 lời chúc, câu thả thính, caption tiếng Việt. Chọn gửi cho ai, lắc hũ là có câu đúng xưng hô để gửi Zalo hay tạo ảnh.",
       "date": "2026-11-23",
       "readingMinutes": 6,

@@ -1,4 +1,4 @@
-// C4 views of Ăn Gì and Wishjar for the blog post `c4-kien-truc-an-gi-va-wishjar`.
+// C4 views of Ăn Gì and Wishjar for the blog post `c4-model-an-gi-va-wishjar`.
 // Facts come from the two repositories as of 2026-11-23 (angi: docs/architecture, src/lib, docker-compose.yml;
 // wishjar: README, server/, scripts/). Geometry is hand-placed on a 4px grid; render.mjs draws it.
 
@@ -76,7 +76,7 @@ const angiContext = {
       id: 'nearby', kind: 'external', x: 840, y: 136, w: 216, h: 96,
       name: { en: 'HERE, Google Places', vi: 'HERE, Google Places' },
       tag: '[External: place search]',
-      desc: { en: ['Nearby search, hard', 'daily caps per provider'], vi: ['Tìm quán gần, có cap', 'cứng mỗi ngày'] },
+      desc: { en: ['Nearby search, hard', 'daily caps per provider'], vi: ['Tìm quán gần, có trần', 'cứng mỗi ngày'] },
       detail: {
         en: 'HERE is capped at 900 calls a day and Google Places at 30. The server sends a rounded grid cell, never the exact position.',
         vi: 'HERE tối đa 900 lượt mỗi ngày, Google Places 30 lượt. Server chỉ gửi đi ô lưới đã làm tròn chứ không gửi toạ độ thật.',
@@ -138,7 +138,7 @@ const angiContainers = {
   },
   caption: {
     en: 'Postgres holds what must survive, Valkey holds what can be lost, and the web container sits between them on one VPS with no public port.',
-    vi: 'Postgres giữ thứ phải sống sót, Valkey giữ thứ mất cũng được, container web nằm giữa, cả ba trên một VPS không mở cổng public.',
+    vi: 'Postgres giữ thứ không được mất, Valkey giữ thứ mất cũng được, container web nằm giữa, cả ba trên một VPS không mở cổng public.',
   },
   zones: [
     { x: 208, y: 216, w: 248, h: 200, label: { en: 'Your browser', vi: 'Trình duyệt của bạn' } },
@@ -212,7 +212,7 @@ const angiContainers = {
       desc: { en: ['Web vitals, events'], vi: ['Web vitals, sự kiện'] },
       detail: {
         en: 'The browser sends events to /ingest on the app, and the server forwards them. Ad blockers have less to block and no third-party cookie is involved.',
-        vi: 'Trình duyệt gửi sự kiện tới /ingest của app, server chuyển tiếp sang PostHog. Ít bị trình chặn quảng cáo chặn, không có cookie bên thứ ba.',
+        vi: 'Trình duyệt gửi sự kiện tới /ingest của app, server chuyển tiếp sang PostHog. Adblock ít chặn hơn, và không có cookie bên thứ ba.',
       },
     },
     {
@@ -256,12 +256,12 @@ const angiComponents = {
   height: 688,
   title: { en: 'Ăn Gì · C4 L3: Components in angi-web', vi: 'Ăn Gì · C4 L3: Component trong angi-web' },
   desc: {
-    en: 'Every request passes the Shield, then reaches pages, server actions, the admin console or the contribute API, which share one data layer with a tagged cache.',
-    vi: 'Mọi request đi qua Shield, rồi tới trang, server action, trang admin hoặc API góp quán, tất cả dùng chung một data layer có cache gắn tag.',
+    en: 'Page requests and data reads pass the Shield, then reach pages, server actions, the admin console or the contribute API, which share one data layer with a tagged cache.',
+    vi: 'Request vào trang và lần đọc dữ liệu đi qua Shield, rồi tới trang, server action, trang admin hoặc API góp quán, tất cả dùng chung một data layer có cache gắn tag.',
   },
   caption: {
-    en: 'Every request passes the Shield first, and every read goes through one data layer whose cache is flushed by tag when a place is approved.',
-    vi: 'Request nào cũng qua Shield trước. Mọi lần đọc dữ liệu đi qua một data layer, cache của nó được làm mới theo tag khi admin duyệt quán.',
+    en: 'Every page request and data read passes the Shield first, and every read goes through one data layer whose cache is flushed by tag when a place is approved.',
+    vi: 'Request vào trang và lần đọc dữ liệu nào cũng qua Shield trước. Mọi lần đọc đi qua một data layer, cache của nó được làm mới theo tag khi admin duyệt quán.',
   },
   zones: [{ x: 24, y: 64, w: 1032, h: 456, label: { en: 'angi-web · Next.js 16', vi: 'angi-web · Next.js 16' } }],
   nodes: [
@@ -269,10 +269,10 @@ const angiComponents = {
       id: 'shield', kind: 'component', focal: true, x: 48, y: 96, w: 984, h: 88,
       name: { en: 'Shield', vi: 'Shield' },
       tag: '[Component: proxy + src/lib/shield]',
-      desc: { en: ['Nonce CSP with strict-dynamic, HMAC data tokens, rate limits in Valkey, verified Googlebot and Bingbot, short bans for scrapers'], vi: ['CSP có nonce và strict-dynamic, token HMAC cho dữ liệu, rate limit trong Valkey, xác minh Googlebot và Bingbot, ban ngắn hạn kẻ cào dữ liệu'] },
+      desc: { en: ['Nonce CSP with strict-dynamic, HMAC data tokens, rate limits in Valkey, verified Googlebot and Bingbot, 24-hour bans for attack probes and scripts'], vi: ['CSP có nonce và strict-dynamic, token HMAC cho dữ liệu, rate limit trong Valkey, xác minh Googlebot và Bingbot, ban 24 giờ client dò lỗi hoặc chạy bằng script'] },
       detail: {
-        en: 'Every request passes here first. Abuse rules live in one place, so a new route gets them without anyone copying a check.',
-        vi: 'Request nào cũng đi qua đây trước. Luật chống lạm dụng nằm một chỗ, nên route mới tự có, không ai phải nhớ chép lại.',
+        en: 'Page requests and data reads pass here first. Abuse rules live in one place, so a new page gets them without anyone copying a check.',
+        vi: 'Request vào trang và lần đọc dữ liệu nào cũng đi qua đây trước. Luật chống lạm dụng nằm một chỗ, nên trang mới tự có, không ai phải nhớ chép lại.',
       },
     },
     {
@@ -319,10 +319,10 @@ const angiComponents = {
       id: 'nearby', kind: 'component', x: 48, y: 384, w: 228, h: 104,
       name: { en: 'Nearby service', vi: 'Dịch vụ quán gần' },
       tag: '[Component: lib/nearby]',
-      desc: { en: ['0.01° grid, daily caps,', 'provider fallback'], vi: ['Ô lưới 0,01°, cap mỗi ngày,', 'đổi nhà cung cấp khi cần'] },
+      desc: { en: ['0.01° grid, daily caps,', 'provider fallback'], vi: ['Ô lưới 0,01°, trần mỗi ngày,', 'đổi nhà cung cấp khi cần'] },
       detail: {
         en: 'Rounds the position, checks the person’s own limits, then the provider’s daily cap. Results stay in a 30-minute cache per cell and never reach the database.',
-        vi: 'Làm tròn vị trí, kiểm hạn mức của người dùng rồi tới cap trong ngày của nhà cung cấp. Kết quả nằm trong cache 30 phút theo ô, không bao giờ ghi vào database.',
+        vi: 'Làm tròn vị trí, kiểm hạn mức của người dùng rồi tới trần trong ngày của nhà cung cấp. Kết quả nằm trong cache 30 phút theo ô, không bao giờ ghi vào database.',
       },
     },
     {
@@ -342,7 +342,7 @@ const angiComponents = {
       desc: { en: ['900 and 30 calls a day'], vi: ['900 và 30 lượt mỗi ngày'] },
       detail: {
         en: 'Paid APIs sit behind hard daily caps in code, so a traffic spike degrades the nearby list instead of the budget.',
-        vi: 'API trả phí nằm sau cap cứng mỗi ngày viết trong code. Traffic tăng vọt thì danh sách quán gần bị ảnh hưởng, ngân sách thì không.',
+        vi: 'API trả phí có trần cứng mỗi ngày, viết trong code. Traffic tăng vọt thì danh sách quán gần bị ảnh hưởng, ngân sách thì không.',
       },
     },
     {
@@ -416,7 +416,7 @@ const wishjarContext = {
       tag: '[Person]',
       desc: { en: ['Needs one good line', 'for a chat, right now'], vi: ['Cần một câu hay để', 'nhắn ngay bây giờ'] },
       detail: {
-        en: 'Opens the app on a phone, shakes the jar, swaps pronouns if needed and shares. Favourites stay in the browser; there is no account.',
+        en: 'Opens the app on a phone, shakes the jar, swaps pronouns if needed and shares. Favorites stay in the browser, and there is no account.',
         vi: 'Mở app trên điện thoại, lắc hũ, đổi cách xưng hô nếu cần rồi chia sẻ. Lời chúc đã lưu nằm trong trình duyệt, không có tài khoản.',
       },
     },
@@ -466,8 +466,8 @@ const wishjarContext = {
       tag: '[External: Anthropic]',
       desc: { en: ['Three rewrites per tap'], vi: ['Ba bản viết lại mỗi lần'] },
       detail: {
-        en: 'The only runtime cost. The request carries a library id and a style, never free text, so there is nothing for a user to inject.',
-        vi: 'Chi phí duy nhất lúc chạy. Request chỉ mang ID lời chúc trong thư viện và kiểu viết, không có chữ tự do, nên người dùng không có gì để chèn prompt.',
+        en: 'The only runtime cost. The request carries a library id, a style and a recipient, never typed text, so there is nothing for a user to inject.',
+        vi: 'Chi phí duy nhất lúc chạy. Request không có chữ nào người dùng tự gõ, chỉ có ID lời chúc, kiểu chỉnh và người nhận, nên không có gì để chèn prompt.',
       },
     },
     {
@@ -492,7 +492,7 @@ const wishjarContext = {
     },
   ],
   edges: [
-    { from: 'sender', to: 'wishjar', points: [[240, 270], [412, 270]], label: { en: 'Shake, AI edit', vi: 'Lắc hũ, nhờ AI sửa' } },
+    { from: 'sender', to: 'wishjar', points: [[240, 270], [412, 270]], label: { en: 'Shake, AI tweak', vi: 'Lắc hũ, nhờ AI chỉnh' } },
     { from: 'maintainer', to: 'codex', points: [[240, 488], [412, 488]], label: { en: 'pnpm generate', vi: 'pnpm generate' } },
     { from: 'maintainer', to: 'wishjar', points: [[240, 456], [320, 456], [320, 320], [412, 320]], labelSegment: 2, label: { en: 'Review, deploy', vi: 'Duyệt, deploy' } },
     { from: 'codex', to: 'wishjar', points: [[540, 440], [540, 344]], dashed: true, label: { en: 'Checked JSON', vi: 'JSON đã lọc' } },
@@ -515,8 +515,8 @@ const wishjarContainers = {
     vi: 'PWA và service worker chạy trên điện thoại, server Node và file SQLite chạy trên VPS. Bước build gói thư viện vào image.',
   },
   caption: {
-    en: 'Reading a wish never reaches the VPS. Only the AI edit does, and that path carries every limit.',
-    vi: 'Đọc lời chúc không cần tới VPS. Chỉ nút nhờ AI sửa mới gọi server, và mọi giới hạn đều nằm trên đường này.',
+    en: 'Reading a wish never reaches the VPS. Only the AI tweak does, and that path carries every limit.',
+    vi: 'Đọc lời chúc không cần tới VPS. Chỉ nút nhờ AI chỉnh mới gọi server, và mọi giới hạn đều nằm trên đường này.',
   },
   zones: [
     { x: 208, y: 216, w: 256, h: 320, label: { en: 'Your phone', vi: 'Điện thoại của bạn' } },
@@ -534,7 +534,7 @@ const wishjarContainers = {
       id: 'pwa', kind: 'container', x: 228, y: 252, w: 216, h: 128,
       name: { en: 'Wishjar PWA', vi: 'Wishjar PWA' },
       tag: '[Container: Vite + TS]',
-      desc: { en: ['Whole library in the bundle,', 'state in the URL,', 'favourites in localStorage'], vi: ['Cả thư viện nằm trong bundle,', 'state nằm trên URL,', 'yêu thích trong localStorage'] },
+      desc: { en: ['Whole library in the bundle,', 'state in the URL,', 'favorites in localStorage'], vi: ['Cả thư viện nằm trong bundle,', 'state nằm trên URL,', 'yêu thích trong localStorage'] },
       detail: {
         en: 'No UI framework. The main chunk is about 73 KB gzip with all 1,008 lines inside. Filters and the current wish live in the URL, so a shared link reopens the same card.',
         vi: 'Không dùng UI framework. Chunk chính khoảng 73 KB gzip, chứa luôn 1.008 câu. Bộ lọc và lời chúc đang xem nằm trên URL, gửi link là người nhận mở ra đúng tấm thẻ đó.',
@@ -566,8 +566,8 @@ const wishjarContainers = {
       tag: '[Container: node:http, Node 22]',
       desc: { en: ['Static files, POST /api/rewrite,', '256 MB, read-only root'], vi: ['File tĩnh, POST /api/rewrite,', '256 MB, root chỉ đọc'] },
       detail: {
-        en: 'A dependency-free server with security headers on every response. The container has 256 MB of memory, half a CPU, no Linux capabilities and a read-only filesystem.',
-        vi: 'Server không phụ thuộc thư viện nào, response nào cũng có security header. Container có 256 MB RAM, nửa CPU, bỏ hết Linux capability và filesystem chỉ đọc.',
+        en: 'A node:http server with no web framework; its only runtime dependency is the Anthropic SDK. Every response carries security headers. The container has 256 MB of memory, half a CPU, no Linux capabilities and a read-only filesystem.',
+        vi: 'Server viết bằng node:http, không dùng web framework, thư viện ngoài duy nhất là Anthropic SDK. Response nào cũng có security header. Container có 256 MB RAM, nửa CPU, bỏ hết Linux capability và filesystem chỉ đọc.',
       },
     },
     {
@@ -606,8 +606,8 @@ const wishjarContainers = {
       tag: '[Container: tsc, vite build, prerender]',
       desc: { en: ['Typecheck, bundle the library, write 29 SEO pages,', 'sitemap and robots, then docker build'], vi: ['Typecheck, gói thư viện, sinh 29 trang SEO,', 'sitemap, robots, rồi docker build'] },
       detail: {
-        en: 'CI runs typecheck, tests and build on every push. Deploy is rsync plus docker compose up on the VPS, then a health check.',
-        vi: 'CI chạy typecheck, test và build mỗi lần push. Deploy là rsync rồi docker compose up trên VPS, sau đó chờ health check.',
+        en: 'CI runs typecheck, tests and build on pushes to main and on pull requests. Deploy is rsync plus docker compose up on the VPS, then a health check.',
+        vi: 'CI chạy typecheck, test và build mỗi lần push lên main và mỗi pull request. Deploy là rsync rồi docker compose up trên VPS, sau đó chờ health check.',
       },
     },
   ],
@@ -636,7 +636,7 @@ const wishjarComponents = {
   },
   caption: {
     en: 'Cheap checks run first and Claude runs last. Any step can turn the request away.',
-    vi: 'Bước rẻ chạy trước, Claude chạy sau cùng. Bước nào cũng có thể trả request về.',
+    vi: 'Bước rẻ chạy trước, Claude chạy sau cùng. Bước nào cũng có quyền từ chối request.',
   },
   zones: [{ x: 24, y: 64, w: 872, h: 560, labelX: 300, label: { en: 'wishjar-web · node:http', vi: 'wishjar-web · node:http' } }],
   nodes: [
@@ -664,20 +664,20 @@ const wishjarComponents = {
       id: 'guard', kind: 'component', x: 264, y: 112, w: 168, h: 100,
       name: 'Request guard',
       tag: '[server/index.ts]',
-      desc: { en: ['CORS allowlist,', 'JSON only, 1 KB'], vi: ['CORS allowlist,', 'chỉ JSON, 1 KB'] },
+      desc: { en: ['Origin allowlist,', 'JSON only'], vi: ['Origin allowlist,', 'chỉ nhận JSON'] },
       detail: {
-        en: 'Other sites get 403 on preflight and on the request. Bodies over 1 KB or not JSON are refused before anything is parsed.',
-        vi: 'Site khác nhận 403 ngay ở preflight lẫn request thật. Body quá 1 KB hoặc không phải JSON bị từ chối trước khi parse.',
+        en: 'Other sites get 403 on preflight and on the request. A request that is not JSON is refused right here.',
+        vi: 'Site khác nhận 403 ngay ở preflight lẫn request thật. Request không phải JSON bị từ chối ngay tại đây.',
       },
     },
     {
       id: 'limits', kind: 'component', focal: true, x: 480, y: 112, w: 168, h: 100,
       name: { en: 'Limiter chain', vi: 'Chuỗi rate limit' },
       tag: '[server/limits.ts]',
-      desc: { en: ['IP 6/min, 60/day,', 'visitor 40, all 3,000'], vi: ['IP 6/phút, 60/ngày,', 'visitor 40, tổng 3.000'] },
+      desc: { en: ['IP 6/min, 60/day,', 'visitor 40/day'], vi: ['IP 6/phút, 60/ngày,', 'visitor 40/ngày'] },
       detail: {
-        en: 'Per IP (IPv6 grouped by /64) per minute and per day, per visitor per day, a global daily cap and at most 8 model calls in flight. In memory today, which is why it runs as one replica.',
-        vi: 'Theo IP (IPv6 gom theo /64) mỗi phút và mỗi ngày, theo visitor mỗi ngày, một cap tổng mỗi ngày và tối đa 8 lời gọi model cùng lúc. Hiện nằm trong bộ nhớ, nên server chỉ chạy một bản.',
+        en: 'Per IP (IPv6 grouped by /64) per minute and per day, and per visitor per day. Only after this is the body read, capped at 1 KB. The counters live in memory today, which is why the server runs as one replica.',
+        vi: 'Theo IP (IPv6 gom theo /64) mỗi phút và mỗi ngày, theo visitor mỗi ngày. Qua bước này server mới đọc body, tối đa 1 KB. Bộ đếm hiện nằm trong bộ nhớ, nên server chỉ chạy một bản.',
       },
     },
     {
@@ -687,17 +687,17 @@ const wishjarComponents = {
       desc: { en: ['24 h, 20,000 entries,', 'shared in-flight calls'], vi: ['24 giờ, 20.000 mục,', 'gộp request trùng'] },
       detail: {
         en: 'Same wish, style and audience within 24 hours costs nothing, and identical requests arriving together share one model call. Cache hits do not count against the global cap.',
-        vi: 'Cùng lời chúc, cùng kiểu viết, cùng người nhận trong 24 giờ thì không tốn đồng nào, request giống nhau tới cùng lúc thì dùng chung một lời gọi model. Cache hit không bị tính vào cap tổng.',
+        vi: 'Cùng lời chúc, cùng kiểu viết, cùng người nhận trong 24 giờ thì không tốn đồng nào, request giống nhau tới cùng lúc thì dùng chung một lời gọi model. Cache hit không bị tính vào trần tổng.',
       },
     },
     {
       id: 'model', kind: 'component', x: 696, y: 300, w: 168, h: 100,
       name: { en: 'Model call', vi: 'Gọi Claude' },
       tag: '[server/rewrite.ts]',
-      desc: { en: ['Prompt from our own', 'lines only'], vi: ['Prompt chỉ chứa câu', 'của chính thư viện'] },
+      desc: { en: ['On a miss: 3,000/day', 'in total, 8 in flight'], vi: ['Khi miss: trần tổng', '3.000/ngày, 8 cùng lúc'] },
       detail: {
-        en: 'Builds the prompt from the library line, the style brief and the shared voice guide. max_tokens 1,200, 25-second abort, one retry.',
-        vi: 'Dựng prompt từ câu trong thư viện, mô tả kiểu viết và bộ quy tắc giọng văn dùng chung. max_tokens 1.200, huỷ sau 25 giây, thử lại một lần.',
+        en: 'Runs only on a cache miss: checks the global cap of 3,000 calls a day and at most 8 calls in flight, then builds the prompt from the library line, the style brief and the shared voice guide. max_tokens 1,200, 25-second abort, one retry.',
+        vi: 'Chỉ chạy khi cache miss: kiểm trần tổng 3.000 lượt mỗi ngày và tối đa 8 lời gọi cùng lúc, rồi dựng prompt từ câu trong thư viện, mô tả kiểu viết và bộ quy tắc giọng văn dùng chung. max_tokens 1.200, huỷ sau 25 giây, thử lại một lần.',
       },
     },
     {
@@ -706,8 +706,8 @@ const wishjarComponents = {
       tag: '[server/rewrite.ts]',
       desc: { en: ['Schema, 320 chars,', 'dedupe, max 3'], vi: ['Schema, 320 ký tự,', 'bỏ trùng, tối đa 3'] },
       detail: {
-        en: 'Model output is parsed against the schema, then each line goes through the same checkLine the generator uses. Anything odd is dropped, not repaired.',
-        vi: 'Kết quả của model được parse theo schema, rồi từng câu qua đúng hàm checkLine mà generator dùng. Câu nào lạ thì bỏ, không cố sửa.',
+        en: 'Model output is parsed against the schema, then each line goes through the same token and length rules the generator applies. Anything odd is dropped, not repaired.',
+        vi: 'Model trả về được parse theo schema, rồi từng câu qua đúng luật về token và độ dài mà generator dùng. Câu nào lạ thì bỏ, không cố sửa.',
       },
     },
     {
