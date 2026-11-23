@@ -13,6 +13,7 @@ import { Link } from '@/i18n/navigation'
 import { track } from '@/lib/analytics'
 import DishReel from './DishReel'
 import GlanceDemo from './GlanceDemo'
+import WishJar from './WishJar'
 
 type LinkKind = keyof AppLinks
 
@@ -128,8 +129,8 @@ function AppStage({ app, position, copy, copyLocale }: Readonly<AppStageProps>) 
   const text = app.copy[copyLocale]
   const appLinks: AppLinks = app.links
   const links = LINK_KINDS.filter((kind) => appLinks[kind])
-  // With the dish reel, its result button is the way into the app, so the other links stay quiet.
-  const primaryIndex = app.dishes ? -1 : 0
+  // With the dish reel or the wish jar, the demo's own button is the way into the app, so the other links stay quiet.
+  const primaryIndex = app.dishes || app.wishDemo ? -1 : 0
 
   const trackLink = (kind: LinkKind): void => {
     track('apps_link_click', {
@@ -165,6 +166,16 @@ function AppStage({ app, position, copy, copyLocale }: Readonly<AppStageProps>) 
           lead={copy.dishLead}
           spinLabel={copy.spin}
           openTemplate={copy.openDish}
+        />
+      )}
+      {app.wishDemo && (
+        <WishJar
+          demo={app.wishDemo}
+          locale={copyLocale}
+          shakeLabel={copy.shake}
+          forLabel={copy.wishFor}
+          occasionLabel={copy.wishOccasion}
+          openLabel={copy.openWish}
         />
       )}
       {app.glanceDemo && (
@@ -215,7 +226,7 @@ function AppStage({ app, position, copy, copyLocale }: Readonly<AppStageProps>) 
         </div>
         <p className="apps-stage-meta">
           {copy.status[app.status]} <span className="apps-mono">{app.version}</span>,{' '}
-          {app.platforms.join(', ')}, {text.hardware}. {app.stack.join(', ')}. {app.license}.
+          {app.platforms.join(', ')}, {text.hardware}. {app.stack.join(', ')}.{app.license && ` ${app.license}.`}
         </p>
       </div>
 

@@ -231,8 +231,8 @@
         "apps": {
           "html": "en/apps.html",
           "maxStylesheetCount": 3,
-          "maxGzipBytes": 11008,
-          "maxBrotliBytes": 9600,
+          "maxGzipBytes": 11776,
+          "maxBrotliBytes": 10368,
           "requiredOwners": ["apps"],
           "allowedOwners": ["apps"]
         },

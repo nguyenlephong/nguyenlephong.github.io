@@ -64,7 +64,7 @@ test("/apps lists shipped apps only, with localized copy and no console controls
   const { apps, appsPageCopy, appsCopyLocale } = await import(
     "../src/app/[locale]/(site)/apps/apps.data.ts"
   );
-  assert.deepEqual(apps.map((a) => a.id), ["an-gi", "glance"]);
+  assert.deepEqual(apps.map((a) => a.id), ["an-gi", "wishjar", "glance"]);
   // The dish reel's CTA (UTM-tagged, see the demo test) is the way into Ăn Gì; no second site link.
   const anGi = apps.find((a) => a.id === "an-gi");
   assert.equal(anGi.links.site, undefined);
@@ -118,5 +118,49 @@ test("/apps demos land on live Ăn Gì dish pages and track every play", async (
   // Every dish in the reel has its cover in the deck.
   for (const d of anGi.dishes) {
     assert.ok(existsSync(`public/apps/an-gi/covers/${d.slug}.webp`), `missing cover for ${d.slug}`);
+  }
+});
+
+test("/apps Wishjar demo uses real library lines and deep-links to the same wish", async () => {
+  const { apps, appsPageCopy, wishjarUrl, personalizeWish } = await import(
+    "../src/app/[locale]/(site)/apps/apps.data.ts"
+  );
+  const wishjar = apps.find((a) => a.id === "wishjar");
+  assert.equal(wishjar.links.site, undefined, "the demo CTA is the way into Wishjar");
+  assert.doesNotMatch(wishjar.homepage, /utm_/);
+  const { occasions, audiences, lines } = wishjar.wishDemo;
+  const occasionIds = new Set(occasions.map((o) => o.id));
+  const audienceIds = new Set(audiences.map((a) => a.id));
+  assert.equal(new Set(lines.map((l) => l.id)).size, lines.length);
+  for (const o of occasions) {
+    assert.ok(lines.filter((l) => l.occasion === o.id).length >= 2, `${o.id} needs two lines to shake`);
+  }
+  for (const l of lines) {
+    assert.ok(occasionIds.has(l.occasion), l.id);
+    assert.ok(l.audiences.length > 0 && l.audiences.every((a) => audienceIds.has(a)), l.id);
+    assert.match(l.text, /\{(you|me)\}/i, `${l.id} keeps a pronoun slot`);
+    assert.ok(l.gloss.length > 20, `${l.id} has an English gloss`);
+  }
+  for (const locale of ["en", "vi"]) {
+    for (const key of ["shake", "wishFor", "wishOccasion", "openWish"]) assert.ok(appsPageCopy[locale][key], `${locale} ${key}`);
+  }
+  assert.equal(
+    wishjarUrl({ id: "3w5e31", occasion: "morning" }, "colleague", "vi"),
+    "https://wishjar.startup.id.vn/?o=morning&a=colleague&w=3w5e31&utm_source=nguyenlephong.github.io&utm_medium=apps_page&utm_campaign=wishjar_launch&utm_content=apps_demo_vi"
+  );
+  const filled = personalizeWish("{Me} không ở cạnh nên gửi câu này đứng canh {you}.", "bố mẹ", "con");
+  assert.equal(filled.map((p) => p.text).join(""), "Con không ở cạnh nên gửi câu này đứng canh bố mẹ.");
+  assert.deepEqual(filled.filter((p) => p.pronoun).map((p) => p.text), ["Con", "bố mẹ"]);
+
+  const jar = read("src/components/apps/WishJar.tsx");
+  assert.match(jar, /track\('apps_demo_interact', \{ app_id: 'wishjar', action: 'shake'/);
+  assert.match(jar, /track\('apps_link_click'/);
+  assert.doesNotMatch(jar, /setInterval|setTimeout/);
+  // Every motion on the stage lives under prefers-reduced-motion: no-preference.
+  const css = read("src/app/[locale]/(site)/apps/apps.css");
+  const motion = css.slice(css.indexOf("@media (prefers-reduced-motion: no-preference)"));
+  for (const name of ["wish-shake", "wish-drop", "wish-pop"]) {
+    assert.ok(motion.includes(`animation: ${name}`), `${name} runs only without reduced motion`);
+    assert.ok(!css.slice(0, css.indexOf("@media (prefers-reduced-motion: no-preference)")).includes(`animation: ${name}`));
   }
 });
